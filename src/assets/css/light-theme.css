@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+/*--------------------------------- css for light background------------------------------------------------*/
+body.dynamicclass1{
+  background: #edf0f5 !important;
+}
+.dynamicclass1 header{
+  background: #fff !important;
+  box-shadow: 6px 0px 6px rgba(31,30,47,0.06);
+}
+.dynamicclass1  .counter-box, .dynamicclass1  .box-part {
+  background: #fff !important;
+}
+.dynamicclass1 .card {
+  background: #fff !important;
+  box-shadow: 0px 2px 4px rgba(31,30,47,0.1) !important;
+  margin-bottom: 24px !important;
+  background-color: #fff !important;
+  border-radius: .25rem !important;
+  webkit-box-shadow: 0px 2px 4px rgba(31,30,47,0.1) !important;
+  border: 0 !important;
+}
+.dynamicclass1 .breadcrumb-section h4{
+  color: rgba(0,0,0,0.8);
+}
+.dynamicclass1 .iot-name{
+  color: rgba(0,0,0,0.9);
+}
+.dynamicclass1 .box-part h3{
+  color: rgba(0,0,0,0.9);
+}
+.dynamicclass1 .box-part p{
+  color: rgba(0,0,0,0.8);
+}
+.dark.dynamicclass1 .card .header h2{
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .card-header h2{
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .counter-box{
+  color: rgba(0,0,0,0.9) !important;
+}
+.dynamicclass1 .breadcrumb-item.active {
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .breadcrumb-section li a {
+  color: rgba(0,0,0,0.8) !important;
+  font-size: 13px;
+}
+.dynamicclass1 header .dropdown-menu {
+  background: #fff !important;
+  border: 1px solid rgba(255,255,255,0.8);
+}
+.dynamicclass1 header .dropdown-menu .dropdown-item:hover{
+  color: rgba(0,0,0,1) !important;
+}
+
+.menu_dark.dynamicclass1 .sidebar {
+  /*background: #506ee4;*/
+  font-weight: 400;
+  /*background: #19d9fd;*/
+  /*background: #0086ff;*/
+  background: #0086ff;
+}
+.dynamicclass1 .blackbg {
+  background-color: #0086ff;
+  width: 260px;
+  text-align: center;
+}
+.dynamicclass1 .sidebar ul li a {
+  color:rgba(0,0,0,0.7);
+}
+.dynamicclass1 .counter-box h3{
+  color:rgba(0,0,0,0.7);
+}
+.dynamicclass1 header nav li a {
+  color: #0086ff;
+}
+.dynamicclass1 header .dropdown-menu .dropdown-item {
+  color: rgba(0,0,0,0.7);
+  font-size: 13px;
+}
+.dynamicclass1 header .dropdown-menu .dropdown-item:hover {
+  color: rgba(0,0,0,1);
+  font-size: 13px;
+}
+
+.dynamicclass1 .content{
+  margin-top: 80px;
+}
+.dynamicclass1  .form-control{
+   background: #fff !important;
+  border: 1px solid rgba(206,212,218,1) !important;
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .card-body .table tr th {
+  font-weight: 500 !important;
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .card-body .table tr td{
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .form-section label{
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .card-body .table  tr td {
+  border-top: 1px solid #eaf0f7 !important;
+  border-bottom: 1px solid #eaf0f7 !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+}
+.dynamicclass1 .card-body .table  tr th {
+  border-top: 1px solid #eaf0f7 !important;
+  border-bottom: 1px solid #eaf0f7 !important;
+  font-size: 12px !important;
+
+}
+.dynamicclass1 .card-body .table  tr th{
+  font-weight: 500 !important;
+}
+.dynamicclass1 .table-bordered th, .dynamicclass1 .table-bordered td{
+  border: 1px solid #eaf0f7 !important;
+}
+.dynamicclass1 .event-des{
+  color: #343a40 !important;
+}
+.dynamicclass1 .anml-link{
+  color: #fff !important;
+}
+.anml-link:hover{  background-color: rgba(0,0,0,.2) !important;
+  color: #fff !important; border-radius: 3rem;}
+.dynamicclass1 .text-white {
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .name-des{
+  color: rgba(0,0,0,0.8) !important;
+}
+.dynamicclass1 .card-header{
+  color: rgba(0,0,0,0.9) !important;
+  font-size: 17px !important;
+}
+.dynamicclass1 .avatar-md i {
+  color: #fff !important;
+}
+
+.dynamicclass1 .text-blue{
+  color: #0086ff;
+}
+.dynamicclass1 .submit-btn{
+  background:#0086ff !important;
+  min-width: 130px !important;
+  border-radius: 99px !important;
+  color: #fff !important;
+  padding: 8px 15px !important;
+}
+.dynamicclass1 .submit-btn:hover{
+  background:#4058b6 !important;
+}
+.dynamicclass1 .cancel-btn{
+  border-radius: 99px !important;
+  padding: 8px 15px !important;
+}

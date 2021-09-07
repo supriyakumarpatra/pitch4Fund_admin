@@ -1,0 +1,207 @@
+<div id="wrapper-pi"  class="mobile {{sidenavShow}}">
+  <header>
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-5">
+          <div class="slide-nav position-relative z-index999">
+            <a href="javascript:void(0)" class="text-dark d-block" (click)="showsideBar()"><mat-icon>menu</mat-icon></a>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="info-bar d-flex justify-content-end user-info-bar position-relative z-index999">
+            <ul class="list-inline mb-0">
+
+              <!--<li class="list-inline-item dropdown position-relative">-->
+
+              <!--<a href="javascript:void(0);" class="infobar-icon "  matTooltip="Notification" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+              <!--<mat-icon aria-hidden="false" aria-label="notifications icon" class="animated infinite pulse">notifications</mat-icon>-->
+              <!--<span class="live-icon"></span>-->
+              <!--</a>-->
+
+              <!--<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">-->
+              <!--<h2>Notification</h2>-->
+              <!--<ul>-->
+              <!--<li>-->
+              <!--<span class="circle-info-noti bg-success"><i class="fa fa-check" aria-hidden="true"></i></span>-->
+              <!--New Material Code added - <span>TATAEFEE101</span></li>-->
+              <!--<li>-->
+              <!--<span class="circle-info-noti bg-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>-->
+              <!--Error</li>-->
+              <!--</ul>-->
+
+              <!--</div>-->
+              <!--</li>-->
+
+
+              <li class="list-inline-item">
+                <div class="profile">
+                  <a href="javascript:;" class="infobar-icon" [matMenuTriggerFor]="menu">
+                    <img src="assets/images/profile.svg" class="img-fluid"/>
+                    <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                  </a>
+                  <mat-menu #menu="matMenu">
+                    <h3 class="text-center p-2 mb-0">Abhaya Das</h3>
+                    <button mat-menu-item routerLink="/common/profile"><i class="fa fa-key" aria-hidden="true"></i> <span>Change Password</span></button>
+                    <button mat-menu-item routerLink="/"><i class="fa fa-sign-out" aria-hidden="true"></i><span> Log Out</span></button>
+                  </mat-menu>
+                </div>
+
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <!--<div class="logo-tata position-absolute text-center z-index99 d-flex align-items-center justify-content-center">-->
+      <!--<img src="assets/images/tata-logo.png"/> <span class="d-inline-block ml-3 font-16 font-600 text-uppercase text-primary">SAP Cost</span>-->
+      <!--</div>-->
+    </div>
+  </header>
+  <router-outlet></router-outlet>
+  <div class="sidebar">
+    <ng-scrollbar>
+    <div class="sidebar-header  text-center  d-flex align-items-center justify-content-center">
+      <!-- <a href="javascript:void(0);"  class="des-logo p-1" routerLink="/pages/dashboard"><img src="assets/images/white-logo.png" class="img-fluid"/> </a> -->
+      <!--<a href="" routerLink="/pages/dashboard" class="mob-logo"><img src="assets/images/logo-icon.png" width="38"/> </a>-->
+    </div>
+    <div class="sidebar-menu">
+
+      <mat-accordion>
+        <ul>
+          <li >
+            <a  href="javascript:void(0);" routerLink="/pages/dashboard" routerLinkActive="active">
+              <span class="img-small"><i class="fa fa-tachometer" aria-hidden="true"></i></span>
+              <span class="text-menu">Dashboard</span> </a> 
+          </li>
+
+          <li >
+            <mat-expansion-panel  >
+              <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+                <mat-panel-title>
+                  <div class="point"> <span class="img-small">
+                                   <i class="fa fa-database" aria-hidden="true"></i>
+                  </span> Data  Management                   </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul>
+           
+                <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-Industry"  >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span>Industry</span>  </a> </li>
+                 <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-investment-stage"  >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span>Investment Stage</span>  </a> </li> 
+                 <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-country"  >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span>Country</span>  </a> </li> 
+                 <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-language"  >
+                <span class="img-small">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span> <span>Language</span>  </a> </li>  
+
+                 <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-startup-vertical"  >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span>Startup Vertical</span>  </a> </li>  
+
+                  <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-time-zone"  >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span>Time Zone</span>  </a> </li> 
+
+                 <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-treditional-indestry"  >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span>Treditional Industry</span>  </a> </li>
+
+                   <li>
+                        <a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-investor-type"  >
+                      <span class="img-small">
+                              <i class="fa fa-angle-right" aria-hidden="true"></i>
+                              </span> <span>Investor Type</span>  </a> 
+                  </li>
+                  <li>
+                    <a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-engagement"  >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span>Engagement</span>  </a> 
+              </li>  
+
+                                                                    
+                
+
+              </ul>
+            </mat-expansion-panel>
+          </li>
+          <li >
+            <mat-expansion-panel  >
+              <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+                <mat-panel-title>
+                  <div class="point"> <span class="img-small">
+                                   <i class="fa fa-users" aria-hidden="true"></i>
+                  </span> Investors                     </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul>
+                <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/investor/investor-user"   >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span> Users   </span>  </a> </li>
+
+              </ul>
+            </mat-expansion-panel>
+          </li>
+          <li >
+            <mat-expansion-panel  >
+              <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+                <mat-panel-title>
+                  <div class="point"> <span class="img-small">
+                                   <i class="fa fa-users" aria-hidden="true"></i>
+                  </span> Startup                     </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul>
+                <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/startup/startup-user"   >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span> Users   </span>  </a> </li>
+
+              </ul>
+            </mat-expansion-panel>
+          </li>
+        </ul>
+
+      </mat-accordion>
+
+
+
+    </div>
+    </ng-scrollbar>
+  </div>
+  <footer class="p-3 border-top mt-3">
+    <div class="copy-right">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8">
+            <p class="mb-0 text-center">Copyright &copy; 2021 Pitch4Fund. All rights reserved.</p>
+          </div>
+          <div class="col-md-4">
+          <div class="d-flex justify-content-end">
+          <p class="mb-0">
+          Designed & Developed by
+          <a href="https://www.newamps.co.in/" target="_blank">newAmps Technologies</a> </p>
+          </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </footer>
+</div>

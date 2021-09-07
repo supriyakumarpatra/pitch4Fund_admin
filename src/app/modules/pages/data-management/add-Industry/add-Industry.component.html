@@ -1,0 +1,203 @@
+<notifier-container></notifier-container>
+<section class="content-section">
+
+  <div class="breadcrumb-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Industry</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col-md-6">Industry Details</div>
+         <!--      <div class="col-md-6 text-right">
+             
+                <a data-toggle="modal" data-target="#uploadexcel"  href="javascript:void(0);" class="bg-success text-white d-inline-block btn text-14"><i class="fa fa-file-excel-o mr-1"  aria-hidden="true"></i>  Upload  Cards</a>
+              </div> -->
+            </div>
+
+
+          </div>
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group mb-0">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Industry Name</mat-label>
+                    <textarea matInput placeholder="" [(ngModel)]="cardDescription"></textarea>
+                  </mat-form-field>
+                </div>
+                 <span class="requiedFiled">{{cardDescriptionError}}</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+
+        <button mat-raised-button color="primary" class="bg-submit w-100" [hidden]="isUpdate" (click)="addIndustry()">Submit</button>
+        <button mat-raised-button color="primary" class="bg-submit w-100" [hidden]="!isUpdate" (click)="updateIndustry()">Update</button>
+
+      </div>
+      <div class="col-md-6">
+
+
+        <button mat-raised-button color="primary" class="bg-dark  w-100">Cancel</button>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-3 mt-3">
+          <div class="card-header"><div class="row align-items-center">
+            <div class="col-md-5">  <h2 class="mb-0 text-dark">Industry List</h2></div>
+
+         <!--    <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="From Date">
+                  <input matEndDate placeholder="To Date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+
+            </div>
+            <div class="col-md-3">
+              <div class="form-group mb-0">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Search by name</mat-label>
+                  <input matInput placeholder="Search">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <button type="button" class="btn btn-info">Search</button>
+            </div> -->
+          </div></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <div class="agency-list">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                  <tr class="text-center">
+                    <th scope="col">Sl. No.
+                      <span class="fltr">
+                            <a href="#"> <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a>
+                          </span>
+
+                    </th>
+                    <th scope="col"> Industry
+                      <span class="fltr">
+                            <a href="#"> <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a>
+                          </span>
+                    </th>
+
+                    <th scope="col">Action
+                    </th>
+                  </tr>
+                  <tr *ngIf="cardList.length == 0">
+                    <td [attr.colspan]="4">No Data Found</td>
+                  </tr>
+                  <tr *ngFor="let data of cardList; let i = index " class="text-center">
+                    <td>{{i+1}}</td>
+                    <td>{{data.name}}</td>
+                    <td><a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded" (click)="IndustryDelete(data.id)" matTooltip="Edit">
+                        <i class="fa fa-trash red-text" aria-hidden="true"></i></a><a href="javascript:void(0);" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded" (click)="editData(data)"  matTooltip="Edit">
+                      <!--<mat-icon>edit</mat-icon>--><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                   <!--    <mat-slide-toggle class="ml-2" matTooltip="Inactive" (change)="cardEnable($event ,data.id ,i)" [checked]="data.isEnable"></mat-slide-toggle> -->
+                    </td>
+                  </tr>
+                </table>
+
+              </div>
+            </div>
+           <div class="col-md-12 p-0">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item ">
+                    <a class="page-link" href="javascript:void(0)"  (click)="PreviousCardDetails()">Previous</a>
+                  </li>
+                  <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li> -->
+                  <li class="page-item ">
+                    <!-- <a class="page-link" href="#">2 </a> -->
+                  </li>
+                  <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0)" (click)="NextCardDetails()">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Upload-Excel Modal -->
+
+<!-- <div class="modal fade " id="uploadexcel" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" >
+  <div class="modal-dialog excel-upload" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title mb-0" id="exampleModalLabel">Upload  Excel</h2>
+        <button type="button"  class="close" data-dismiss="modal" aria-label="Close" #closeModal>
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+        <form >
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Upload File</label>
+                <input type="file"  id="file"  accept=".csv" class="form-control">
+                <div class="text-info pt-2 text-right"> (*Please Use Proper Data Structure Using .csv File Format*)</div>
+              </div>
+            </div>
+            <div class="col-md-12 "> -->
+              <!-- <a [download]="myFileName" [href]="fileUrl" class="  d-inline-block  text-14 example mt-3 sample-file" ><i class="fa fa-file-excel-o mr-2" aria-hidden="true"></i>*Download Sample File*</a> -->
+  <!--           </div>
+            
+
+          </div>
+          <div class="row mt-4 button-excel">
+            <div class="col-md-6">
+              <button mat-raised-button color="primary" class="bg-primary w-100 text-white" type="submit" >Submit</button>
+            </div>
+            <div class="col-md-6">
+              <button mat-raised-button color="primary" class="bg-dark  w-100 text-white"  type="button" data-dismiss="modal"  >Cancel</button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+

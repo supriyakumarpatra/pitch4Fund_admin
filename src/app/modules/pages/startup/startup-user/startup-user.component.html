@@ -1,0 +1,286 @@
+<notifier-container></notifier-container>
+<section class="content-section">
+
+  <div class="breadcrumb-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Startup</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card mb-3 mt-3">
+          <div class="card-header"><div class="row align-items-center">
+            <div class="col-md-9">  <h2 class="mb-0 text-dark">User List</h2></div>
+            <div class="col-md-3">
+                <div class="form-group sd mb-0">
+                  <select class="form-control mb-0 pr-5 cursor-pointer" id="exampleFormControlSelect1"  [formControl]="userStatus">
+                    <option value="">Filter</option>
+                    <option value="2">Pending</option>
+                    <option value="1">Accepte</option>
+                    <option value="3">Rejected</option>
+                  </select>
+                </div>
+            </div>
+         
+          </div></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <div class="agency-list">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                  <tr class="text-center">
+                    <th scope="col">Sl. No.</th>
+                    <th scope="col"> Name </th>
+                    <th scope="col"> Email </th>
+                    <th scope="col"> Mobile No. </th>
+                    <!-- <th scope="col">Investment done so far($ in million)</th> -->
+                    <th scope="col">Status</th>
+
+                    <!-- <th scope="col"> Company Details </th> -->
+                    <th scope="col"> Related Document </th>
+                    <th scope="col"> Presentation Video </th>
+                    <th scope="col"> Action </th>
+                  </tr>
+                  
+                  <tr class="text-center" *ngFor="let item of userList; let i = index ">
+                    <td>{{i+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.phone}}</td>
+                    <!-- <td>2</td> -->
+                    <td>
+                      <span class="badge badge-warning" *ngIf="item.status == 2">Pending</span>
+                      <span class="badge badge-danger" *ngIf="item.status == 3">Reject</span>
+                      <span class="badge badge-success" *ngIf="item.status == 1">Accepte</span>
+                    </td>
+                    <!-- <td>
+                        <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Edit">
+                            <i class="fa fa-eye" aria-hidden="true"></i></a>
+                    </td> -->
+                    <td>
+                        <a data-toggle="modal" data-target="#exampleModalCenter2" #docModal></a>
+                        <a href="javascript:;" (click)="onOpenDocumentMOdal(item.id,docModal)" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="View">
+                            <i class="fa fa-file-text" aria-hidden="true"></i></a>
+                    </td>
+                    <td>
+                      <a #presentationModal  data-toggle="modal" data-target="#exampleModalCenter3"></a>
+                      <a href="javascript:;"  class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="View" (click)="onPresentationVideo(presentationModal,item.id)">
+                          <i class="fa fa-file-video-o" aria-hidden="true"></i></a>
+                  </td>
+                    <td>
+                      <!-- <a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="Reject" (click)="onChangeStatus(3,item.id)">
+                        <i class="fa fa-times red-text" aria-hidden="true"></i></a>
+
+                        <a (click)="onChangeStatus(1,item.id)" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded"   matTooltip="Approve">
+                        <i class="fa fa-check" aria-hidden="true"></i></a> -->
+
+                        <button type="button" class="btn btn-outline-danger btn-sm" (click)="onChangeStatus(3,item.id)">Reject</button>
+                      <button type="button" (click)="onChangeStatus(1,item.id)" class="btn btn-outline-success btn-sm ml-3">Accept</button>
+                    </td>
+                  </tr>
+                </table>
+
+              </div>
+            </div>
+           <div class="col-md-12 p-0 mt-3">
+              <nav aria-label="...">
+                <ul class="pagination">
+                  <li class="page-item ">
+                    <a class="page-link" (click)="PreviousCardDetails()" >Previous</a>
+                  </li>
+                  <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li> -->
+                  <li class="page-item ">
+                    <!-- <a class="page-link" href="#">2 </a> -->
+                  </li>
+                  <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                  <li class="page-item">
+                    <a class="page-link" (click)="NextCardDetails()" >Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  
+  <!-- Modal Company Details -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Company Details</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                    <tr class="">
+                        <th scope="col">Type :</th>
+                        <td class="border-none">Individual</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">Company Name :</th>
+                        <td class="border-none">ABC Company</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">Company Website :</th>
+                        <td class="border-none">ABC Company</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">Company Logo :</th>
+                        <td class="border-none">ABC Company</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">Company Address :</th>
+                        <td class="border-none">ABC Company</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">Country :</th>
+                        <td class="border-none">UAE</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">State :</th>
+                        <td class="border-none">UAE</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">City/Location :</th>
+                        <td class="border-none">UAE</td>
+                    </tr>
+                    <tr class="">
+                        <th scope="col">Zip Code/Pin Code :</th>
+                        <td class="border-none">890987</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Related Document -->
+  <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Related Document</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                    <tr class="">
+                    <td class="border-none text-center">Revenue Model</td>
+                    <td class="border-none text-center">
+                       <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.revenueModelDoc)">{{relatedDocument?.revenueModelDoc}} </a></td>
+                   </tr>
+                   <tr class="">
+                    <td class="border-none text-center">Pricing Average account size and/or Lifetime value</td>
+                    <td class="border-none text-center">
+                       <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.pricingAverageAccountDoc)">{{relatedDocument?.pricingAverageAccountDoc}} </a></td>
+                   </tr>
+                   <tr class="">
+                    <td class="border-none text-center">Sales & Distribution Mode</td>
+                    <td class="border-none text-center">
+                       <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.destributionModelDoc)">{{relatedDocument?.destributionModelDoc}} </a></td>
+                   </tr>
+                   <tr class="">
+                    <td class="border-none text-center"> Customer/Pipeline list 
+                    </td>
+                    <td class="border-none text-center">
+                       <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.pipelineModelDoc)">{{relatedDocument?.pipelineModelDoc}} </a></td>
+                   </tr>
+                   <tr class="">
+                    <td class="border-none text-center"> Customer/Pipeline list 
+                    </td>
+                    <td class="border-none text-center">
+                       <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.pipelineModelDoc)">{{relatedDocument?.pipelineModelDoc}} </a></td>
+                   </tr>
+                    <tr class="">
+                        <td class="border-none text-center">Profit & Loss</td>
+                        <td class="border-none text-center">
+                           <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.profitLoss)">{{relatedDocument?.profitLoss}} </a></td>
+                    </tr>
+                    <tr class="">
+                        <td class="border-none text-center">Balance sheet</td>
+                        <td class="border-none text-center">
+                           <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.balancesheet)">{{relatedDocument?.balancesheet}}</a></td>
+                    </tr>
+                    <tr class="">
+                        <td class="border-none text-center">Cash flow
+                        </td>
+                        <td class="border-none text-center">
+                           <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.cashflow)">{{relatedDocument?.cashflow}}</a></td>
+                    </tr>
+                    <tr class="">
+                        <td class="border-none text-center"> Cap table</td>
+                        <td class="border-none text-center">
+                           <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.capTable)">{{relatedDocument?.capTable}}</a></td>
+                    </tr>
+                    
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Presentation Video -->
+  <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Presentation Video & Pitchdeck </h3>
+          <button type="button" class="close" data-dismiss="modal" #close aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="video-container" *ngIf="presentationUrl != 'null'">
+            <video [src]="presentationUrl"  width="100%" height="263" controls></video>
+            <!-- <iframe  [src]="transform(presentationUrl)" frameborder="0" width="100%" height="263" class="embed-responsive-item"></iframe> -->
+          </div>
+          <div class="video-container" *ngIf="presentationUrl == 'null'">
+            <h3>No Video Found</h3>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6"><h3>Pitchdeck Document:</h3></div>
+            <div class="col-md-6"><a href="" target="_blank" (click)="onSelectDoc(pitchDeck)">{{pitchDeck? pitchDeck : 'N/A'}}</a></div>
+          </div>
+          <input type="file" #uploadVideo name="video" (change)="onSelectVideo($event)" id="video" style="display:none">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" *ngIf="upVideo" (click)="onSubmitVideo()">Submit </button>
+          <button type="button" class="btn btn-info" (click)="uploadVideo.click()" *ngIf="!upVideo"><i class="fa fa-file-video-o mr-1" aria-hidden="true"></i>Upload Video</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
