@@ -1023,8 +1023,8 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
 .sidebar-header{
   /*height: 56px;*/
   background: rgba(0,0,0,0.2);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 .sidebar-menu .label{
   font-size: 12px !important;
@@ -1252,23 +1252,24 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
   min-width: 110px !important;
 }
 .shownavrm .sidebar{
-  width: 60px;
+  width: 40px;
 }
 .mob-logo {
   display: none;
 }
 .shownavrm .mob-logo {
   display: block;
+  margin-right: 140px;
 }
 .shownavrm .des-logo{
   display: none;
 }
 .shownavrm .content-section{
-  margin-left: 60px;
+  margin-left: 40px;
   transition: all 0.2s ease-in-out 0s;
 }
 .shownavrm .slide-nav{
-  margin-left: 80px;
+  margin-left: 60px;
 }
 .shownavrm .text-menu {
   display: none;
