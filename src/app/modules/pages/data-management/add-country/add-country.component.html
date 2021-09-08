@@ -117,7 +117,7 @@
                     <td [attr.colspan]="4">No Data Found</td>
                   </tr>
                   <tr *ngFor="let data of cardList; let i = index " class="text-center">
-                    <td>{{i+1}}</td>
+                    <td>{{i+k+1}}</td>
                     <td>{{data.name}}</td>
                     <td><a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded" (click)="IndustryDelete(data.id)" matTooltip="Edit">
                         <i class="fa fa-trash red-text" aria-hidden="true"></i></a><a href="javascript:void(0);" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded" (click)="editData(data)"  matTooltip="Edit">
