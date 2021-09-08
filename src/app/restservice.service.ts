@@ -10,10 +10,11 @@ const httpOptions = {
 })
 export class RestserviceService {
 
-  BASE_URL = 'https://beta.pitch4fund.com:6051/';
+  // BASE_URL = 'https://beta.pitch4fund.com:6051/';
+  BASE_URL = 'http://localhost:6051/';
   API_ROOT = this.BASE_URL + 'api/v1/';
   image_URL = this.BASE_URL + 'uploadFiles/images/';
-  // document_URL = this.BASE_URL + 'uploadFiles/documents/';
+  document_URL = this.BASE_URL + 'uploadFiles/documents/';
 
   // API_ROOT = 'http://localhost:6051/api/v1/';
   //  PUBLIC_URL = 'http://phloxblog.in:6051/';
