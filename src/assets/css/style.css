@@ -895,7 +895,7 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
 
 /*-------------------------css for login page---------------------*/
 .login-container{
-  background: url("../images/login-bg.jpg")  right top no-repeat !important;
+  /* background: url("../images/login-bg.jpg")  right top no-repeat !important; */
   height: 100vh;
   /*background-image: linear-gradient(-135deg, #171f28 0%, #171f28) !important;*/
   /*-webkit-box-shadow:0px 0px 20px rgba(0, 0, 0, 0.3);*/
@@ -916,7 +916,8 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
 .login-container:before {
   position: absolute;
   content: '';
-  background-image: linear-gradient(to right, rgba(52, 217, 195, 0.65), rgba(52, 217, 195, 0.95), rgba(52, 217, 195, 0.95), rgba(52, 217, 195, 0.95), rgba(52, 217, 195, 0.95));
+  background-image: linear-gradient(to left, #a633bb, #7d4ac7);
+  /* background-image: linear-gradient(to right, rgba(52, 217, 195, 0.65), rgba(52, 217, 195, 0.95), rgba(52, 217, 195, 0.95), rgba(52, 217, 195, 0.95), rgba(52, 217, 195, 0.95)); */
   width: 100%;
   height: 100%;
   top: 0;
@@ -1014,11 +1015,15 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
 /*----------------------------css for sidebar-------------------------------*/
 .sidebar{
   width: 264px;
-  background: #34d9c3;
+  /* background: #34d9c3; */
   position: fixed;
   height: 100%;
   z-index: 999;
   top:0;
+  background-image: linear-gradient(to left, #a633bb, #7d4ac7);
+}
+.sidebar .mat-expansion-panel-header{
+  background-color: transparent !important;
 }
 .sidebar-header{
   /*height: 56px;*/
@@ -1225,9 +1230,10 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
   vertical-align: middle !important;
 }
 .table th {
-  background: #55af9c !important;
+  /* background: #55af9c !important; */
   color: rgba(255,255,255,0.8) !important;
   border: 1px solid rgba(255,255,255,0.1) !important;
+  background-color: #8447c4 !important;
 }
 .table td {
   color: rgba(0,0,0,1) !important;
@@ -1252,7 +1258,7 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
   min-width: 110px !important;
 }
 .shownavrm .sidebar{
-  width: 40px;
+  width: 41px;
 }
 .mob-logo {
   display: none;
@@ -1274,7 +1280,12 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
 .shownavrm .text-menu {
   display: none;
 }
-
+.copyright-p {
+  margin-left: 255px !important;
+}
+.shownavrm .copyright-p {
+  margin-left: 30px !important;
+}
 /* dashboard page css */
 
 .box-content {
@@ -1342,10 +1353,14 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
   font-size: 12px !important;
 }
 .bg-submit{
-  background: #6bd9c4 !important;
+  /* background: #6bd9c4 !important; */
+  background-image: linear-gradient(
+135deg, #8447c4 0%, #a136bc) !important;
 }
 .bg-submit:hover{
-  background: #55af9c !important;
+  /* background: #55af9c !important; */
+  background-image: linear-gradient(
+135deg, #a136bc 0%, #8447c4) !important;
 }
 input.mat-input-element {
   margin-top: -5px !important;
@@ -1475,4 +1490,37 @@ input.mat-input-element {
 }
 .cursor-pointer{
   cursor: pointer !important;
+}
+.cp-modal .input-group-text {
+  padding: 0.27rem 0.75rem !important;
+}
+.cp-modal .input-group-text .fa {
+  color: #a136bc;
+}
+footer{
+  background-color: #fff;
+}
+.btn:focus, .btn.focus {
+  box-shadow: none !important;
+}
+.form-control:focus {
+  border-color: #8447c4 !important;
+}
+.password-show-hide .mat-icon{
+  background: #e9ecef;
+    /* padding: 5px; */
+    height: 51px;
+    width: 50px;
+    text-align: center;
+    line-height: 51px;
+    /* margin-left: -10px;
+    z-index: 9; */
+    border-radius: 0 0.25rem 0.25rem 0;
+    cursor: pointer;
+    color: #a136bc;
+    border: 1px solid #ddd;
+}
+.add-admin-password .mat-form-field-appearance-outline .mat-form-field-outline-end {
+  border-radius: 0 !important;
+  border-right: none !important;
 }

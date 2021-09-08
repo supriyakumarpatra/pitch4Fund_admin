@@ -5,18 +5,18 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <h1>Startup Vertical</h1>
+          <h1>Admin User</h1>
         </div>
       </div>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="card mb-4">
           <div class="card-header">
             <div class="row align-items-center">
-              <div class="col-md-6">Startup Vertical Details</div>
+              <div class="col-md-6">Admin User Details</div>
          <!--      <div class="col-md-6 text-right">
              
                 <a data-toggle="modal" data-target="#uploadexcel"  href="javascript:void(0);" class="bg-success text-white d-inline-block btn text-14"><i class="fa fa-file-excel-o mr-1"  aria-hidden="true"></i>  Upload  Cards</a>
@@ -28,24 +28,68 @@
           <div class="card-body">
 
             <div class="row">
-              <div class="col-md-12">
-                <div class="form-group mb-0">
+              <div class="col-md-6">
+                <div class="form-group">
                   <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Startup Vertical Name</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="cardDescription">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="" >
                     <!-- <textarea matInput placeholder="" [(ngModel)]="cardDescription"></textarea> -->
                   </mat-form-field>
                 </div>
-                 <span class="requiedFiled">{{cardDescriptionError}}</span>
+                 <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>User Name</mat-label>
+                    <input matInput placeholder="" >
+                    <!-- <textarea matInput placeholder="" [(ngModel)]="cardDescription"></textarea> -->
+                  </mat-form-field>
+                </div>
+                 <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-0 d-flex align-items-center add-admin-password">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Current Password</mat-label>
+                    <input type="password" matInput placeholder="" >
+                  </mat-form-field>
+                  <a class="password-show-hide">
+                    <mat-icon matSuffix>visibility_off</mat-icon>
+                    <!-- <mat-icon matSuffix>visibility</mat-icon> -->
+                  </a>
+                </div>
+                 <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-0 d-flex align-items-center add-admin-password">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>New Password</mat-label>
+                    <input type="password" matInput placeholder="" >
+                  </mat-form-field>
+                  <a class="password-show-hide">
+                    <mat-icon matSuffix>visibility_off</mat-icon>
+                    <!-- <mat-icon matSuffix>visibility</mat-icon> -->
+                  </a>
+                </div>
+                 <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
+              </div>
+              <div class="col-md-4">
+                <div class="form-group mb-0 d-flex align-items-center">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Retype Password</mat-label>
+                    <input type="password" matInput placeholder="" >
+                  </mat-form-field>
+                </div>
+                 <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
               </div>
 
             </div>
-
             <div class="row mt-3">
               <div class="col-md-6">
         
-                <button mat-raised-button color="primary" class="bg-submit w-100" [hidden]="isUpdate" (click)="addIndustry()">Add</button>
-                <button mat-raised-button color="primary" class="bg-submit w-100" [hidden]="!isUpdate" (click)="updateIndustry()">Update</button>
+                <button mat-raised-button color="primary" class="bg-submit w-100" >Add</button>
+                <!-- <button mat-raised-button color="primary" class="bg-submit w-100" >Update</button> -->
         
               </div>
               <div class="col-md-6">
@@ -67,7 +111,7 @@
       <div class="col-md-12">
         <div class="card mb-3 mt-3">
           <div class="card-header"><div class="row align-items-center">
-            <div class="col-md-5">  <h2 class="mb-0 text-dark">Startup Vertical List</h2></div>
+            <div class="col-md-5">  <h2 class="mb-0 text-dark">Admin User List</h2></div>
 
          <!--    <div class="col-md-3">
               <mat-form-field appearance="outline">
@@ -104,24 +148,31 @@
                           </span>
 
                     </th>
-                    <th scope="col">Language
+                    <th scope="col">Name
                       <span class="fltr">
                             <a href="#"> <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
                             <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a>
                           </span>
                     </th>
+                    <th scope="col">User Name
+                        <span class="fltr">
+                              <a href="#"> <i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-long-arrow-down" aria-hidden="true"></i></a>
+                            </span>
+                      </th>
 
                     <th scope="col">Action
                     </th>
                   </tr>
-                  <tr *ngIf="cardList.length == 0">
+                  <!-- <tr *ngIf="cardList.length == 0">
                     <td [attr.colspan]="4">No Data Found</td>
-                  </tr>
-                  <tr *ngFor="let data of cardList; let i = index " class="text-center">
-                    <td>{{i+1}}</td>
-                    <td>{{data.name}}</td>
-                    <td><a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded" (click)="IndustryDelete(data.id)" matTooltip="Edit">
-                        <i class="fa fa-trash red-text" aria-hidden="true"></i></a><a href="javascript:void(0);" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded" (click)="editData(data)"  matTooltip="Edit">
+                  </tr> -->
+                  <tr class="text-center">
+                    <td>1</td>
+                    <td>Supriya Patra</td>
+                    <td>SupriyaPatra</td>
+                    <td><a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="Edit">
+                        <i class="fa fa-trash red-text" aria-hidden="true"></i></a><a href="javascript:void(0);" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded"   matTooltip="Edit">
                       <!--<mat-icon>edit</mat-icon>--><i class="fa fa-pencil" aria-hidden="true"></i></a>
                    <!--    <mat-slide-toggle class="ml-2" matTooltip="Inactive" (change)="cardEnable($event ,data.id ,i)" [checked]="data.isEnable"></mat-slide-toggle> -->
                     </td>
@@ -130,11 +181,11 @@
 
               </div>
             </div>
-           <div class="col-md-12 p-0">
+              <div class="col-md-12 p-0">
               <nav aria-label="...">
                 <ul class="pagination">
                   <li class="page-item ">
-                    <a class="page-link" href="javascript:void(0)"  (click)="PreviousCardDetails()">Previous</a>
+                    <a class="page-link" href="javascript:void(0)">Previous</a>
                   </li>
                   <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li> -->
                   <li class="page-item ">
@@ -142,7 +193,7 @@
                   </li>
                   <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
                   <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" (click)="NextCardDetails()">Next</a>
+                    <a class="page-link" href="javascript:void(0)" >Next</a>
                   </li>
                 </ul>
               </nav>
@@ -157,50 +208,4 @@
 
 
 
-<!-- Upload-Excel Modal -->
-
-<!-- <div class="modal fade " id="uploadexcel" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" >
-  <div class="modal-dialog excel-upload" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title mb-0" id="exampleModalLabel">Upload  Excel</h2>
-        <button type="button"  class="close" data-dismiss="modal" aria-label="Close" #closeModal>
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body ">
-        <form >
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Upload File</label>
-                <input type="file"  id="file"  accept=".csv" class="form-control">
-                <div class="text-info pt-2 text-right"> (*Please Use Proper Data Structure Using .csv File Format*)</div>
-              </div>
-            </div>
-            <div class="col-md-12 "> -->
-              <!-- <a [download]="myFileName" [href]="fileUrl" class="  d-inline-block  text-14 example mt-3 sample-file" ><i class="fa fa-file-excel-o mr-2" aria-hidden="true"></i>*Download Sample File*</a> -->
-  <!--           </div>
-            
-
-          </div>
-          <div class="row mt-4 button-excel">
-            <div class="col-md-6">
-              <button mat-raised-button color="primary" class="bg-primary w-100 text-white" type="submit" >Submit</button>
-            </div>
-            <div class="col-md-6">
-              <button mat-raised-button color="primary" class="bg-dark  w-100 text-white"  type="button" data-dismiss="modal"  >Cancel</button>
-            </div>
-          </div>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-
+<

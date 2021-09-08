@@ -14,14 +14,12 @@ import { InvestorTypeComponent } from './data-management/investor-type/investor-
 import { InvestorUserComponent } from './investor/investor-user/investor-user.component';
 import { StartupUserComponent } from './startup/startup-user/startup-user.component';
 import { EngagementComponent } from './data-management/engagement/engagement.component';
+import { AddAdminUserComponent } from './admin-management/add-admin-user/add-admin-user.component';
 
 
 const routes: Routes = [{ path: '', component: PagesComponent,
 children: [
   {path: 'dashboard', component: DashboardComponent},
-
-  
-
   {path: 'data-management/add-Industry', component: AddIndustryComponent},
   {path: 'data-management/add-investment-stage', component: AddInvestmentStageComponent},
   {path: 'data-management/add-country', component: AddCountryComponent},
@@ -32,7 +30,8 @@ children: [
   {path: 'data-management/add-investor-type', component: InvestorTypeComponent},
   {path: 'data-management/add-engagement', component: EngagementComponent},
   {path: 'investor/investor-user', component: InvestorUserComponent},
-  {path: 'startup/startup-user', component: StartupUserComponent}
+  {path: 'startup/startup-user', component: StartupUserComponent},
+  {path: 'admin-management/add-admin-user', component: AddAdminUserComponent}
 
  
 

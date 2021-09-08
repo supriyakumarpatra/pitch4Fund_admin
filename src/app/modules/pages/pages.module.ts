@@ -44,6 +44,7 @@ import { StartupUserComponent } from './startup/startup-user/startup-user.compon
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EngagementComponent } from './data-management/engagement/engagement.component';
+import { AddAdminUserComponent } from './admin-management/add-admin-user/add-admin-user.component';
 
 /**
  * Custom angular notifier options
@@ -90,7 +91,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [PagesComponent, DashboardComponent,AddIndustryComponent, AddInvestmentStageComponent, AddCountryComponent, AddLanguageComponent, AddStartupVerticalComponent, AddTimeZoneComponent, TreditionalIndestryComponent, InvestorTypeComponent, InvestorUserComponent, StartupUserComponent, EngagementComponent],
+  declarations: [PagesComponent, DashboardComponent,AddIndustryComponent, AddInvestmentStageComponent, AddCountryComponent, AddLanguageComponent, AddStartupVerticalComponent, AddTimeZoneComponent, TreditionalIndestryComponent, InvestorTypeComponent, InvestorUserComponent, StartupUserComponent, EngagementComponent, AddAdminUserComponent],
   imports: [
     CommonModule,
      FormsModule,

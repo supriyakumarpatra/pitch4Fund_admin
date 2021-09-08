@@ -40,9 +40,9 @@
                     <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                   </a>
                   <mat-menu #menu="matMenu">
-                    <h3 class="text-center p-2 mb-0">Abhaya Das</h3>
-                    <button mat-menu-item routerLink="/common/profile"><i class="fa fa-key" aria-hidden="true"></i> <span>Change Password</span></button>
-                    <button mat-menu-item routerLink="/"><i class="fa fa-sign-out" aria-hidden="true"></i><span> Log Out</span></button>
+                    <h3 class="text-center p-2 mb-0">Admin</h3>
+                    <button mat-menu-item  data-toggle="modal" data-target="#exampleModalCenter-cp"><i class="fa fa-key mr-1" aria-hidden="true"></i> <span>Change Password</span></button>
+                    <button mat-menu-item routerLink="/"><i class="fa fa-sign-out mr-1" aria-hidden="true"></i><span> Log Out</span></button>
                   </mat-menu>
                 </div>
 
@@ -62,7 +62,8 @@
     <ng-scrollbar>
     <div class="sidebar-header  text-center  d-flex align-items-center justify-content-center">
       <a href="javascript:void(0);"  class="des-logo p-2" routerLink="/pages/dashboard" style="font-size: 35px; color: #fff;">Pitch4Fund </a>
-      <a href="" routerLink="/pages/dashboard" class="mob-logo"><img src="favicon.ico" width="38"/> </a>
+      <!-- <a href="" routerLink="/pages/dashboard" class="mob-logo"><img src="favicon.ico" width="38"/> </a> -->
+      <a href="" routerLink="/pages/dashboard" class="mob-logo text-white">P4F </a>
     </div>
     <div class="sidebar-menu">
 
@@ -115,7 +116,7 @@
                  <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-treditional-indestry"  >
                   <span class="img-small">
                           <i class="fa fa-angle-right" aria-hidden="true"></i>
-                          </span> <span>Treditional Industry</span>  </a> </li>
+                          </span> <span>Traditional Industry</span>  </a> </li>
 
                    <li>
                         <a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/data-management/add-investor-type"  >
@@ -172,6 +173,24 @@
               </ul>
             </mat-expansion-panel>
           </li>
+          <li >
+            <mat-expansion-panel  >
+              <mat-expansion-panel-header collapsedHeight="*" expandedHeight="*">
+                <mat-panel-title>
+                  <div class="point"> <span class="img-small">
+                                   <i class="fa fa-user" aria-hidden="true"></i>
+                  </span> Admin Management                     </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul>
+                <li><a  href="javascript:void(0)" routerLinkActive="active" routerLink="/pages/admin-management/add-admin-user"   >
+                  <span class="img-small">
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </span> <span> Add Admin User   </span>  </a> </li>
+
+              </ul>
+            </mat-expansion-panel>
+          </li>
         </ul>
 
       </mat-accordion>
@@ -186,7 +205,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-8">
-            <p class="mb-0 text-center">Copyright &copy; 2021 Pitch4Fund. All rights reserved.</p>
+            <p class="mb-0 copyright-p">Copyright &copy; 2021 Pitch4Fund. All rights reserved.</p>
           </div>
           <div class="col-md-4">
           <div class="d-flex justify-content-end">
@@ -204,4 +223,59 @@
 
     </div>
   </footer>
+</div>
+
+
+
+<!-- Change Password Modal -->
+<div class="modal fade cp-modal" id="exampleModalCenter-cp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header pb-0 border-0">
+        <h2 class="modal-title" id="exampleModalCenterTitle">Change Password</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="current-password">Current Password</label>
+            <div class="input-group mb-2">
+              <input type="password" class="form-control" id="current-password" placeholder="">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <a href="#">
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="new-password">New Password</label>
+            <div class="input-group mb-2">
+              <input type="password" class="form-control" id="new-password" placeholder="">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <a href="#">
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="retype-password">Retype Password</label>
+            <input type="password" class="form-control" id="retype-password" placeholder="">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer pt-0 border-0">
+        <button type="button" class="btn text-white bg-submit">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
