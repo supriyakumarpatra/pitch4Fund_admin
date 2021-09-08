@@ -1519,6 +1519,7 @@ footer{
     cursor: pointer;
     color: #a136bc;
     border: 1px solid #ddd;
+    font-size: 22px;
 }
 .add-admin-password .mat-form-field-appearance-outline .mat-form-field-outline-end {
   border-radius: 0 !important;
