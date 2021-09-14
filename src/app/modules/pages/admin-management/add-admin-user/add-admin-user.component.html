@@ -12,8 +12,8 @@
   </div>
   <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-md-12">
-        <div class="card mb-4">
+      <div class="col-md-5">
+        <div class="card">
           <div class="card-header">
             <div class="row align-items-center">
               <div class="col-md-6">Admin User Details</div>
@@ -28,7 +28,7 @@
           <div class="card-body">
 
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Name</mat-label>
@@ -38,7 +38,7 @@
                 </div>
                  <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <mat-form-field appearance="outline" class="w-100">
                     <mat-label>User Name</mat-label>
@@ -48,7 +48,7 @@
                 </div>
                  <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
               </div>
-              <div class="col-md-4">
+              <div class="col-md-12">
                 <div class="form-group mb-0 d-flex align-items-center add-admin-password">
                   <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Current Password</mat-label>
@@ -61,7 +61,7 @@
                 </div>
                  <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
               </div>
-              <div class="col-md-4">
+              <div class="col-md-12">
                 <div class="form-group mb-0 d-flex align-items-center add-admin-password">
                   <mat-form-field appearance="outline" class="w-100">
                     <mat-label>New Password</mat-label>
@@ -74,7 +74,7 @@
                 </div>
                  <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
               </div>
-              <div class="col-md-4">
+              <div class="col-md-12">
                 <div class="form-group mb-0 d-flex align-items-center">
                   <mat-form-field appearance="outline" class="w-100">
                     <mat-label>Retype Password</mat-label>
@@ -104,14 +104,10 @@
         </div>
       </div>
 
-
-    </div>
-    
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card mb-3 mt-3">
+      <div class="col-md-7">
+        <div class="card">
           <div class="card-header"><div class="row align-items-center">
-            <div class="col-md-5">  <h2 class="mb-0 text-dark">Admin User List</h2></div>
+            <div class="col-md-5">Admin User List</div>
 
          <!--    <div class="col-md-3">
               <mat-form-field appearance="outline">
@@ -171,17 +167,19 @@
                     <td>1</td>
                     <td>Supriya Patra</td>
                     <td>SupriyaPatra</td>
-                    <td><a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="Edit">
-                        <i class="fa fa-trash red-text" aria-hidden="true"></i></a><a href="javascript:void(0);" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded"   matTooltip="Edit">
+                    <td>
+                      <a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="Delete">
+                        <i class="fa fa-trash red-text" aria-hidden="true"></i></a>
+                      <a href="javascript:void(0);" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded"   matTooltip="Edit">
                       <!--<mat-icon>edit</mat-icon>--><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                   <!--    <mat-slide-toggle class="ml-2" matTooltip="Inactive" (change)="cardEnable($event ,data.id ,i)" [checked]="data.isEnable"></mat-slide-toggle> -->
+                      <!--<mat-slide-toggle class="ml-2" matTooltip="Inactive" (change)="cardEnable($event ,data.id ,i)" [checked]="data.isEnable"></mat-slide-toggle> -->
                     </td>
                   </tr>
                 </table>
 
               </div>
             </div>
-              <div class="col-md-12 p-0">
+              <div class="col-md-12 mt-3 p-0">
               <nav aria-label="...">
                 <ul class="pagination">
                   <li class="page-item ">
@@ -201,7 +199,11 @@
           </div>
         </div>
       </div>
+
+
     </div>
+    
+    
 
   </div>
 </section>
