@@ -17,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -116,7 +117,8 @@ const customNotifierOptions: NotifierOptions = {
     MatRadioModule,
     NotifierModule.withConfig(customNotifierOptions),
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule,
   ]
 })
 export class PagesModule { }

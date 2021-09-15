@@ -35,48 +35,55 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
                   <tr class="text-center">
                     <th scope="col">Sl. No.</th>
-                    <th scope="col"> Name </th>
-                    <th scope="col"> Email </th>
-                    <th scope="col"> Mobile No. </th>
-                    <th scope="col">Investment done so far($ in million)</th>
-                    <th scope="col">Status</th>
-
-                    <!-- <th scope="col"> Company Details </th> -->
-                    <th scope="col"> Related Document </th>
+                    <th scope="col"> Investor </th>
+                    <th scope="col"> Investor's Country </th>
+                    <th scope="col"> Proposed Date & Time </th>
+                    <th scope="col">Startup</th>
+                    <th scope="col"> Startup's Country </th>
+                    <!-- <th scope="col">Status</th> -->
                     <th scope="col"> Action </th>
                   </tr>
                   
                   <tr class="text-center">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>2</td>
-                    <td>
-                      <span class="badge badge-warning" >Pending</span>
-                      <span class="badge badge-danger" >Rejected</span>
-                      <span class="badge badge-success" >Send</span>
+                    <td>1</td>
+                    <td class="text-left">
+                        Investor No : PT-0004 <br>
+                        Type : xxx  <br>
+                        Company : xxx <br>
+                        Name : xxx  <br>
                     </td>
+                    <td> India </td>
+                    <td class="text-left">
+                        <div class="form-group form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 3px;">
+                            <label class="form-check-label" for="exampleCheck1">14-10-2021 14:00 IST</label>
+                            <span class="badge badge-warning" >Pending</span>
+                        </div>
+                        <div class="form-group form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 3px;">
+                            <label class="form-check-label" for="exampleCheck1">15-10-2021 16:00 IST</label>
+                            <span class="badge badge-danger" >Rejected</span>
+                        </div>
+                        <div class="form-group form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 3px;">
+                            <label class="form-check-label" for="exampleCheck1">16-10-2021 18:00 IST</label>
+                            <span class="badge badge-success" >Sent</span>
+                        </div>
+                    </td>
+                    <td class="text-left">
+                        Startup No : PT-0004 <br>
+                        Product : xxx  <br>
+                        Founder : xxx <br>
+                    </td>
+                    <td>Bangladesh</td>
                     <!-- <td>
-                        <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Edit">
-                            <i class="fa fa-eye" aria-hidden="true"></i></a>
+                        <span class="badge badge-warning" >Pending</span>
+                        <span class="badge badge-danger" >Rejected</span>
+                        <span class="badge badge-success" >Sent</span>
                     </td> -->
                     <td>
-                      <a  data-toggle="modal" data-target="#exampleModalCenter2" #modal data-backdrop="static" data-keyboard="false"></a>
-                      <a  class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"   matTooltip="View">
-                            <i class="fa fa-file-text" aria-hidden="true"></i></a>
-                    </td>
-                    <td>
-
-                        <!-- <a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="Reject" (click)="onChangeStatus(3,item.id)">
-                          <i class="fa fa-times red-text" aria-hidden="true"></i>
-                       </a> -->
-
-                        <!-- <a (click)="onChangeStatus(1,item.id)" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded"   matTooltip="Approve">
-                        <i class="fa fa-check" aria-hidden="true"></i>
-                      </a> -->
-                      <button type="button" class="btn btn-outline-danger btn-sm" >Reject</button>
-                      <button type="button"  class="btn btn-outline-success btn-sm ml-3">Accept</button>
+                      <button type="button"  class="btn btn-outline-primary btn-sm">Send</button>
+                      <button type="button" class="btn btn-outline-danger btn-sm ml-2" >Reject</button>
                     </td>
                   </tr>
                 </table>
@@ -84,7 +91,7 @@
               </div>
             </div>
            <div class="col-md-12 p-0 mt-3">
-              <nav aria-label="...">
+              <nav aria-label="..." class="d-flex justify-content-space-between">
                 <ul class="pagination">
                   <li class="page-item ">
                     <a class="page-link" >Previous</a>
@@ -98,6 +105,7 @@
                     <a class="page-link" >Next</a>
                   </li>
                 </ul>
+                <p>50/120 Records</p>
               </nav>
             </div>
           </div>
@@ -109,65 +117,7 @@
 </section>
 
   
-  <!-- Modal Company Details -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Company Details</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="table-responsive">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
-                    <tr class="">
-                        <th scope="col">Type :</th>
-                        <td class="border-none">Individual</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Name :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Website :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Logo :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Address :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Country :</th>
-                        <td class="border-none">UAE</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">State :</th>
-                        <td class="border-none">UAE</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">City/Location :</th>
-                        <td class="border-none">UAE</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Zip Code/Pin Code :</th>
-                        <td class="border-none">890987</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   
 

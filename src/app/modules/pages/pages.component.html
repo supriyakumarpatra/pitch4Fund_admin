@@ -286,11 +286,11 @@
                   </a>
                 </div>
               </div>
-              <span class="requiedFiled" 
+            </div>
+            <span class="requiedFiled" 
                 *ngIf="changePasswordForm.controls.currentPassword.errors  && (!changePasswordForm.controls.currentPassword.pristine || changePasswordForm.controls.currentPassword.touched)" >
                 This Field Is Required.
-                </span>
-            </div>
+              </span>
           </div>
           <div class="form-group">
             <label for="new-password">New Password</label>
@@ -309,11 +309,11 @@
                   </a>
                 </div>
               </div>
-              <span class="requiedFiled" 
+            </div>
+            <span class="requiedFiled" 
                 *ngIf="changePasswordForm.controls.newPassword.errors  && (!changePasswordForm.controls.newPassword.pristine || changePasswordForm.controls.newPassword.touched)" >
                 This Field Is Required.
-                </span>
-            </div>
+            </span>
           </div>
           <div class="form-group">
             <label for="retype-password">Retype Password</label>
@@ -331,16 +331,15 @@
                   </a>
                 </div>
               </div>
-              <span class="requiedFiled" 
+            </div>
+            <span class="requiedFiled" 
                 *ngIf="changePasswordForm.controls.rePassword.errors?.required  && (!changePasswordForm.controls.rePassword.pristine || changePasswordForm.controls.rePassword.touched)" >
                 This Field Is Required.
               </span>
               <span class="requiedFiled" 
                 *ngIf="changePasswordForm.controls.rePassword.errors?.confirmpassword  && !changePasswordForm.controls.rePassword.pristine " >
-                Password and Confirm Password not matched
+                New Password and Retype Password not matched
               </span>
-              
-            </div>
             
           </div>
       </div>
