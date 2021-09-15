@@ -35,14 +35,14 @@
 
               <li class="list-inline-item">
                 <div class="profile">
-                  <a href="javascript:;" class="infobar-icon" [matMenuTriggerFor]="menu">
+                  <a href="javascript:;" class="infobar-icon" [matMenuTriggerFor]="menu" >
                     <img src="assets/images/profile.svg" class="img-fluid"/>
                     <span><i class="fa fa-angle-down" aria-hidden="true"></i></span>
                   </a>
                   <mat-menu #menu="matMenu">
-                    <h3 class="text-center p-2 mb-0">Admin</h3>
+                    <h3 class="text-center p-2 mb-0" id="header">{{userName}}</h3>
                     <button mat-menu-item  data-toggle="modal" data-target="#exampleModalCenter-cp"><i class="fa fa-key mr-1" aria-hidden="true"></i> <span>Change Password</span></button>
-                    <button mat-menu-item routerLink="/"><i class="fa fa-sign-out mr-1" aria-hidden="true"></i><span> Log Out</span></button>
+                    <button mat-menu-item (click)="onLogout()"><i class="fa fa-sign-out mr-1" aria-hidden="true"></i><span> Log Out</span></button>
                   </mat-menu>
                 </div>
 
@@ -264,60 +264,90 @@
     <div class="modal-content">
       <div class="modal-header pb-0 border-0">
         <h2 class="modal-title" id="exampleModalCenterTitle">Change Password</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" id="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()">
       <div class="modal-body">
-        <form>
           <div class="form-group">
             <label for="current-password">Current Password</label>
             <div class="input-group mb-2">
-              <input type="password" class="form-control" id="current-password" placeholder="">
+              <input 
+                  [type]="currentPass?'password':'text'" 
+                  class="form-control" 
+                  id="current-password"
+                  formControlName="currentPassword" >
               <div class="input-group-prepend">
                 <div class="input-group-text">
-                  <a href="#">
-                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                    <!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+                  <a  (click)="currentPass = !currentPass">
+                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="currentPass"></i>
+                    <i class="fa fa-eye" aria-hidden="true" *ngIf="!currentPass"></i>
                   </a>
                 </div>
               </div>
+              <span class="requiedFiled" 
+                *ngIf="changePasswordForm.controls.currentPassword.errors  && (!changePasswordForm.controls.currentPassword.pristine || changePasswordForm.controls.currentPassword.touched)" >
+                This Field Is Required.
+                </span>
             </div>
           </div>
           <div class="form-group">
             <label for="new-password">New Password</label>
             <div class="input-group mb-2">
-              <input type="password" class="form-control" id="new-password" placeholder="">
+              <input 
+                  [type]="newPass?'password':'text'" 
+                  class="form-control" 
+                  id="new-password"
+                  formControlName="newPassword"
+                  >
               <div class="input-group-prepend">
                 <div class="input-group-text">
-                  <a href="#">
-                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                    <!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+                  <a (click)="newPass=!newPass">
+                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="newPass"></i>
+                    <i class="fa fa-eye" aria-hidden="true" *ngIf="!newPass"></i>
                   </a>
                 </div>
               </div>
+              <span class="requiedFiled" 
+                *ngIf="changePasswordForm.controls.newPassword.errors  && (!changePasswordForm.controls.newPassword.pristine || changePasswordForm.controls.newPassword.touched)" >
+                This Field Is Required.
+                </span>
             </div>
           </div>
           <div class="form-group">
             <label for="retype-password">Retype Password</label>
             <div class="input-group mb-2">
-              <input type="password" class="form-control" id="retype-password" placeholder="">
+              <input 
+              [type]="rePass?'password':'text'"
+                 class="form-control" 
+                 id="retype-password"
+                 formControlName="rePassword" >
               <div class="input-group-prepend">
                 <div class="input-group-text">
-                  <a href="#">
-                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
-                    <!-- <i class="fa fa-eye" aria-hidden="true"></i> -->
+                  <a (click)="rePass = !rePass">
+                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="rePass"></i>
+                    <i class="fa fa-eye" aria-hidden="true" *ngIf="!rePass"></i>
                   </a>
                 </div>
               </div>
+              <span class="requiedFiled" 
+                *ngIf="changePasswordForm.controls.rePassword.errors?.required  && (!changePasswordForm.controls.rePassword.pristine || changePasswordForm.controls.rePassword.touched)" >
+                This Field Is Required.
+              </span>
+              <span class="requiedFiled" 
+                *ngIf="changePasswordForm.controls.rePassword.errors?.confirmpassword  && !changePasswordForm.controls.rePassword.pristine " >
+                Password and Confirm Password not matched
+              </span>
+              
             </div>
             
           </div>
-        </form>
       </div>
       <div class="modal-footer pt-0 border-0">
-        <button type="button" class="btn text-white bg-submit">Save changes</button>
+        <button type="submit" class="btn text-white bg-submit" [disabled]="changePasswordForm.invalid" >Save changes</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

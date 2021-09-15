@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -20,8 +21,9 @@ export class RestserviceService {
   //  PUBLIC_URL = 'http://phloxblog.in:6051/';
   //  image_URL : 'http://phloxblog.in:6051/uploadFiles/images/';
   // document_URL : 'http://phloxblog.in:6051/uploadFiles/documents/';
+  adminUser =  new Subject();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   // INDUSTRY SECTION API START
   getIndustryList(data): any {
@@ -221,6 +223,45 @@ deleteEngagmentData(data): any {
 
   uploadVideo(data: any): Observable<any> {
     return this.http.post(this.API_ROOT + 'startup/savepesentationvideo', data, httpOptions);
+  }
+
+
+  addNewAdmin(data: any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/add', data, httpOptions);
+  }
+
+  updateAdmin(data: any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/update', data, httpOptions);
+  }
+
+  getAllAdmin(data: any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/getAlldata', data, httpOptions);
+  }
+
+  deleteAdmin(data: any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/deletedata', data, httpOptions);
+  }
+
+  adminLogin(data: any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/login', data, httpOptions);
+  }
+
+  ChangePassword(data: any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/changepassword', data, httpOptions);
+  }
+
+  populateData(){
+    return JSON.parse(localStorage.getItem('adminUser'));
+  }
+  adminLogout(){
+    localStorage.removeItem('adminUser');
+    this.router.navigateByUrl('/');
+  }
+  authGuard(){
+    const admindata = JSON.parse(localStorage.getItem('adminUser'));
+    if(!admindata){
+      this.router.navigateByUrl('/');
+    }
   }
 
 }

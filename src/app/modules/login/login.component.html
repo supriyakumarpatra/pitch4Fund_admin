@@ -1,5 +1,5 @@
 
-
+<notifier-container></notifier-container>
       <div class="login-container ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-center">
@@ -17,22 +17,32 @@
             <!--</div> </div>-->
             <div class="col-md-4 bg-white">
               <div class="login-form pl-5 pr-5 pb-4 pt-5 bg-white">
-                <!-- <div class="mb-4 text-center"> <img src="assets/images/logo-login.png" class="img-fluid"/></div> -->
                 <h2 class="mb-3 font-38 text-center text-dark">Login </h2>
-                <!--<p class="text-14 text-center text-dark mb-4">Free access to our dashboard.</p>-->
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="User Name"/>
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Password"/>
-                </div>
-                <!--<div class="form-group text-right">-->
-                  <!--<a href="#" class="font-12 text-dark">Forgot Password ?</a>-->
-                <!--</div>-->
-                <div class="form-group text-right">
-
-                  <button mat-raised-button color="primary" class="bg-submit theme-btn-red w-100 login-button" routerLink="/pages/dashboard">Login</button>
-                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="email"  placeholder="Email"/>
+                    <span class="requiedFiled" 
+                        *ngIf="loginForm.controls.email.errors?.email && !loginForm.controls.email.pristine" >
+                        Enter a valid email id
+                      </span>
+                      <span class="requiedFiled" 
+                        *ngIf="loginForm.controls.email.errors?.required && !loginForm.controls.email.pristine" >
+                        Email Is Required
+                      </span>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password"/>
+                    <span class="requiedFiled" 
+                        *ngIf="loginForm.controls.password.errors && !loginForm.controls.password.pristine" >
+                        password Is Required
+                    </span>
+                  </div>
+                  <div class="form-group text-right">
+                    <button mat-raised-button color="primary" class="bg-submit theme-btn-red w-100 login-button" type="submit" [disabled]="loginForm.invalid">Login</button>
+                    <!-- <button mat-raised-button color="primary" class="bg-submit theme-btn-red w-100 login-button" routerLink="/pages/dashboard">Login</button> -->
+                  </div>
+                </form>
+                
               </div>
             </div>
 
