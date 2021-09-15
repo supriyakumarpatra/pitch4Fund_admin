@@ -1080,7 +1080,7 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
   display: block;
   color: rgba(255,255,255,0.7);
   padding: 11px 15px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
   display: flex;
   font-family: 'Poppins', sans-serif !important;
@@ -1146,6 +1146,7 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
   width: auto;
   display: flex;
   align-items: center;
+  font-size: 13px;
 }
 .sidebar-menu img {
   margin-right: 15px;
@@ -1164,7 +1165,7 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
 }
 .sidebar ul li span.img-small {
   margin: 0px 0 0px 0px;
-  width: 35px;
+  width: 30px;
   display: inline-block;
 }
 

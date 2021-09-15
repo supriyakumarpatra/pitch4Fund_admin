@@ -15,6 +15,8 @@ import { InvestorUserComponent } from './investor/investor-user/investor-user.co
 import { StartupUserComponent } from './startup/startup-user/startup-user.component';
 import { EngagementComponent } from './data-management/engagement/engagement.component';
 import { AddAdminUserComponent } from './admin-management/add-admin-user/add-admin-user.component';
+import { PitchMeetingComponent } from './investor-proposed-timing/pitch-meeting/pitch-meeting.component';
+import { DueDiligenceMeetingComponent } from './investor-proposed-timing/due-diligence-meeting/due-diligence-meeting.component';
 
 
 const routes: Routes = [{ path: '', component: PagesComponent,
@@ -31,7 +33,9 @@ children: [
   {path: 'data-management/add-engagement', component: EngagementComponent},
   {path: 'investor/investor-user', component: InvestorUserComponent},
   {path: 'startup/startup-user', component: StartupUserComponent},
-  {path: 'admin-management/add-admin-user', component: AddAdminUserComponent}
+  {path: 'admin-management/add-admin-user', component: AddAdminUserComponent},
+  {path: 'investor-proposed-timing/pitch-meeting', component: PitchMeetingComponent},
+  {path: 'investor-proposed-timing/due-diligence-meeting', component: DueDiligenceMeetingComponent}
 
  
 
