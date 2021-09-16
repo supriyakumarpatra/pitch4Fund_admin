@@ -84,10 +84,10 @@
               </div>
             </div>
            <div class="col-md-12 p-0 mt-3">
-              <nav aria-label="...">
+              <nav aria-label="..." class="d-flex justify-content-space-between">
                 <ul class="pagination">
                   <li class="page-item ">
-                    <a class="page-link" (click)="PreviousCardDetails()" >Previous</a>
+                    <a class="page-link" href="javascript:void(0)" (click)="PreviousCardDetails()" >Previous</a>
                   </li>
                   <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li> -->
                   <li class="page-item ">
@@ -95,11 +95,12 @@
                   </li>
                   <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
                   <li class="page-item">
-                    <a class="page-link" (click)="NextCardDetails()" >Next</a>
+                    <a class="page-link" href="javascript:void(0)" (click)="NextCardDetails()" >Next</a>
                   </li>
                 </ul>
+                <p>{{(offset+5)>count?count:(offset+5)}}/{{count}} Records</p>
               </nav>
-              <p>{{(offset+5)>count?count:(offset+5)}}/{{count}} Records</p>
+              
             </div>
           </div>
         </div>
