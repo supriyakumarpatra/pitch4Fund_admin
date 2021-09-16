@@ -47,7 +47,7 @@
                   </tr>
                   
                   <tr class="text-center" *ngFor="let item of userList; let i = index ">
-                    <td>{{i+1}}</td>
+                    <td>{{i+1+offset}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.email}}</td>
                     <td>{{item.phone}}</td>
@@ -99,6 +99,7 @@
                   </li>
                 </ul>
               </nav>
+              <p>{{(offset+5)>count?count:(offset+5)}}/{{count}} Records</p>
             </div>
           </div>
         </div>

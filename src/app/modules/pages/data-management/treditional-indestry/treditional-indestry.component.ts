@@ -31,7 +31,8 @@ export class TreditionalIndestryComponent implements OnInit {
     isUpdate = false;
     cardSearch = '';
     cardListDump = [];
-    offset = 5;
+    offset = 0;
+    count: number = 0;
   constructor(private rest: RestserviceService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
@@ -58,11 +59,27 @@ export class TreditionalIndestryComponent implements OnInit {
             }
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
+            this.countAllData();
         }
     });
   }
+  countAllData(): void{
+    const cardParam = {userId: 1};
+    this.rest.countTreditionalIndustryData(cardParam).subscribe(
+        (res:any)=>{
+            if(res.success){
+                this.count = res.response?.totalData;
+                console.log(this.count)
+            }
+        }
+    );
+  }
 
        NextCardDetails(){
+        if((this.offset+5) > this.count || (this.offset+5) == this.count){
+            return;
+        }
+        this.offset +=  5;
     if (this.cardListDump.length == 5){
     const data = {
         userId: 1,
@@ -86,10 +103,10 @@ export class TreditionalIndestryComponent implements OnInit {
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
             console.log(this.cardListDump);
-            if (this.cardListDump.length == 5){
-                this.offset += 5;
+            // if (this.cardListDump.length == 5){
+            //     this.offset += 5;
 
-            }
+            // }
 
 
         }
@@ -124,9 +141,9 @@ export class TreditionalIndestryComponent implements OnInit {
                 }
             }
 
-            if (this.offset == 0){
-              this.offset = 5;
-            }
+            // if (this.offset == 0){
+            //   this.offset = 5;
+            // }
             console.log('offset', this.offset);
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;

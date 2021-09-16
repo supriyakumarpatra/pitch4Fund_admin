@@ -10,6 +10,7 @@ import { RestserviceService } from 'src/app/restservice.service';
 })
 export class InvestorUserComponent implements OnInit {
 
+  count: number = 0;
   offset = 0;
   userStatus = new FormControl('');
   filter = {
@@ -47,6 +48,7 @@ export class InvestorUserComponent implements OnInit {
         if(res.success === true){
           console.log(res);
           this.userList = res.response;
+          this.countAllData()
         }
       },
       (err: any) => {
@@ -55,9 +57,25 @@ export class InvestorUserComponent implements OnInit {
     );
   }
 
+  countAllData(): void{
+    const cardParam = {userId: 1};
+    this.rest.countAllInvestor(cardParam).subscribe(
+        (res:any)=>{
+            if(res.success){
+                this.count = res.response?.totalData;
+                console.log(this.count)
+            }
+        }
+    );
+  }
+
   NextCardDetails(): any {
+    if((this.offset+5) > this.count || (this.offset+5) == this.count){
+      return;
+  }
+  this.offset +=  5;
     if(this.userList.length === 5){
-      this.offset += 5;
+      // this.offset += 5;
       console.log(this.filter);
       this.getInvestorUser();
     }

@@ -39,6 +39,10 @@ export class RestserviceService {
     return this.http.post(this.API_ROOT + 'industry/deleteData' , data , httpOptions);
   }
 
+  countIndustryData(data): any {
+    return this.http.post(this.API_ROOT + 'industry/countAllData' , data , httpOptions);
+  }
+
 
   // INDUSTRY SECTION API END
 
@@ -55,6 +59,10 @@ export class RestserviceService {
   }
   deleteInvestmentStageData(data): any {
     return this.http.post(this.API_ROOT + 'investmentstage/deleteData' , data , httpOptions);
+  }
+
+  countInvestmentStageData(data): any {
+    return this.http.post(this.API_ROOT + 'investmentstage/countAllData' , data , httpOptions);
   }
 
 
@@ -76,6 +84,10 @@ export class RestserviceService {
     return this.http.post(this.API_ROOT + 'country/deleteData' , data , httpOptions);
   }
 
+  countCountryData(data): any {
+    return this.http.post(this.API_ROOT + 'country/countAllData' , data , httpOptions);
+  }
+
 
   // COUNTRY SECTION API END
 
@@ -92,6 +104,10 @@ export class RestserviceService {
   }
   deleteLanguageData(data): any {
     return this.http.post(this.API_ROOT + 'language/deleteData' , data , httpOptions);
+  }
+
+  countLanguageData(data): any {
+    return this.http.post(this.API_ROOT + 'language/countAllData' , data , httpOptions);
   }
 
 
@@ -112,6 +128,10 @@ export class RestserviceService {
     return this.http.post(this.API_ROOT + 'startvertical/deleteData' , data , httpOptions);
   }
 
+  countStartupVerticalData(data): any {
+    return this.http.post(this.API_ROOT + 'startvertical/countAllData' , data , httpOptions);
+  }
+
 
   // STARTUP VERTICAL SECTION API END
 
@@ -130,6 +150,10 @@ export class RestserviceService {
     return this.http.post(this.API_ROOT + 'timezone/deleteData' , data , httpOptions);
   }
 
+  countTimeZoneData(data): any {
+    return this.http.post(this.API_ROOT + 'timezone/countAllData' , data , httpOptions);
+  }
+
 
   // TIMEZONE SECTION API END
 
@@ -146,6 +170,9 @@ export class RestserviceService {
   }
   deleteTreditionalIndustryData(data): any {
     return this.http.post(this.API_ROOT + 'treditionalindustry/deleteData' , data , httpOptions);
+  }
+  countTreditionalIndustryData(data): any {
+    return this.http.post(this.API_ROOT + 'treditionalindustry/countAllData' , data , httpOptions);
   }
 
 
@@ -167,6 +194,9 @@ updateEngagmentData(data): any{
 deleteEngagmentData(data): any {
   return this.http.post(this.API_ROOT + 'engagement/deleteData' , data , httpOptions);
 }
+countEngagmentData(data): any {
+  return this.http.post(this.API_ROOT + 'engagement/countAllData' , data , httpOptions);
+}
 
    // INVESTOR TYPE SECTION API START
   getInvestorTypeList(data): any {
@@ -181,6 +211,9 @@ deleteEngagmentData(data): any {
   deleteInvestorTypeData(data): any {
     return this.http.post(this.API_ROOT + 'investorType/deleteData' , data , httpOptions);
   }
+  countInvestorTypeData(data): any {
+    return this.http.post(this.API_ROOT + 'investorType/countAllData' , data , httpOptions);
+  }
 
 
   // INVESTOR TYPE SECTION API END
@@ -193,6 +226,10 @@ deleteEngagmentData(data): any {
  getAllInvestor(data): Observable<any> {
    return this.http.post(this.API_ROOT + 'user/getAllInvestorData', data, httpOptions);
  }
+
+ countAllInvestor(data): any {
+  return this.http.post(this.API_ROOT + 'user/countAllData' , data , httpOptions);
+}
 
  changeUserStatus(data): Observable<any> {
   return this.http.post(this.API_ROOT + 'user/changeUserStatus', data, httpOptions);
