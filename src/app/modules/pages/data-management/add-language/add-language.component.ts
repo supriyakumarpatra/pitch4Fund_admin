@@ -26,11 +26,14 @@ export class AddLanguageComponent implements OnInit {
     isUpdate = false;
     cardSearch = '';
     cardListDump = [];
-    offset = 5;
+    offset = 0;
+    count: number = 0;
+
   constructor(private rest: RestserviceService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
       this.getCard();
+      
   }
 
   getCard(): any {
@@ -53,46 +56,62 @@ export class AddLanguageComponent implements OnInit {
             }
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
+            this.countAllData()
         }
     });
   }
 
-       NextCardDetails(){
-    if (this.cardListDump.length == 5){
-    const data = {
-        userId: 1,
-        limit: 5,
-        offset : this.offset
-    };
-    console.log('ffffffffff', data);
-    this.rest.getLanguageList(data).subscribe((res) => {
-
-        this.responseObj = res;
-        if (this.responseObj.success === true) {
-            for (let i = 0 ; i < this.responseObj.response.length; i++) {
-                if (this.responseObj.response[i].isEnable === '1') {
-                    this.responseObj.response[i].isEnable = true;
-                } else {
-                    this.responseObj.response[i].isEnable = false;
-                }
+  countAllData(): void{
+    const cardParam = {userId: 1};
+    this.rest.countLanguageData(cardParam).subscribe(
+        (res:any)=>{
+            if(res.success){
+                this.count = res.response?.totalData;
+                console.log(this.count)
             }
-
-            console.log('offset', this.offset);
-            this.cardList  = this.responseObj.response;
-            this.cardListDump = this.responseObj.response;
-            console.log(this.cardListDump);
-            if (this.cardListDump.length == 5){
-                this.offset += 5;
-
-            }
-
-
         }
-    });
+    );
+  }
+       NextCardDetails(){
+        if((this.offset+5) > this.count || (this.offset+5) == this.count){
+            return;
+        }
+            this.offset +=  5;
+            if (this.cardListDump.length == 5){
+            const data = {
+                userId: 1,
+                limit: 5,
+                offset : this.offset
+            };
+            console.log('ffffffffff', data);
+            this.rest.getLanguageList(data).subscribe((res) => {
 
-    }else{
-        console.log('>>>>>>>>>>', this.cardListDump.length);
-    }
+                this.responseObj = res;
+                if (this.responseObj.success === true) {
+                    for (let i = 0 ; i < this.responseObj.response.length; i++) {
+                        if (this.responseObj.response[i].isEnable === '1') {
+                            this.responseObj.response[i].isEnable = true;
+                        } else {
+                            this.responseObj.response[i].isEnable = false;
+                        }
+                    }
+
+                    console.log('offset', this.offset);
+                    this.cardList  = this.responseObj.response;
+                    this.cardListDump = this.responseObj.response;
+                    console.log(this.cardListDump);
+                    // if (this.cardListDump.length == 5){
+                    //     this.offset += 5;
+
+                    // }
+
+
+                }
+            });
+
+            }else{
+                console.log('>>>>>>>>>>', this.cardListDump.length);
+            }
 
   }
 
@@ -119,9 +138,9 @@ export class AddLanguageComponent implements OnInit {
                 }
             }
 
-            if (this.offset == 0){
-              this.offset = 5;
-            }
+            // if (this.offset == 0){
+            //   this.offset = 5;
+            // }
             console.log('offset', this.offset);
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;

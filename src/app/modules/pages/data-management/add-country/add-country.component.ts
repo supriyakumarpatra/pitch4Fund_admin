@@ -26,12 +26,14 @@ export class AddCountryComponent implements OnInit {
     isUpdate = false;
     cardSearch = '';
     cardListDump = [];
-    offset = 50;
+    offset = 0;
     k:number =0;
+    count: number = 0;
   constructor(private rest: RestserviceService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
       this.getCard();
+      this.countAllData();
   }
 
   getCard(): any {
@@ -39,7 +41,7 @@ export class AddCountryComponent implements OnInit {
             
     userId: 1,
     offset: 0,
-    limit: 50,
+    limit: 5,
     //type : "all"
         };
     this.rest.getCountryList(cardParam).subscribe((res) => {
@@ -58,16 +60,33 @@ export class AddCountryComponent implements OnInit {
     });
   }
 
+  countAllData(): void{
+    const cardParam = {userId: 1};
+    this.rest.countCountryData(cardParam).subscribe(
+        (res:any)=>{
+            if(res.success){
+                this.count = res.response?.totalData;
+                console.log(this.count)
+            }
+        }
+    );
+  }
+
     NextCardDetails(){
-    if (this.cardListDump.length == 50){
+        if((this.offset+5) > this.count || (this.offset+5) == this.count){
+            return;
+        } 
+        this.offset +=  5;  
+    if (this.cardListDump.length == 5){
     const data = {
         userId: 1,
-        limit: 50,
+        limit: 5,
         offset : this.offset
     };
+    
     console.log('ffffffffff', data);
     this.rest.getCountryList(data).subscribe((res) => {
-        this.k += 50;
+        
         this.responseObj = res;
         if (this.responseObj.success === true) {
             
@@ -83,11 +102,11 @@ export class AddCountryComponent implements OnInit {
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
             console.log(this.cardListDump);
-            if (this.cardListDump.length == 50){
+            // if (this.cardListDump.length == 50){
                 
-                this.offset += 50;
+            //     this.offset += 50;
 
-            }
+            // }
 
 
         }
@@ -101,12 +120,12 @@ export class AddCountryComponent implements OnInit {
 
   PreviousCardDetails(){
       if (this.offset != 0){
-        this.offset -= 50;
+        this.offset -= 5;
 
 
         const data = {
         userId : 1,
-        limit : 50,
+        limit : 5,
         offset : this.offset
     };
         console.log('ffffffffff', data);
@@ -114,7 +133,7 @@ export class AddCountryComponent implements OnInit {
 
         this.responseObj = res;
         if (this.responseObj.success === true) {
-            this.k -= 50;
+            // this.k -= 50;
             for (let i = 0 ; i < this.responseObj.response.length; i++) {
                 if (this.responseObj.response[i].isEnable === '1') {
                     this.responseObj.response[i].isEnable = true;
@@ -123,10 +142,10 @@ export class AddCountryComponent implements OnInit {
                 }
             }
 
-            if (this.offset == 0){
+            // if (this.offset == 0){
             
-              this.offset = 50;
-            }
+            //   this.offset = 50;
+            // }
             console.log('offset', this.offset);
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
