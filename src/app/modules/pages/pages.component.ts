@@ -47,6 +47,7 @@ export class PagesComponent implements OnInit {
       (res: any)=>{
         if(res.success){
           this.notifier.notify('success',res.message);
+          this.rest.adminLogout();
           // document.getElementById('close').click();
         }else{
           this.notifier.notify('error',res.message)
