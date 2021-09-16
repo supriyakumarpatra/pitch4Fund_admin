@@ -1529,3 +1529,7 @@ footer{
 .justify-content-space-between{
   justify-content: space-between;
 }
+.records{
+  color: #a136bc;
+  font-weight: 500;
+}
