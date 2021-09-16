@@ -20,7 +20,7 @@
             <div class="col-md-3">
                 <div class="form-group sd mb-0">
                     <select class="form-control mb-0 pr-5 cursor-pointer" id="exampleFormControlSelect1"  [formControl]="userStatus">
-                      <option value="">Filter</option>
+                      <option selected disabled value="">Filter</option>
                       <option value="2">Pending</option>
                       <option value="1">Active</option>
                       <option value="3">Rejected</option>
@@ -54,8 +54,8 @@
                     <td>2</td>
                     <td>
                       <span class="badge badge-warning" *ngIf="item.status == 2">Pending</span>
-                      <span class="badge badge-danger" *ngIf="item.status == 3">Reject</span>
-                      <span class="badge badge-success" *ngIf="item.status == 1">Accepte</span>
+                      <span class="badge badge-danger" *ngIf="item.status == 3">Rejected</span>
+                      <span class="badge badge-success" *ngIf="item.status == 1">Active</span>
                     </td>
                     <!-- <td>
                         <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Edit">
