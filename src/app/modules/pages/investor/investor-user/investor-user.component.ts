@@ -32,17 +32,19 @@ export class InvestorUserComponent implements OnInit {
       (value: any) =>{
         console.log(value);
         this.filter.status = value;
+        this.filter.offset =0;
         this.getInvestorUser();
       }
     )
   }
 
   getInvestorUser(): any{
-    this.filter = {
-      offset: this.offset,
-      limit: 5,
-      status : this.userStatus.value
-    };
+    // this.filter = {
+    //   offset: this.offset,
+    //   limit: 5,
+    //   status : this.userStatus.value
+    // };
+    console.log('filter',this.filter)
     this.rest.getAllInvestor(this.filter).subscribe(
       (res: any) => {
         if(res.success === true){
@@ -59,7 +61,7 @@ export class InvestorUserComponent implements OnInit {
 
   countAllData(): void{
     const cardParam = {userId: 1};
-    this.rest.countAllInvestor(cardParam).subscribe(
+    this.rest.countAllInvestor(this.filter).subscribe(
         (res:any)=>{
             if(res.success){
                 this.count = res.response?.totalData;
@@ -72,11 +74,12 @@ export class InvestorUserComponent implements OnInit {
   NextCardDetails(): any {
     if((this.offset+5) > this.count || (this.offset+5) == this.count){
       return;
-  }
-  this.offset +=  5;
+    }
+    this.offset +=  5;
     if(this.userList.length === 5){
       // this.offset += 5;
       console.log(this.filter);
+      this.filter.offset = this.offset;
       this.getInvestorUser();
     }
   }
@@ -84,6 +87,7 @@ export class InvestorUserComponent implements OnInit {
   PreviousCardDetails(): any {
     this.offset -= 5;
     if(this.offset >= 0){
+      this.filter.offset = this.offset;
       this.getInvestorUser();
     } else {
       this.offset = 0;

@@ -117,13 +117,11 @@ export class AddInvestmentStageComponent implements OnInit {
   PreviousCardDetails(){
       if (this.offset != 0){
         this.offset -= 5;
-
-
         const data = {
         userId : 1,
         limit : 5,
         offset : this.offset
-    };
+        };
         console.log('ffffffffff', data);
         this.rest.getInvestmentStageList(data).subscribe((res) => {
 

@@ -45,7 +45,9 @@
                     <th scope="col"> Related Document </th>
                     <th scope="col"> Action </th>
                   </tr>
-                  
+                  <tr *ngIf="userList.length == 0">
+                    <td [attr.colspan]="5">No Data Found</td>
+                  </tr>
                   <tr class="text-center" *ngFor="let item of userList; let i = index ">
                     <td>{{i+1+offset}}</td>
                     <td>{{item.name}}</td>

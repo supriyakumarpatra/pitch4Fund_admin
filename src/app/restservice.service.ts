@@ -242,6 +242,10 @@ countEngagmentData(data): any {
     return this.http.post(this.API_ROOT + 'user/getAllStartupData', data, httpOptions);
   }
 
+  countAllStartup(data): any {
+    return this.http.post(this.API_ROOT + 'user/countAllStartup' , data , httpOptions);
+  }
+
   getStartupPresentationVideo(data): Observable<any> {
     return this.http.post(this.API_ROOT + 'user/presentationVideo', data, httpOptions);
   }
@@ -293,6 +297,7 @@ countEngagmentData(data): any {
   adminLogout(){
     localStorage.removeItem('adminUser');
     this.router.navigateByUrl('/');
+    
   }
   authGuard(){
     const admindata = JSON.parse(localStorage.getItem('adminUser'));

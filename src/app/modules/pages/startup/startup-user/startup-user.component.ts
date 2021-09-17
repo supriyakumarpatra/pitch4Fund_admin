@@ -28,7 +28,7 @@ export class StartupUserComponent implements OnInit {
     upVideo: boolean = false;
     pitchdecvideo: string = '';
     startupId: number;
-
+    count: number = 0;
     constructor(
         private rest: RestserviceService,
         private notifier: NotifierService,
@@ -41,10 +41,23 @@ export class StartupUserComponent implements OnInit {
             (value: any) => {
                 console.log(value);
                 this.filter.status = value;
+                 this.offset = 0;
                 this.getStartupUser();
             }
         );
     }
+
+    countAllData(): void{
+        const cardParam = {userId: 1};
+        this.rest.countAllStartup(this.filter).subscribe(
+            (res:any)=>{
+                if(res.success){
+                    this.count = res.response?.totalData;
+                    console.log(this.count)
+                }
+            }
+        );
+      }
 
     getStartupUser(): any {
         this.filter = {
@@ -57,6 +70,7 @@ export class StartupUserComponent implements OnInit {
                 if (res.success === true) {
                     console.log(res);
                     this.userList = res.response;
+                    this.countAllData();
                 }
             },
             (err: any) => {
@@ -66,8 +80,12 @@ export class StartupUserComponent implements OnInit {
     }
 
     NextCardDetails(): any {
+        if((this.offset+5) > this.count || (this.offset+5) == this.count){
+            return;
+          }
+          this.offset +=  5;
         if (this.userList.length === 5) {
-            this.offset += 5;
+            // this.offset += 5;
             console.log(this.filter);
             this.getStartupUser();
         }
