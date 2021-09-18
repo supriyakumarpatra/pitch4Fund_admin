@@ -306,5 +306,16 @@ countEngagmentData(data): any {
     }
   }
 
+  getAllProposedTime(data: any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/getAllProposeTime', data, httpOptions);
+  }
+
+  handleProposedTimeByAdmin(data:any): Observable<any> {
+    return this.http.post(this.API_ROOT + 'addmin/proposeTimeHandleByAdmin', data, httpOptions);
+  }
+
+  countAllProposedTime(data): any {
+    return this.http.post(this.API_ROOT + 'addmin/countAllProposedTime' , data , httpOptions);
+  }
 }
 

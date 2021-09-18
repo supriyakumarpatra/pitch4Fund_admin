@@ -40,50 +40,50 @@
                     <th scope="col" style="min-width: 230px !important"> Proposed Date & Time </th>
                     <th scope="col">Startup</th>
                     <th scope="col"> Startup's Country </th>
-                    <!-- <th scope="col">Status</th> -->
+                    <th scope="col">Status</th>
                     <th scope="col"> Action </th>
                   </tr>
                   
-                  <tr class="text-center">
-                    <td>1</td>
+                  <tr class="text-center" *ngFor="let item of proposedTimeList; let i = index">
+                    <td>{{i+1+offset}}</td>
                     <td class="text-left">
-                        Investor No : PT-0004 <br>
-                        Type : xxx  <br>
-                        Company : xxx <br>
-                        Name : xxx  <br>
+                        Company : {{item.investorCompanyName}} <br>
+                        Name : {{item.inveatorName}}  <br>
                     </td>
-                    <td> India </td>
+                    <td> {{item.investorCountry}} </td>
                     <td class="text-left">
                         <div class="form-group form-check mb-2">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 3px;">
-                            <label class="form-check-label" for="exampleCheck1">14-10-2021 14:00 IST</label>
-                            <span class="badge badge-warning ml-2" >Pending</span>
-                        </div>
-                        <div class="form-group form-check mb-2">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 3px;">
-                            <label class="form-check-label" for="exampleCheck1">15-10-2021 16:00 IST</label>
-                            <span class="badge badge-danger ml-2" >Rejected</span>
-                        </div>
-                        <div class="form-group form-check mb-2">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-top: 3px;">
-                            <label class="form-check-label" for="exampleCheck1">16-10-2021 18:00 IST</label>
-                            <span class="badge badge-success ml-2" >Sent</span>
+                            
+                            {{item.meetingDate}}
+                            <!-- <label class="form-check-label" for="exampleCheck1">14-10-2021 14:00 IST</label> -->
+                            <!-- <span class="badge badge-warning ml-2" >Pending</span> -->
                         </div>
                     </td>
                     <td class="text-left">
-                        Startup No : PT-0004 <br>
-                        Product : xxx  <br>
-                        Founder : xxx <br>
+                        Startup Name : {{item.startupName}} <br>
+                        Product : {{item.ProductName}}  <br>
                     </td>
-                    <td>Bangladesh</td>
-                    <!-- <td>
-                        <span class="badge badge-warning" >Pending</span>
-                        <span class="badge badge-danger" >Rejected</span>
-                        <span class="badge badge-success" >Sent</span>
-                    </td> -->
+                    <td>{{item.startupCountry}}</td>
                     <td>
-                      <button type="button"  class="btn btn-outline-primary btn-sm">Send</button>
-                      <button type="button" class="btn btn-outline-danger btn-sm ml-2" >Reject</button>
+                        <span 
+                            class="badge badge-warning" 
+                            *ngIf="item.isAdminApprove == '0'">
+                              Pending
+                        </span>
+                        <span 
+                              class="badge badge-danger" 
+                              *ngIf="item.isAdminApprove == '2'">
+                                Rejected
+                        </span>
+                        <span 
+                              class="badge badge-success" 
+                              *ngIf="item.isAdminApprove == '1'">
+                                Approved
+                        </span>
+                    </td>
+                    <td>
+                      <button type="button"  class="btn btn-outline-success btn-sm" (click)="onChangeStatus('1',item.id)">Approve</button>
+                      <button type="button" class="btn btn-outline-danger btn-sm ml-2" (click)="onChangeStatus('2',item.id)">Reject</button>
                     </td>
                   </tr>
                 </table>
@@ -94,7 +94,7 @@
               <nav aria-label="..." class="d-flex justify-content-space-between">
                 <ul class="pagination">
                   <li class="page-item ">
-                    <a class="page-link" href="javascript:void(0)" >Previous</a>
+                    <a class="page-link" href="javascript:void(0)" (click)="onPrevious()" >Previous</a>
                   </li>
                   <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li> -->
                   <li class="page-item ">
@@ -102,10 +102,10 @@
                   </li>
                   <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
                   <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" >Next</a>
+                    <a class="page-link" href="javascript:void(0)" (click)="onNext()">Next</a>
                   </li>
                 </ul>
-                <p class="records">50/120 Records</p>
+                <p class="records">{{(offset+limit)>count?count:(offset+limit)}}/{{count}} Records</p>
               </nav>
             </div>
           </div>
