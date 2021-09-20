@@ -79,13 +79,22 @@
                         
                       </div>
                       <span class="requiedFiled" 
-                        *ngIf="adminForm.controls.password.errors && (!adminForm.controls.password.pristine || adminForm.controls.password.touched)" >
+                        *ngIf="adminForm.controls.password.errors?.required && (!adminForm.controls.password.pristine || adminForm.controls.password.touched)" >
                         password Is Required
+                      </span>
+                      <!-- <span class="requiedFiled" 
+                        *ngIf="adminForm.controls.password.errors?.minlength && (!adminForm.controls.password.pristine || adminForm.controls.password.touched)" >
+                        minimum length should be 8 character
+                      </span> -->
+                      <span class="requiedFiled" 
+                        *ngIf="adminForm.controls.password.errors?.pattern && (!adminForm.controls.password.pristine || adminForm.controls.password.touched)" >
+                        Minimum eight characters, at least one letter, one number and one special character
                       </span>
                       <span class="requiedFiled" 
                         *ngIf="edit" >
                         Leave the password blank, if you don't want to change.
                       </span>
+                      
                       <!-- <span class="requiedFiled">{{cardDescriptionError}}</span> -->
                     </div>
 

@@ -26,7 +26,7 @@ export class PagesComponent implements OnInit {
     }
     this.changePasswordForm =this.fb.group({
       currentPassword:['',Validators.required],
-      newPassword:['',Validators.required],
+      newPassword:['',[Validators.required,checkingPasswordPattern]],
       rePassword:['',[Validators.required,checkingPassword]]
     })
    }
@@ -70,6 +70,20 @@ function checkingPassword(control: AbstractControl): {[key: string]: any} | null
       return {'confirmpassword':true};
     }else{
       return null
+    }
+  }else{
+    return null
+  }
+}
+
+function checkingPasswordPattern(control: AbstractControl): {[key: string]: any} | null{
+  console.log(control);
+  if(control.value){
+    const regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    if(regex.test(control.value)){
+      return null;
+    }else{
+      return {'pattern':true};
     }
   }else{
     return null
