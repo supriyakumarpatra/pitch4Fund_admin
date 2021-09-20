@@ -48,6 +48,7 @@ import { EngagementComponent } from './data-management/engagement/engagement.com
 import { AddAdminUserComponent } from './admin-management/add-admin-user/add-admin-user.component';
 import { PitchMeetingComponent } from './investor-proposed-timing/pitch-meeting/pitch-meeting.component';
 import { DueDiligenceMeetingComponent } from './investor-proposed-timing/due-diligence-meeting/due-diligence-meeting.component';
+import { MappingOfStartupToInvestorComponent } from './mapping/mapping-of-startup-to-investor/mapping-of-startup-to-investor.component';
 
 /**
  * Custom angular notifier options
@@ -94,7 +95,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [PagesComponent, DashboardComponent,AddIndustryComponent, AddInvestmentStageComponent, AddCountryComponent, AddLanguageComponent, AddStartupVerticalComponent, AddTimeZoneComponent, TreditionalIndestryComponent, InvestorTypeComponent, InvestorUserComponent, StartupUserComponent, EngagementComponent, AddAdminUserComponent, PitchMeetingComponent, DueDiligenceMeetingComponent],
+  declarations: [PagesComponent, DashboardComponent,AddIndustryComponent, AddInvestmentStageComponent, AddCountryComponent, AddLanguageComponent, AddStartupVerticalComponent, AddTimeZoneComponent, TreditionalIndestryComponent, InvestorTypeComponent, InvestorUserComponent, StartupUserComponent, EngagementComponent, AddAdminUserComponent, PitchMeetingComponent, DueDiligenceMeetingComponent, MappingOfStartupToInvestorComponent],
   imports: [
     CommonModule,
      FormsModule,
