@@ -27,6 +27,7 @@ export class AddInvestmentStageComponent implements OnInit {
     cardListDump = [];
     offset = 0;
     count: number = 0;
+    limit = 20;
   constructor(private rest: RestserviceService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
@@ -39,7 +40,7 @@ export class AddInvestmentStageComponent implements OnInit {
             
     userId: 1,
     offset: 0,
-     limit: 5,
+     limit: this.limit,
     //type : "all"
         };
     this.rest.getInvestmentStageList(cardParam).subscribe((res) => {
@@ -72,14 +73,14 @@ export class AddInvestmentStageComponent implements OnInit {
 
 
     NextCardDetails(){
-    if((this.offset+5) > this.count || (this.offset+5) == this.count){
+    if((this.offset+this.limit) > this.count || (this.offset+this.limit) == this.count){
         return;
     }
-        this.offset +=  5;
-        if (this.cardListDump.length == 5){
+        this.offset +=  this.limit;
+        if (this.cardListDump.length == this.limit){
         const data = {
             userId: 1,
-            limit: 5,
+            limit: this.limit,
             offset : this.offset
         };
         console.log('ffffffffff', data);
@@ -116,10 +117,10 @@ export class AddInvestmentStageComponent implements OnInit {
 
   PreviousCardDetails(){
       if (this.offset != 0){
-        this.offset -= 5;
+        this.offset -= this.limit;
         const data = {
         userId : 1,
-        limit : 5,
+        limit : this.limit,
         offset : this.offset
         };
         console.log('ffffffffff', data);

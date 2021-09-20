@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NotifierService } from 'angular-notifier';
 import { RestserviceService } from 'src/app/restservice.service';
 
@@ -18,13 +18,23 @@ export class AddAdminUserComponent implements OnInit {
     this.adminForm = this.fb.group({
       'userName':['',Validators.required],
       'email':['',[Validators.required,Validators.email]],
-      'password':['',Validators.required]
+      'password':['',[
+                      Validators.required,
+                      checkingPasswordPattern
+                    ]
+                  ]
     });
 
   }
 
   ngOnInit(): void {
     this.onAdminList();
+    this.adminForm.get('password').valueChanges.subscribe(
+      (res)=>{
+        console.log(this.adminForm);
+      }
+      
+    );
   }
 
   onSubmit(adminDetails:NgForm){
@@ -119,4 +129,18 @@ export class AddAdminUserComponent implements OnInit {
 
 
 
+}
+
+function checkingPasswordPattern(control: AbstractControl): {[key: string]: any} | null{
+  console.log(control);
+  if(control.value){
+    const regex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    if(regex.test(control.value)){
+      return null;
+    }else{
+      return {'pattern':true};
+    }
+  }else{
+    return null
+  }
 }
