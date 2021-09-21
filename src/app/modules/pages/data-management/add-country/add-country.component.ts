@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import {RestserviceService} from '../../../../restservice.service';
 import {Subscription} from 'rxjs';
 import { NotifierService } from 'angular-notifier';
+import {MatDialog} from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/modules/shared/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-add-country',
@@ -30,11 +32,25 @@ export class AddCountryComponent implements OnInit {
     offset = 0;
     k:number =0;
     count: number = 0;
-  constructor(private rest: RestserviceService, private notifier: NotifierService) { }
+  constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.getCard();
       this.countAllData();
+  }
+
+  openDeleteDialog(id:number) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent,{
+        width: '250px'
+      });
+
+    dialogRef.afterClosed().subscribe((result: String) => {
+        if(result.toLowerCase() === 'yes'){
+            console.log('delete it');
+            this.IndustryDelete(id);
+        }
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   getCard(): any {
@@ -210,7 +226,7 @@ export class AddCountryComponent implements OnInit {
         this.rest.deleteCountryData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'Country delete successfully');
+            	 this.notifier.notify('error' , 'Country delete successfully');
                  this.getCard();
            
                 

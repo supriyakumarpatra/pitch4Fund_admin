@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>DO you want to delete it?</h1>
+<div mat-dialog-content>
+  <p>Write yes if you want to delete it</p>
+  <input type="text" name="Input" id="userInput" [(ngModel)]="userInput">
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Write yes if you want to delete it</mat-label>
+    <input matInput [(ngModel)]="userInput">
+  </mat-form-field> -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="userInput" cdkFocusInitial>Ok</button>
+</div>

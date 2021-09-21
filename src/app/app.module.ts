@@ -10,6 +10,15 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
+import { DeleteDialogComponent } from './modules/shared/delete-dialog/delete-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 // import {MaterialFileUploadComponent} from './material-file-upload/material-file-upload.component';
 
 /**
@@ -59,6 +68,7 @@ const customNotifierOptions: NotifierOptions = {
 @NgModule({
   declarations: [
     AppComponent,
+    DeleteDialogComponent,
     // MaterialFileUploadComponent
   ],
   imports: [
@@ -70,7 +80,20 @@ const customNotifierOptions: NotifierOptions = {
     FormsModule,
     HttpClientModule,
     NotifierModule.withConfig(customNotifierOptions),
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    MatTabsModule,
+    MatSelectModule,
+    TextFieldModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

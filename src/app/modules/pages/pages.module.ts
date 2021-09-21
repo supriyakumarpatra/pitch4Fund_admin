@@ -49,6 +49,7 @@ import { AddAdminUserComponent } from './admin-management/add-admin-user/add-adm
 import { PitchMeetingComponent } from './investor-proposed-timing/pitch-meeting/pitch-meeting.component';
 import { DueDiligenceMeetingComponent } from './investor-proposed-timing/due-diligence-meeting/due-diligence-meeting.component';
 import { MappingOfStartupToInvestorComponent } from './mapping/mapping-of-startup-to-investor/mapping-of-startup-to-investor.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 /**
  * Custom angular notifier options
@@ -120,6 +121,7 @@ const customNotifierOptions: NotifierOptions = {
     MatTooltipModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatDialogModule
   ]
 })
 export class PagesModule { }
