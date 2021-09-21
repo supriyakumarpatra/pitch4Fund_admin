@@ -1,13 +1,17 @@
-<h1 mat-dialog-title>DO you want to delete it?</h1>
-<div mat-dialog-content>
-  <p>Write yes if you want to delete it</p>
-  <input type="text" name="Input" id="userInput" [(ngModel)]="userInput">
-  <!-- <mat-form-field appearance="fill">
-    <mat-label>Write yes if you want to delete it</mat-label>
-    <input matInput [(ngModel)]="userInput">
-  </mat-form-field> -->
+<div class="text-center mb-4">
+  <h2 mat-dialog-title style="color: #8447c4;">Do you want to delete it?</h2>
+  <div mat-dialog-content>
+    <p>Write yes if you want to delete it</p>
+    <input  name="Input" id="userInput" [(ngModel)]="userInput" class="form-control"  type="text">
+    <!-- <input type="text" name="Input" id="userInput" [(ngModel)]="userInput"> -->
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Write yes if you want to delete it</mat-label>
+      <input matInput [(ngModel)]="userInput">
+    </mat-form-field> -->
+  </div>
+  <div mat-dialog-actions class="justify-content-center mt-2">
+    <button type="button" class="btn btn-primary btn-sm mr-2" [mat-dialog-close]="userInput" cdkFocusInitial>Submit</button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="onNoClick()">Cancel</button>
+  </div>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="userInput" cdkFocusInitial>Ok</button>
-</div>
+

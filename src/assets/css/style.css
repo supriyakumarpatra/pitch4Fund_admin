@@ -1533,3 +1533,6 @@ footer{
   color: #a136bc;
   font-weight: 500;
 }
+.cdk-overlay-pane {
+  width: 300px !important;
+}
