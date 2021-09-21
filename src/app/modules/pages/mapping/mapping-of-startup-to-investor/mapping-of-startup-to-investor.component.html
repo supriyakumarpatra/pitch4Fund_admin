@@ -40,38 +40,53 @@
                     <th scope="col"> Map Startup </th>
                     <th scope="col">Share</th>
                     <th scope="col"> Share Status</th>
-                    <th scope="col"> Feedback </th>
+                    <!-- <th scope="col"> Feedback </th> -->
                   </tr>
                   <!-- <tr *ngIf="userList.length == 0">
                     <td [attr.colspan]="5">No Data Found</td>
                   </tr> -->
                   <tr class="text-center">
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>1</td>
+                    <td class="text-left">
+                        Company : Investor Company <br>
+                        Name : Investor
+                    </td>
+                    <td class="text-left">
+                        1. ABC <br>
+                        2. DEF
+                    </td>
                     
                     <td>
-                      <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter3" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="View">
-                          <i class="fa fa-plus" aria-hidden="true"></i>
-                      </a>
+                        <div>
+                            <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter2" class="edit d-inline text-primary rounded"  matTooltip="View Share Report">
+                                Primary
+                            </a>
+                        </div> <br>
+                        <div>
+                            <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter1" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Add Map Startup">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </a>
+                            <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter2" class="edit d-inline text-primary rounded"  matTooltip="View Share Report">
+                            Primary-2 </a>
+                        </div>
                     </td>
                     <td>
-                        <a data-toggle="modal" data-target="#exampleModalCenter2"></a>
-                        <a href="javascript:;" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Share">
+                        <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter3" class="edit border border-success d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-success rounded"  matTooltip="Share">
                             <i class="fa fa-share-square-o" aria-hidden="true"></i>
                         </a>
                     </td>
                     <td>
-                        <!-- <span class="badge badge-warning">Pending</span>
-                        <span class="badge badge-success">Active</span> -->
-                        <span class="badge badge-danger">Expired</span>
+                        <!-- <span class="badge badge-warning">Pending</span> -->
+                        <!-- <span class="badge badge-danger">Expired</span> -->
+                        <span class="badge badge-success">Active</span>
                     </td>
-                    <td>
-                        <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter3"  class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="View Feedback">
+                    <!-- <td>
+                        <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter3"  class="edit border border-warning d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="View Feedback">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
-                    </td>
+                    </td> -->
                   </tr>
+                  
                 </table>
 
               </div>
@@ -103,188 +118,194 @@
 </section>
 
   
-  <!-- Modal Company Details -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!-- Modal Map startup -->
+  <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Company Details</h3>
+          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Map Startup</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <div class="table-responsive">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
-                    <tr class="">
-                        <th scope="col">Type :</th>
-                        <td class="border-none">Individual</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Name :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Website :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Logo :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Company Address :</th>
-                        <td class="border-none">ABC Company</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Country :</th>
-                        <td class="border-none">UAE</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">State :</th>
-                        <td class="border-none">UAE</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">City/Location :</th>
-                        <td class="border-none">UAE</td>
-                    </tr>
-                    <tr class="">
-                        <th scope="col">Zip Code/Pin Code :</th>
-                        <td class="border-none">890987</td>
-                    </tr>
-                </table>
+            <div class="form-group">
+                <select class="form-control pr-5 cursor-pointer" id="exampleFormControlSelect1">
+                  <option selected disabled value="">Area of interest</option>
+                  <option value="2">Pending</option>
+                  <option value="1">Active</option>
+                  <option value="3">Rejected</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card stup p-3">
+                        <mat-checkbox class="example-margin">STARTUP001</mat-checkbox>
+                        <p class="mb-0" style="line-height: 1.7;">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card stup p-3">
+                        <mat-checkbox class="example-margin">STARTUP001</mat-checkbox>
+                        <p class="mb-0" style="line-height: 1.7;">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card stup p-3">
+                        <mat-checkbox class="example-margin">STARTUP001</mat-checkbox>
+                        <p class="mb-0" style="line-height: 1.7;">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card stup p-3">
+                        <mat-checkbox class="example-margin">STARTUP001</mat-checkbox>
+                        <p class="mb-0" style="line-height: 1.7;">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group mb-0">
+                <label>Engagement Tag</label>
+                <input type="text" class="form-control">
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          <button type="button" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Related Document -->
+  <!-- Modal Share Report -->
   <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Related Document</h3>
+          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Share Report</h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
             <div class="table-responsive">
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
-                    <tr>
-                      <th class="text-center">SI No.</th>
-                      <th>Document</th>
-                      <th class="text-center">Format</th>
-                      <th class="text-center">Download</th>
+                <div class="agency-list">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+                    <tr class="text-center">
+                      <th scope="col">Sl. No.</th>
+                      <th scope="col"> Promoted Startup </th>
+                      <th scope="col"> Start Date </th>
+                      <th scope="col"> End Date </th>
+                      <th scope="col">Feedback</th>
+                      <th scope="col">Meeting</th>
+                      <th scope="col">Meeting Date & Time</th>
+                      <th scope="col"> Action </th>
                     </tr>
-                    <tr class="">
-                      <td class="border-none text-center">1</td>
-                      <td class="border-none">Revenue Model</td>
-                      <td class="border-none text-center">exe</td>
-                      <td class="border-none text-center">
-                        <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                    <!-- <tr *ngIf="userList.length == 0">
+                      <td [attr.colspan]="5">No Data Found</td>
+                    </tr> -->
+                    <tr class="text-center">
+                      <td class="  ">1</td>
+                      <td class="  ">
+                         STARTUP001
                       </td>
-                    </tr>
-                   <tr class="">
-                    <td class="border-none text-center">2</td>
-                    <td class="border-none">Pricing Average account size and/or Lifetime value</td>
-                    <td class="border-none text-center">exe</td>
-                       <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
-                       </td>
-                   </tr>
-                   <tr class="">
-                    <td class="border-none text-center">3</td>
-                    <td class="border-none">Sales & Distribution Mode</td>
-                    <td class="border-none text-center">exe</td>
-                    <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
-                    </td>
-                   </tr>
-                   <tr class="">
-                    <td class="border-none text-center">4</td>
-                    <td class="border-none"> Customer/Pipeline list 
-                    </td>
-                    <td class="border-none text-center">exe</td>
-                       <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
-                       </td>
-                   </tr>
-                   <tr class="">
-                    <td class="border-none text-center">5</td>
-                    <td class="border-none"> Customer/Pipeline list 
-                    </td>
-                    <td class="border-none text-center">exe</td>
-                       <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
-                       </td>
-                   </tr>
-                    <tr class="">
-                      <td class="border-none text-center">6</td>
-                        <td class="border-none">Profit & Loss</td>
-                        <td class="border-none text-center">exe</td>
-                           <td class="border-none text-center">
-                             <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
-                           </td>
-                    </tr>
-                    <tr class="">
-                      <td class="border-none text-center">7</td>
-                        <td class="border-none">Balance sheet</td>
-                        <td class="border-none text-center">exe</td>
-                      <td class="border-none text-center">
-                        <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                      <td class="  ">
+                         21-11-2021
                       </td>
-                    </tr>
-                    <tr class="">
-                      <td class="border-none text-center">8</td>
-                        <td class="border-none">Cash flow
-                        </td>
-                        <td class="border-none text-center">exe</td>
-                      <td class="border-none text-center">
-                        <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                      <td class="  ">
+                        30-11-2021
                       </td>
-                    </tr>
-                    <tr class="">
-                      <td class="border-none text-center">9</td>
-                        <td class="border-none"> Cap table</td>
-                        <td class="border-none text-center">exe</td>
-                           <td class="border-none text-center">
-                             <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
-                           </td>
+                      <td class="  ">
+                          Add to Watch Later
+                      </td>
+                      <td class="  ">
+                          N/A
+                      </td>
+                      <td class="  ">
+                        N/A
+                      </td>
+                      <td class="  ">
+                        N/A
+                      </td>
                     </tr>
                     
-                </table>
-            </div>
+                  </table>
+  
+                </div>
+              </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal Presentation Video -->
-  <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!-- Modal Share -->
+  <div class="modal fade shre" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Presentation Video & Pitchdeck </h3>
+          <h3 class="modal-title mb-0" id="exampleModalCenterTitle">Share </h3>
           <button type="button" class="close" data-dismiss="modal" #close aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Start Date</mat-label>
+                            <input matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>End Date</mat-label>
+                            <input matInput [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-2 d-flex align-items-center">
+                    <h3 class="mb-0 mr-3">Stop on Feedback :</h3>
+                    <div class="form-group mb-0">
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="mr-3" value="1">Yes</mat-radio-button>
+                            <mat-radio-button value="2">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-2 d-flex align-items-center">
+                    <h3 class="mb-0 mr-3">Evaluate Later :</h3>
+                    <div class="form-group mb-0">
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="mr-3" value="3">Show All Time</mat-radio-button>
+                            <mat-radio-button value="4">Notify</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-2 d-flex align-items-center">
+                    <h3 class="mb-0 mr-3">Notify Frequency :</h3>
+                    <div class="form-group mb-0">
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button class="mr-3" value="5">When Open</mat-radio-button>
+                            <mat-radio-button value="6">After A Day</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-info" >Submit </button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
          
         </div>
       </div>

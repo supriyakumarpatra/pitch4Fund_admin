@@ -1431,11 +1431,11 @@ input.mat-input-element {
     padding: 0.6rem 0.75rem !important;
 }
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-  border-color: #6bd9c4 !important;
+  border-color: #8447c4 !important;
 }
 
 .mat-radio-button.mat-accent .mat-radio-inner-circle{
-  background-color: #6bd9c4 !important;
+  background-color: #8447c4 !important;
 }
 .cursor-default{
   cursor: default !important;
@@ -1533,6 +1533,15 @@ footer{
   color: #a136bc;
   font-weight: 500;
 }
-.cdk-overlay-pane {
+/* .cdk-overlay-pane {
   width: 300px !important;
+} */
+.stup .mat-checkbox-label{
+  color: #8447c4;
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #8447c4 !important;
+}
+.shre .mat-radio-label{
+  margin-bottom: 0 !important;
 }
