@@ -3,11 +3,6 @@
   <div mat-dialog-content>
     <p>Write yes if you want to delete it</p>
     <input  name="Input" id="userInput" [(ngModel)]="userInput" class="form-control"  type="text">
-    <!-- <input type="text" name="Input" id="userInput" [(ngModel)]="userInput"> -->
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Write yes if you want to delete it</mat-label>
-      <input matInput [(ngModel)]="userInput">
-    </mat-form-field> -->
   </div>
   <div mat-dialog-actions class="justify-content-center mt-2">
     <button type="button" class="btn btn-primary btn-sm mr-2" [mat-dialog-close]="userInput" cdkFocusInitial>Submit</button>
