@@ -14,7 +14,15 @@ export class DeleteDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
+  }
+
+  onSubmitClick(): void {
+    if(this.userInput.toLowerCase() ===  'yes'){
+      this.dialogRef.close(true);
+    }else{
+      this.dialogRef.close(false);
+    }
   }
 
 }

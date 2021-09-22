@@ -11,7 +11,7 @@ const httpOptions = {
 })
 export class RestserviceService {
 
-  // BASE_URL = 'https://beta.pitch4fund.com:6051/';
+  // BASE_URL = 'https://beta.pitch4fund.com/nodeapi/';
   BASE_URL = 'http://localhost:6051/';
   API_ROOT = this.BASE_URL + 'api/v1/';
   image_URL = this.BASE_URL + 'uploadFiles/images/';

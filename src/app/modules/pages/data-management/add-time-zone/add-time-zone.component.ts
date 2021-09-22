@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import {RestserviceService} from '../../../../restservice.service';
 import {Subscription} from 'rxjs';
 import { NotifierService } from 'angular-notifier';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/modules/shared';
 
 
 @Component({
@@ -31,7 +33,7 @@ export class AddTimeZoneComponent implements OnInit {
     offset = 0;
     count: number = 0;
     limit = 20;
-  constructor(private rest: RestserviceService, private notifier: NotifierService) { }
+  constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.getCard();
@@ -59,6 +61,22 @@ export class AddTimeZoneComponent implements OnInit {
             this.cardListDump = this.responseObj.response;
             this.countAllData();
         }
+    });
+  }
+
+  openDeleteDialog(id:number) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent,{
+        width: '300px',
+        disableClose: true
+      });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+        console.log(result)
+        if(result){
+            console.log('delete it');
+            this.IndustryDelete(id);
+        }
+      console.log(`Dialog result: ${result}`);
     });
   }
 

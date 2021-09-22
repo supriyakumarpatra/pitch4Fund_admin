@@ -10,7 +10,7 @@ import { RestserviceService } from 'src/app/restservice.service';
 export class PitchMeetingComponent implements OnInit {
   proposedTimeList: any;
   offset = 0;
-  limit = 5;
+  limit = 20;
   count: number = 0;
   constructor(private rest: RestserviceService, private notifier: NotifierService) { }
 

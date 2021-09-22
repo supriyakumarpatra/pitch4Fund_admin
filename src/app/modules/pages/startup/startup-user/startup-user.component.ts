@@ -14,10 +14,11 @@ export class StartupUserComponent implements OnInit {
     presentationUrl: string | ArrayBuffer | null = '';
 
     offset = 0;
+    limit = 20;
     userStatus = new FormControl('');
     filter = {
         offset: this.offset,
-        limit: 5,
+        limit: this.limit,
         status: this.userStatus.value
     };
 
@@ -29,10 +30,12 @@ export class StartupUserComponent implements OnInit {
     pitchdecvideo: string = '';
     startupId: number;
     count: number = 0;
+    docPath = '';
     constructor(
         private rest: RestserviceService,
         private notifier: NotifierService,
         private dom: DomSanitizer) {
+            this.docPath = this.rest.document_URL;
     }
 
     ngOnInit(): void {
@@ -62,7 +65,7 @@ export class StartupUserComponent implements OnInit {
     getStartupUser(): any {
         this.filter = {
             offset: this.offset,
-            limit: 5,
+            limit: this.limit,
             status: this.userStatus.value
         };
         this.rest.getAllStartup(this.filter).subscribe(
@@ -80,11 +83,11 @@ export class StartupUserComponent implements OnInit {
     }
 
     NextCardDetails(): any {
-        if((this.offset+5) > this.count || (this.offset+5) == this.count){
+        if((this.offset+this.limit) > this.count || (this.offset+this.limit) == this.count){
             return;
           }
-          this.offset +=  5;
-        if (this.userList.length === 5) {
+          this.offset +=  this.limit;
+        if (this.userList.length === this.limit) {
             // this.offset += 5;
             console.log(this.filter);
             this.getStartupUser();
@@ -92,7 +95,7 @@ export class StartupUserComponent implements OnInit {
     }
 
     PreviousCardDetails(): any {
-        this.offset -= 5;
+        this.offset -= this.limit;
         if (this.offset >= 0) {
             this.getStartupUser();
         } else {
@@ -150,6 +153,7 @@ export class StartupUserComponent implements OnInit {
         const params = {'userId': id};
         this.rest.allStartupDocument(params).subscribe(
             (res: any) => {
+                console.log(res.response);
                 this.relatedDocument = res.response[0];
                 docModal.click();
             }
@@ -157,8 +161,16 @@ export class StartupUserComponent implements OnInit {
     }
 
     onSelectDoc(doc: string): void {
+        if(!doc){
+            return;
+        }
         console.log(doc);
         const docUrl = this.rest.document_URL + doc;
+        // const link = document.createElement("a");
+        // link.href = docUrl;
+        // // link.href = URL.createObjectURL(docUrl);
+        // link.download = 'filename.png';
+        // link.click();
         // const WordUrl = "https://docs.google.com/gview?url=" + docUrl  +"&embedded=true"
         window.open(docUrl, '_blank');
     }
@@ -185,7 +197,7 @@ export class StartupUserComponent implements OnInit {
     uploadVideo(params: any) {
         this.rest.uploadFile(params).subscribe(
             (res: any) => {
-                console.log(res);
+                // console.log(res);
                 this.pitchdecvideo = res.fileName;
                 console.log(this.pitchdecvideo);
             }

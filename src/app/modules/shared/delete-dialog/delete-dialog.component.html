@@ -1,11 +1,11 @@
 <div class="text-center mb-4">
   <h2 mat-dialog-title style="color: #8447c4;">Do you want to delete it?</h2>
   <div mat-dialog-content>
-    <p>Write yes if you want to delete it</p>
+    <p>Write "yes" if you want to delete it</p>
     <input  name="Input" id="userInput" [(ngModel)]="userInput" class="form-control"  type="text">
   </div>
   <div mat-dialog-actions class="justify-content-center mt-2">
-    <button type="button" class="btn btn-primary btn-sm mr-2" [mat-dialog-close]="userInput" cdkFocusInitial>Submit</button>
+    <button type="button" class="btn btn-primary btn-sm mr-2" (click)="onSubmitClick()" [mat-dialog-close]="userInput" cdkFocusInitial>Submit</button>
     <button type="button" class="btn btn-secondary btn-sm" (click)="onNoClick()">Cancel</button>
   </div>
 </div>

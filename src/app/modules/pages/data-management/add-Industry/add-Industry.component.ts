@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {RestserviceService} from '../../../../restservice.service';
 import {Subscription} from 'rxjs';
 import { NotifierService } from 'angular-notifier';
+import { DeleteDialogComponent } from 'src/app/modules/shared/delete-dialog/delete-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-Industry',
@@ -27,7 +29,7 @@ export class AddIndustryComponent implements OnInit {
     limit =20;
     count: number = 0;
     next: boolean;
-  constructor(private rest: RestserviceService, private notifier: NotifierService) { }
+  constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.getCard();
@@ -150,6 +152,22 @@ export class AddIndustryComponent implements OnInit {
     }
   }
 
+  openDeleteDialog(id:number) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent,{
+        width: '300px',
+        disableClose: true
+      });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+        console.log(result)
+        if(result){
+            console.log('delete it');
+            this.IndustryDelete(id);
+        }
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 
 
   addIndustry(): any{
@@ -203,7 +221,7 @@ export class AddIndustryComponent implements OnInit {
         this.rest.deleteIndustryData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'Industry delete successfully');
+            	 this.notifier.notify('error' , 'Industry delete successfully');
                  this.getCard();
            
                 

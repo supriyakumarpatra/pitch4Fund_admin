@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import {RestserviceService} from '../../../../restservice.service';
 import {Subscription} from 'rxjs';
 import { NotifierService } from 'angular-notifier';
+import { DeleteDialogComponent } from 'src/app/modules/shared';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -30,7 +32,7 @@ export class InvestorTypeComponent implements OnInit {
     offset = 0;
     count: number = 0;
     limit = 20;
-  constructor(private rest: RestserviceService, private notifier: NotifierService) { }
+  constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.getCard();
@@ -173,6 +175,22 @@ export class InvestorTypeComponent implements OnInit {
         this.cardDescriptionError = 'InvestorType name requied';
     }
   }
+  openDeleteDialog(id:number) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent,{
+        width: '300px',
+        disableClose: true
+      });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+        console.log(result)
+        if(result){
+            console.log('delete it');
+            this.IndustryDelete(id);
+        }
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  
     editData(data): any {
       this.cardDescriptionError = '';  
       this.isUpdate = true;

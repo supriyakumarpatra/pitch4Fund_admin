@@ -119,9 +119,10 @@ export class InvestorUserComponent implements OnInit {
     this.rest.allCompanyDocument(params).subscribe(
       (res: any) =>{
         if(res.success === true){
-          console.log(typeof JSON.parse(res.response[0].adminappruval));
+          console.log(res.response)
+          console.log( JSON.parse(res.response[0].adminappruval));
           
-           this.adminAppruvalList.length = 0;
+          //  this.adminAppruvalList?.length = 0;
           //  let x = JSON.parse(res.response[0].adminappruval);
           //  let y = JSON.parse(res.response[0].companyCertificate)
           //  x.substring(1, x.length-1);

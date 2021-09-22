@@ -41,11 +41,13 @@ export class AddCountryComponent implements OnInit {
 
   openDeleteDialog(id:number) {
     const dialogRef = this.dialog.open(DeleteDialogComponent,{
-        width: '250px'
+        width: '300px',
+        disableClose: true
       });
 
-    dialogRef.afterClosed().subscribe((result: String) => {
-        if(result.toLowerCase() === 'yes'){
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+        console.log(result)
+        if(result){
             console.log('delete it');
             this.IndustryDelete(id);
         }

@@ -105,7 +105,7 @@
                     <a class="page-link" href="javascript:void(0)" (click)="NextCardDetails()" >Next</a>
                   </li>
                 </ul>
-                <p class="records">{{(offset+5)>count?count:(offset+5)}}/{{count}} Records</p>
+                <p class="records">{{(offset+limit)>count?count:(offset+limit)}}/{{count}} Records</p>
               </nav>
             </div>
           </div>
@@ -193,7 +193,7 @@
                     <tr>
                       <th class="text-center">SI No.</th>
                       <th>Document</th>
-                      <th class="text-center">Format</th>
+                      <!-- <th class="text-center">Format</th> -->
                       <th class="text-center">Download</th>
                     </tr>
                     <tr class="">
@@ -202,9 +202,9 @@
                       <!-- <td class="border-none text-center">
                         <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.revenueModelDoc)">{{relatedDocument?.revenueModelDoc}} </a>
                       </td> -->
-                      <td class="border-none text-center">exe</td>
+                      <!-- <td class="border-none text-center">exe</td> -->
                       <td class="border-none text-center">
-                        <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                        <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.revenueModelDoc" (click)="onSelectDoc(relatedDocument?.revenueModelDoc)"   class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded" download  ><i class="fa fa-download" aria-hidden="true"></i></a>
                       </td>
                     </tr>
                    <tr class="">
@@ -212,9 +212,9 @@
                     <td class="border-none">Pricing Average account size and/or Lifetime value</td>
                     <!-- <td class="border-none text-center">
                        <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.pricingAverageAccountDoc)">{{relatedDocument?.pricingAverageAccountDoc}} </a></td> -->
-                       <td class="border-none text-center">exe</td>
+                       <!-- <td class="border-none text-center">exe</td> -->
                        <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                         <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.pricingAverageAccountDoc" (click)="onSelectDoc(relatedDocument?.pricingAverageAccountDoc)"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                        </td>
                    </tr>
                    <tr class="">
@@ -222,31 +222,21 @@
                     <td class="border-none">Sales & Distribution Mode</td>
                     <!-- <td class="border-none text-center">
                        <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.destributionModelDoc)">{{relatedDocument?.destributionModelDoc}} </a></td> -->
-                       <td class="border-none text-center">exe</td>
+                       <!-- <td class="border-none text-center">exe</td> -->
                        <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                         <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.destributionModelDoc" (click)="onSelectDoc(relatedDocument?.destributionModelDoc)"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                        </td>
                    </tr>
-                   <tr class="">
-                    <td class="border-none text-center">4</td>
-                    <td class="border-none"> Customer/Pipeline list 
-                    </td>
-                    <!-- <td class="border-none text-center">
-                       <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.pipelineModelDoc)">{{relatedDocument?.pipelineModelDoc}} </a></td> -->
-                       <td class="border-none text-center">exe</td>
-                       <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
-                       </td>
-                   </tr>
+                   
                    <tr class="">
                     <td class="border-none text-center">5</td>
                     <td class="border-none"> Customer/Pipeline list 
                     </td>
                     <!-- <td class="border-none text-center">
                        <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.pipelineModelDoc)">{{relatedDocument?.pipelineModelDoc}} </a></td> -->
-                       <td class="border-none text-center">exe</td>
+                       <!-- <td class="border-none text-center">exe</td> -->
                        <td class="border-none text-center">
-                         <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                         <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.pipelineModelDoc" (click)="onSelectDoc(relatedDocument?.pipelineModelDoc)" class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                        </td>
                    </tr>
                     <tr class="">
@@ -254,9 +244,9 @@
                         <td class="border-none">Profit & Loss</td>
                         <!-- <td class="border-none text-center">
                            <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.profitLoss)">{{relatedDocument?.profitLoss}} </a></td> -->
-                           <td class="border-none text-center">exe</td>
+                           <!-- <td class="border-none text-center">exe</td> -->
                            <td class="border-none text-center">
-                             <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                             <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.profitLoss" (click)="onSelectDoc(relatedDocument?.profitLoss)" class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                            </td>
                     </tr>
                     <tr class="">
@@ -264,9 +254,9 @@
                         <td class="border-none">Balance sheet</td>
                         <!-- <td class="border-none text-center">
                            <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.balancesheet)">{{relatedDocument?.balancesheet}}</a></td> -->
-                           <td class="border-none text-center">exe</td>
+                           <!-- <td class="border-none text-center">exe</td> -->
                       <td class="border-none text-center">
-                        <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                        <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.balancesheet" (click)="onSelectDoc(relatedDocument?.balancesheet)" class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                       </td>
                     </tr>
                     <tr class="">
@@ -275,9 +265,9 @@
                         </td>
                         <!-- <td class="border-none text-center">
                            <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.cashflow)">{{relatedDocument?.cashflow}}</a></td> -->
-                           <td class="border-none text-center">exe</td>
+                           <!-- <td class="border-none text-center">exe</td> -->
                       <td class="border-none text-center">
-                        <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                        <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.pricingAverageAccountDoc" (click)="onSelectDoc(relatedDocument?.pricingAverageAccountDoc)" class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                       </td>
                     </tr>
                     <tr class="">
@@ -285,9 +275,9 @@
                         <td class="border-none"> Cap table</td>
                         <!-- <td class="border-none text-center">
                            <a href="" target="_blank" (click)="onSelectDoc(relatedDocument?.capTable)">{{relatedDocument?.capTable}}</a></td> -->
-                           <td class="border-none text-center">exe</td>
+                           <!-- <td class="border-none text-center">exe</td> -->
                            <td class="border-none text-center">
-                             <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                             <a href="javascript:;" [class.disableDocBtn]="!relatedDocument?.capTable" (click)="onSelectDoc(relatedDocument?.capTable)" class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                            </td>
                     </tr>
                     
