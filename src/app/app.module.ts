@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import {MatRadioModule} from '@angular/material/radio';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +21,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MappingShareComponent } from './modules/shared/mapping-share/mapping-share.component';
 // import {MaterialFileUploadComponent} from './material-file-upload/material-file-upload.component';
 
 /**
@@ -69,6 +72,7 @@ const customNotifierOptions: NotifierOptions = {
   declarations: [
     AppComponent,
     DeleteDialogComponent,
+    MappingShareComponent,
     // MaterialFileUploadComponent
   ],
   imports: [
@@ -94,6 +98,7 @@ const customNotifierOptions: NotifierOptions = {
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
