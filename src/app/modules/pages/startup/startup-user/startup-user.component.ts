@@ -132,7 +132,7 @@ export class StartupUserComponent implements OnInit {
                     this.isPresentationVideo = res.response[0].isPresentationVideo;
                     this.pitchdecvideo = res.response[0].pitchdecvideo;
                     this.startupId = startupId;
-                    if (this.pitchdecvideo != null) {
+                    if (this.pitchdecvideo) {
                         this.presentationUrl = this.rest.document_URL + res.response[0].pitchdecvideo;
                     }
 
