@@ -303,14 +303,14 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="video-container" *ngIf="isPresentationVideo== '0'">
+          <div class="video-container" *ngIf="isPresentationVideo== '0' && !pitchdecvideo">
             Startup Dont have 30s video
           </div>
-          <div class="video-container" *ngIf="presentationUrl != 'null'">
+          <div class="video-container" *ngIf="pitchdecvideo">
             <video [src]="presentationUrl"  width="100%" height="263" controls></video>
             <!-- <iframe  [src]="transform(presentationUrl)" frameborder="0" width="100%" height="263" class="embed-responsive-item"></iframe> -->
           </div>
-          <div class="video-container" *ngIf="presentationUrl == 'null'">
+          <div class="video-container" *ngIf="!pitchdecvideo">
             <h3>No Video Found</h3>
           </div>
           <div class="row mt-3">
