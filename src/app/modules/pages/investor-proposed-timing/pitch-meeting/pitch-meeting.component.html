@@ -37,7 +37,8 @@
                     <th scope="col">Sl. No.</th>
                     <th scope="col"> Investor </th>
                     <th scope="col"> Investor's Country </th>
-                    <th scope="col" style="min-width: 230px !important"> Proposed Date & Time </th>
+                    <th scope="col" > Proposed Date & Time </th>
+                    <th scope="col" > Time Diffrece(Minutes) </th>
                     <th scope="col">Startup</th>
                     <th scope="col"> Startup's Country </th>
                     <th scope="col">Status</th>
@@ -52,13 +53,9 @@
                     </td>
                     <td> {{item.investorCountry}} </td>
                     <td class="text-left">
-                        <div class="form-group form-check mb-2">
-                            
-                            {{item.meetingDate}}
-                            <!-- <label class="form-check-label" for="exampleCheck1">14-10-2021 14:00 IST</label> -->
-                            <!-- <span class="badge badge-warning ml-2" >Pending</span> -->
-                        </div>
+                      {{item.meetingDateTime}}
                     </td>
+                    <td class="text-left">{{showTimeDifferents(item)}}</td>
                     <td class="text-left">
                         Startup Name : {{item.startupName}} <br>
                         Product : {{item.ProductName}}  <br>

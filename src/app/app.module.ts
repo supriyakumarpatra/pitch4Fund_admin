@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MappingShareComponent } from './modules/shared/mapping-share/mapping-share.component';
+import { MatInputModule } from '@angular/material/input';
 // import {MaterialFileUploadComponent} from './material-file-upload/material-file-upload.component';
 
 /**
@@ -96,12 +97,31 @@ const customNotifierOptions: NotifierOptions = {
     TextFieldModule,
     MatIconModule,
     MatFormFieldModule,
-    MatDatepickerModule,
+    MatInputModule,
     MatNativeDateModule,
     MatRadioModule,
   ],
+  exports:[MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    MatIconModule,
+    MatDialogModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    MatTabsModule,
+    MatSelectModule,
+    TextFieldModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatRadioModule,],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MappingShareComponent]
 })
 export class AppModule { }
 
