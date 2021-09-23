@@ -189,17 +189,17 @@
                     <tr class="">
                         <th class="text-center" scope="col">Sl. No.</th>
                         <th class="" scope="col">Documents</th>
-                        <th class="text-center">Format</th>
+                        <!-- <th class="text-center">Format</th> -->
                         <th class="text-center" scope="col">Download</th>
                     </tr>
                     <tr class="" *ngFor="let item of adminAppruvalList; let i= index">
                         <td class="border-none text-center">{{i+1}}</td>
                         <td class="border-none text-center">
-                           <a href="" target="_blank"  (click)="onSelectDoc(item)"> {{item}} </a>
+                            {{item}} 
                         </td>
-                        <td class="text-center">exe</td>
+                        <!-- <td class="text-center">exe</td> -->
                         <td class="border-none text-center">
-                          <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                          <a href="javascript:;" (click)="onSelectDoc(item)"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     
@@ -210,17 +210,17 @@
                   <tr class="">
                       <th class="text-center" scope="col">Sl. No.</th>
                       <th class="" scope="col">Documents</th>
-                      <th class="text-center">Format</th>
+                      <!-- <th class="text-center">Format</th> -->
                       <th class="text-center" scope="col">Download</th>
                   </tr>
                   <tr class="" *ngFor="let item of companySertificateList; let sl= index">
                       <td class="border-none text-center">{{sl+1}}</td>
                       <td class="border-none text-center">
-                         <a href="" target="_blank"  (click)="onSelectDoc(item)"> {{item}} </a>
+                          {{item}}
                       </td>
-                      <td class="text-center">exe</td>
+                      <!-- <td class="text-center">exe</td> -->
                       <td class="border-none text-center">
-                        <a href="javascript:;"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
+                        <a href="javascript:;" (click)="onSelectDoc(item)"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                       </td>
                   </tr>
                   
