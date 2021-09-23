@@ -12,6 +12,7 @@ import {RestserviceService} from 'src/app/restservice.service';
 export class StartupUserComponent implements OnInit {
     // presentationUrl: string ='';
     presentationUrl: string | ArrayBuffer | null = '';
+    adminSelectedVideoUrl: string | ArrayBuffer | null = '';
 
     offset = 0;
     limit = 20;
@@ -25,7 +26,7 @@ export class StartupUserComponent implements OnInit {
     userList = [];
     relatedDocument: any;
     pitchDeck: string;
-    isPresentationVideo: number;
+    isPresentationVideo: number|String;
     upVideo: boolean = false;
     pitchdecvideo: string = '';
     startupId: number;
@@ -185,11 +186,12 @@ export class StartupUserComponent implements OnInit {
         const formData = new FormData();
         formData.append('file', file[0]);
         reader.onload = (e) => {
-            this.presentationUrl = (<FileReader> e.target).result;
-            this.uploadVideo(formData);
+            this.adminSelectedVideoUrl = (<FileReader> e.target).result;
+
+            // this.uploadVideo(formData);
             this.upVideo = true;
             // this.presentationUrl = reader.result; 
-            console.log(this.presentationUrl);
+            console.log(this.adminSelectedVideoUrl);
         };
 
     }
