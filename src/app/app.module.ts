@@ -21,7 +21,6 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MappingShareComponent } from './modules/shared/mapping-share/mapping-share.component';
 import { MatInputModule } from '@angular/material/input';
 // import {MaterialFileUploadComponent} from './material-file-upload/material-file-upload.component';
 
@@ -73,7 +72,7 @@ const customNotifierOptions: NotifierOptions = {
   declarations: [
     AppComponent,
     DeleteDialogComponent,
-    MappingShareComponent,
+    // MappingShareComponent,
     // MaterialFileUploadComponent
   ],
   imports: [
@@ -121,7 +120,7 @@ const customNotifierOptions: NotifierOptions = {
     MatRadioModule,],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [MappingShareComponent]
+  // entryComponents: [MappingShareComponent]
 })
 export class AppModule { }
 

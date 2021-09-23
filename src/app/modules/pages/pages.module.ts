@@ -50,6 +50,7 @@ import { PitchMeetingComponent } from './investor-proposed-timing/pitch-meeting/
 import { DueDiligenceMeetingComponent } from './investor-proposed-timing/due-diligence-meeting/due-diligence-meeting.component';
 import { MappingOfStartupToInvestorComponent } from './mapping/mapping-of-startup-to-investor/mapping-of-startup-to-investor.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MappingShareComponent} from './mapping-share/mapping-share.component'
 
 /**
  * Custom angular notifier options
@@ -96,7 +97,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 @NgModule({
-  declarations: [PagesComponent, DashboardComponent,AddIndustryComponent, AddInvestmentStageComponent, AddCountryComponent, AddLanguageComponent, AddStartupVerticalComponent, AddTimeZoneComponent, TreditionalIndestryComponent, InvestorTypeComponent, InvestorUserComponent, StartupUserComponent, EngagementComponent, AddAdminUserComponent, PitchMeetingComponent, DueDiligenceMeetingComponent, MappingOfStartupToInvestorComponent],
+  declarations: [PagesComponent, DashboardComponent,AddIndustryComponent, AddInvestmentStageComponent, AddCountryComponent, AddLanguageComponent, AddStartupVerticalComponent, AddTimeZoneComponent, TreditionalIndestryComponent, InvestorTypeComponent, InvestorUserComponent, StartupUserComponent, EngagementComponent, AddAdminUserComponent, PitchMeetingComponent, DueDiligenceMeetingComponent, MappingOfStartupToInvestorComponent, MappingShareComponent],
   imports: [
     CommonModule,
      FormsModule,
@@ -122,6 +123,7 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     MatCheckboxModule,
     MatDialogModule
-  ]
+  ],
+  entryComponents: [MappingShareComponent]
 })
 export class PagesModule { }

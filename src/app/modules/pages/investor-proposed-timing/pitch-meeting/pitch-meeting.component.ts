@@ -110,16 +110,49 @@ export class PitchMeetingComponent implements OnInit {
     return -(lie - date) / 60 / 1000;
   }
 
+  calculateTimeZoneOffset(timeZone: String){
+    // a='UTC + 05:30'
+    timeZone = timeZone.trim();  
+  timeZone= timeZone.substr(timeZone.indexOf('C')+1);
+  //O.P: ' + 05:30'
+  timeZone=timeZone.trim();
+  //O.P: '+ 05:30'
+  const data = timeZone.split(' ');
+  //O.P: ['+', '05:30']
+  // console.log(data);
+  const time = data[data.length-1].split(':');
+
+  // if(data.length === 2){
+  // }else{
+  //   const time = data[0].split(':');
+  // }
+  if(data.length >1){
+    if(data[0] == '+'){
+      return -(((Number(time[0])*60)+Number(time[1])))
+    }else{
+      return (((Number(time[0])*60)+Number(time[1])))
+    }
+  }else{
+    return (((Number(time[0])*60)+Number(time[1])))
+  }
+  
+  // if(data[0]=='+'){
+  //   return -(((Number(time[0])*60)+Number(time[1])))
+  // }else{
+  //   return (((Number(time[0])*60)+Number(time[1])))
+  // }
+
+  }
+
   showTimeDifferents(item: any){
-    const investorPitchDate = new Date(item.meetingDate);
     const investorTimeZone  = item.investorTimeZone;
     const startupTimeZone   = item.startupTimeZone;
     // console.log(startupTimeZone);
     
-    const investorUTCTime   = this.getTimeZoneOffset(investorPitchDate,investorTimeZone);
-    const startupUTCTime    =  this.getTimeZoneOffset(investorPitchDate,startupTimeZone);
-    // console.log(investorUTCTime,startupUTCTime)
-    return startupUTCTime;
+    const investorUTCTime   = this.calculateTimeZoneOffset(investorTimeZone);
+    const startupUTCTime    =  this.calculateTimeZoneOffset(startupTimeZone);
+    // console.log(startupUTCTime)
+    // return startupUTCTime;
     return (investorUTCTime-startupUTCTime);
   }
 

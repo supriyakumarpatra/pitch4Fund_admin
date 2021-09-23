@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import { MappingShareComponent } from 'src/app/modules/shared/mapping-share/mapping-share.component';
+import { MappingShareComponent } from '../../mapping-share/mapping-share.component';
 
 @Component({
   selector: 'app-mapping-of-startup-to-investor',
@@ -12,7 +12,9 @@ export class MappingOfStartupToInvestorComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
-    this.dialog.open(MappingShareComponent);
+    this.dialog.open(MappingShareComponent,{
+      width:'500px'
+    });
   }
 
   ngOnInit(): void {
