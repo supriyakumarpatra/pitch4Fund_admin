@@ -157,11 +157,11 @@
                     <td [attr.colspan]="4">No Data Found</td>
                   </tr>
                   <tr class="text-center" *ngFor="let item of adminList; let i = index">
-                    <td>{{i+1}}</td>
+                    <td>{{i+1+offset}}</td>
                     <td>{{item.userName}}</td>
                     <td>{{item.email}}</td>
                     <td>
-                      <a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="Delete" (click)="onDelete(item.id)">
+                      <a href="javascript:;" class="edit border border-danger d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="Delete" (click)="openDeleteDialog(item.id)">
                         <i class="fa fa-trash red-text" aria-hidden="true"></i>
                       </a>
                         <a href="javascript:void(0);" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded"   matTooltip="Edit" (click)="onEdit(item)">
@@ -177,7 +177,7 @@
               <nav aria-label="..." class="d-flex justify-content-space-between">
                 <ul class="pagination">
                   <li class="page-item ">
-                    <a class="page-link" href="javascript:void(0)">Previous</a>
+                    <a class="page-link" href="javascript:void(0)" (click)="onPrevious()">Previous</a>
                   </li>
                   <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li> -->
                   <li class="page-item ">
@@ -185,10 +185,10 @@
                   </li>
                   <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
                   <li class="page-item">
-                    <a class="page-link" href="javascript:void(0)" >Next</a>
+                    <a class="page-link" href="javascript:void(0)" (click)="onNext()">Next</a>
                   </li>
                 </ul>
-                <p class="records">50/120 Records</p>
+                <p class="records">{{(offset+limit)>count?count:(offset+limit)}}/{{count}} Records</p>
               </nav>
             </div>
           </div>

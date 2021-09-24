@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { NotifierService } from 'angular-notifier';
+import { DeleteDialogComponent } from 'src/app/modules/shared';
 import { RestserviceService } from 'src/app/restservice.service';
 
 @Component({
@@ -21,7 +23,7 @@ export class AddAdminUserComponent implements OnInit {
     offset:this.offset
   };
   count: number = 0;
-  constructor( private fb: FormBuilder, private rest: RestserviceService, private notifier: NotifierService) { 
+  constructor( private fb: FormBuilder, private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { 
     this.rest.authGuard();
     this.adminForm = this.fb.group({
       'userName':['',Validators.required],
@@ -83,6 +85,8 @@ export class AddAdminUserComponent implements OnInit {
   }
 
   onAdminList(){
+    this.filter.limit = this.limit;
+    this.filter.offset = this.offset;
     this.rest.getAllAdmin(this.filter).subscribe(
       (res:any)=>{
         if(res.success){
@@ -92,6 +96,22 @@ export class AddAdminUserComponent implements OnInit {
         }
       }
     )
+  }
+
+  openDeleteDialog(id:number) {
+    const dialogRef = this.dialog.open(DeleteDialogComponent,{
+        width: '300px',
+        disableClose: true
+      });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+        console.log(result)
+        if(result){
+            console.log('delete it');
+            this.onDelete(id);
+        }
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   countAllData(): void{
@@ -104,6 +124,23 @@ export class AddAdminUserComponent implements OnInit {
             }
         }
     );
+  }
+
+  onNext(){
+    if((this.offset+this.limit) > this.count || (this.offset+this.limit) == this.count){
+      return;
+    } 
+    this.offset +=  this.limit;  
+    this.onAdminList();
+  }
+
+  onPrevious(){
+    if (this.offset != 0){
+      this.offset -= this.limit;
+      this.onAdminList();
+    }
+
+      
   }
 
   onReset(adminDetails:NgForm){
