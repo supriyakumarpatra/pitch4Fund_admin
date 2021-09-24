@@ -168,7 +168,7 @@ export class AddAdminUserComponent implements OnInit {
       (res:any)=>{
         console.log(res);
         if(res.success){
-          this.notifier.notify('success',res.message);
+          this.notifier.notify('error',res.message);
           this.onAdminList();
         }else{
           this.notifier.notify('error',res.message);
