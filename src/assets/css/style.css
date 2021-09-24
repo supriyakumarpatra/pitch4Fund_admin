@@ -1228,7 +1228,7 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
   min-width: 175px !important;
 }
 .table th:first-child{
-  min-width: 100px !important;
+  min-width: 70px !important;
 }
 .table td{
   padding:14px 7px !important;
