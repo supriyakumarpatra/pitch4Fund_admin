@@ -22,6 +22,7 @@ import { DeleteDialogComponent } from 'src/app/modules/shared';
 export class AddTimeZoneComponent implements OnInit {
     timezoneOffsetError = '';
     timezoneOffset = '';
+    timezoneOffsetValue = '';
     cardDescription = '';
     cardDescriptionError = '';
     responseObj: any;
@@ -33,6 +34,7 @@ export class AddTimeZoneComponent implements OnInit {
     offset = 0;
     count: number = 0;
     limit = 20;
+    timezoneOffsetValueError: string;
   constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class AddTimeZoneComponent implements OnInit {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
     limit: this.limit,
     //type : "all"
         };
@@ -174,12 +176,14 @@ export class AddTimeZoneComponent implements OnInit {
 
 
   addIndustry(): any{
-    if (this.cardDescription !== '' && this.timezoneOffset !== '') {
+    if (this.cardDescription !== '' && this.timezoneOffset !== '' && this.timezoneOffsetValue !== '') {
         this.cardDescriptionError = '';
         this.timezoneOffsetError = '';
+        this.timezoneOffsetValueError = '';
         const cardParam = {
             name : this.cardDescription,
             offset: this.timezoneOffset,
+            offsetValue: this.timezoneOffsetValue,
             userId : 1
         };
         this.rest.addTimeZone(cardParam).subscribe((res) => {
@@ -187,12 +191,17 @@ export class AddTimeZoneComponent implements OnInit {
            if (this.responseObj.success === true){
                this.notifier.notify('success' , 'TimeZone add successfully');
                this.cardDescription = '';
+               this.timezoneOffset = '';
+               this.timezoneOffsetValue = '';
                this.getCard();
            }
         });
     }else{
         if(this.timezoneOffset == ''){
             this.timezoneOffsetError = 'offset name requied';
+        }
+        if(this.timezoneOffsetValue == ''){
+            this.timezoneOffsetValueError = 'offset value requied';
         }
         if(this.cardDescription == ''){
             this.cardDescriptionError = 'TimeZone name requied';
@@ -206,12 +215,14 @@ export class AddTimeZoneComponent implements OnInit {
       this.updateCardId = data.id;
       this.cardDescription = data.name;
       this.timezoneOffset = data.offset;
+      this.timezoneOffsetValue = data.offsetValue;
     }
     updateIndustry(): any {
         const paramData = {
             id : this.updateCardId,
             name : this.cardDescription,
             offset: this.timezoneOffset,
+            offsetValue: this.timezoneOffsetValue,
             userId : 1
         };
         this.rest.updateTimeZoneData(paramData).subscribe((res) => {
@@ -220,6 +231,7 @@ export class AddTimeZoneComponent implements OnInit {
                 this.notifier.notify('success' , 'TimeZone update successfully');
                 this.cardDescription = '';
                 this.timezoneOffset = '';
+                this.timezoneOffsetValue = '';
                 this.isUpdate = false;
                 this.getCard();
             }
