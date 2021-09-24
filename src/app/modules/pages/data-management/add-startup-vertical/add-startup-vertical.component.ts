@@ -42,7 +42,7 @@ export class AddStartupVerticalComponent implements OnInit {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
     limit: this.limit
     //type : "all"
         };
@@ -224,7 +224,7 @@ export class AddStartupVerticalComponent implements OnInit {
         this.rest.deleteStartupVerticalData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'StartupVertical delete successfully');
+            	 this.notifier.notify('error' , 'StartupVertical delete successfully');
                  this.getCard();
            
                 

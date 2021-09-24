@@ -41,7 +41,7 @@ export class AddInvestmentStageComponent implements OnInit {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
      limit: this.limit,
     //type : "all"
         };
@@ -219,7 +219,7 @@ export class AddInvestmentStageComponent implements OnInit {
         this.rest.deleteInvestmentStageData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'InvestmentStage delete successfully');
+            	 this.notifier.notify('error' , 'InvestmentStage delete successfully');
                  this.getCard();
            
                 

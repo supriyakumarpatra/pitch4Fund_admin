@@ -33,7 +33,7 @@ export class EngagementComponent implements OnInit {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
     limit: this.limit,
     //type : "all"
         };
@@ -213,7 +213,7 @@ export class EngagementComponent implements OnInit {
         this.rest.deleteEngagmentData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'Engagment delete successfully');
+            	 this.notifier.notify('error' , 'Engagment delete successfully');
                  this.getCard();
             }
         });

@@ -42,7 +42,7 @@ export class InvestorTypeComponent implements OnInit {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
     limit: this.limit
     //type : "all"
         };

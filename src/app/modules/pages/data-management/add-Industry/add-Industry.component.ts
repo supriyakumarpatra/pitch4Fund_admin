@@ -33,14 +33,14 @@ export class AddIndustryComponent implements OnInit {
 
   ngOnInit(): void {
       this.getCard();
-      this.countAllData();
+    //   this.countAllData();
   }
 
   getCard(): any {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
      limit: this.limit,
     //type : "all"
         };
@@ -56,6 +56,7 @@ export class AddIndustryComponent implements OnInit {
             }
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
+            this.countAllData();
         }
     });
   }

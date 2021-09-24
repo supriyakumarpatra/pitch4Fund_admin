@@ -43,7 +43,7 @@ export class AddLanguageComponent implements OnInit {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
      limit: this.limit,
     //type : "all"
         };
@@ -223,7 +223,7 @@ export class AddLanguageComponent implements OnInit {
         this.rest.deleteLanguageData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'Language delete successfully');
+            	 this.notifier.notify('error' , 'Language delete successfully');
                  this.getCard();
            
                 

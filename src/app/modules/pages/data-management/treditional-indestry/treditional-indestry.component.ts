@@ -62,7 +62,7 @@ export class TreditionalIndestryComponent implements OnInit {
   	const cardParam = {
             
     userId: 1,
-    offset: 0,
+    offset: this.offset,
      limit: this.limit,
     //type : "all"
         };
@@ -226,7 +226,7 @@ export class TreditionalIndestryComponent implements OnInit {
         this.rest.deleteTreditionalIndustryData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'TreditionalIndustry delete successfully');
+            	 this.notifier.notify('error' , 'TreditionalIndustry delete successfully');
                  this.getCard();
            
                 

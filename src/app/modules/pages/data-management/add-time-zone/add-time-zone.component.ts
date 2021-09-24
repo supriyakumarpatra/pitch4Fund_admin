@@ -247,7 +247,7 @@ export class AddTimeZoneComponent implements OnInit {
         this.rest.deleteTimeZoneData(disableParam).subscribe((res) => {
             this.responseObj = res;
             if (this.responseObj.success === true) {
-            	 this.notifier.notify('success' , 'TimeZone delete successfully');
+            	 this.notifier.notify('error' , 'TimeZone delete successfully');
                  this.getCard();
            
                 
