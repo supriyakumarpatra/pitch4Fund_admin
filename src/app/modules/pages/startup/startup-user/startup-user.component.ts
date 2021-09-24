@@ -29,6 +29,7 @@ export class StartupUserComponent implements OnInit {
     isPresentationVideo: number|String;
     upVideo: boolean = false;
     pitchdecvideo: string = '';
+    newVideo: string = '';
     startupId: number;
     count: number = 0;
     docPath = '';
@@ -188,8 +189,8 @@ export class StartupUserComponent implements OnInit {
         reader.onload = (e) => {
             this.adminSelectedVideoUrl = (<FileReader> e.target).result;
 
-            // this.uploadVideo(formData);
-            this.upVideo = true;
+            this.uploadVideo(formData);
+            
             // this.presentationUrl = reader.result; 
             console.log(this.adminSelectedVideoUrl);
         };
@@ -200,28 +201,44 @@ export class StartupUserComponent implements OnInit {
         this.rest.uploadFile(params).subscribe(
             (res: any) => {
                 // console.log(res);
-                this.pitchdecvideo = res.fileName;
+                this.newVideo = res.fileName;
+                this.upVideo = true;
                 console.log(this.pitchdecvideo);
             }
         );
     }
 
-    onSubmitVideo() {
+    onSubmitVideo(close,uploadVideoForm) {
         const params = {
             'userId': this.startupId,
             'videourl': this.pitchdecvideo,
             'docurl': this.pitchDeck,
             'isVideo': '1'
         };
+        if(this.newVideo){
+            params.videourl = this.newVideo;
+        }
         console.log(params);
         this.rest.uploadVideo(params).subscribe(
             (res: any) => {
                 this.notifier.notify('success', 'Video uploaded successfully');
                 this.upVideo = false;
+                this.newVideo = '';
+                this.adminSelectedVideoUrl = '';
+                close.click();
+                uploadVideoForm.reset();
 
             }
         );
 
 
+    }
+
+    onClose(close,uploadVideoForm){
+        this.upVideo = false;
+        this.newVideo = '';
+        this.adminSelectedVideoUrl = '';
+        close.click();
+        uploadVideoForm.reset();
     }
 }

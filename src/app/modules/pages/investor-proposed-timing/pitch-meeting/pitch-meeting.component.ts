@@ -147,13 +147,13 @@ export class PitchMeetingComponent implements OnInit {
   showTimeDifferents(item: any){
     const investorTimeZone  = item.investorTimeZone;
     const startupTimeZone   = item.startupTimeZone;
-    // console.log(startupTimeZone);
+    console.log(startupTimeZone,investorTimeZone);
     
-    const investorUTCTime   = this.calculateTimeZoneOffset(investorTimeZone);
-    const startupUTCTime    =  this.calculateTimeZoneOffset(startupTimeZone);
-    // console.log(startupUTCTime)
-    // return startupUTCTime;
-    return (investorUTCTime-startupUTCTime);
+    // const investorUTCTime   = this.calculateTimeZoneOffset(investorTimeZone);
+    // const startupUTCTime    =  this.calculateTimeZoneOffset(startupTimeZone);
+    // // console.log(startupUTCTime)
+    // // return startupUTCTime;
+    return (Number(investorTimeZone)-Number(startupTimeZone));
   }
 
 }
