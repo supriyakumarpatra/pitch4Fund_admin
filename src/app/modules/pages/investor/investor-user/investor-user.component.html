@@ -187,13 +187,13 @@
               <h2 class=" mb-0" id="exampleModalCenterTitle1">Admin Approval  Document</h2>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
                     <tr class="">
-                        <th class="" scope="col">Sl. No.</th>
+                        <th class=" text-center" scope="col">Sl. No.</th>
                         <th class="" scope="col">Documents</th>
                         <!-- <th class="text-center">Format</th> -->
                         <th class="text-center" scope="col">Download</th>
                     </tr>
                     <tr class="" *ngFor="let item of adminAppruvalList; let i= index">
-                        <td class="border-none">{{i+1}}</td>
+                        <td class="border-none text-center">{{i+1}}</td>
                         <td class="border-none">
                             {{item}} 
                         </td>
@@ -202,24 +202,24 @@
                           <a href="javascript:;" (click)="onSelectDoc(item)"  class="edit border border-success d-inline p-1 pl-2 pr-2 text-success rounded"  matTooltip="Download"><i class="fa fa-download" aria-hidden="true"></i></a>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <th colspan="3" class="border-none">
                         <h3 class="theme-color-2 mb-0">Investor doesn’t upload any admin approval document</h3>
                       </th>
-                    </tr>
+                    </tr> -->
                     
                     
                 </table>
                 <h2 class="mb-0 mt-4" id="exampleModalCenterTitle1">Company Certificate Document</h2>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
                   <tr class="">
-                      <th class="" scope="col">Sl. No.</th>
+                      <th class=" text-center" scope="col">Sl. No.</th>
                       <th class="" scope="col">Documents</th>
                       <!-- <th class="text-center">Format</th> -->
                       <th class="text-center" scope="col">Download</th>
                   </tr>
                   <tr class="" *ngFor="let item of companySertificateList; let sl= index">
-                      <td class="border-none">{{sl+1}}</td>
+                      <td class="border-none text-center">{{sl+1}}</td>
                       <td class="border-none">
                           {{item}}
                       </td>
@@ -229,11 +229,11 @@
                       </td>
                   </tr>
 
-                  <tr>
+                  <!-- <tr>
                     <th colspan="3" class="border-none">
                       <h3 class="theme-color-2 mb-0">Investor doesn’t upload any company certificate document</h3>
                     </th>
-                  </tr>
+                  </tr> -->
                   
                   
               </table>
