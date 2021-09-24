@@ -12,10 +12,11 @@ export class InvestorUserComponent implements OnInit {
 
   count: number = 0;
   offset = 0;
+  limit = 20;
   userStatus = new FormControl('');
   filter = {
     offset: this.offset,
-    limit: 5,
+    limit: this.limit,
     status : this.userStatus.value
   };
   
@@ -72,11 +73,11 @@ export class InvestorUserComponent implements OnInit {
   }
 
   NextCardDetails(): any {
-    if((this.offset+5) > this.count || (this.offset+5) == this.count){
+    if((this.offset+this.limit) > this.count || (this.offset+this.limit) == this.count){
       return;
     }
-    this.offset +=  5;
-    if(this.userList.length === 5){
+    this.offset +=  this.limit;
+    if(this.userList.length === this.limit){
       // this.offset += 5;
       console.log(this.filter);
       this.filter.offset = this.offset;
@@ -85,7 +86,7 @@ export class InvestorUserComponent implements OnInit {
   }
 
   PreviousCardDetails(): any {
-    this.offset -= 5;
+    this.offset -= this.limit;
     if(this.offset >= 0){
       this.filter.offset = this.offset;
       this.getInvestorUser();

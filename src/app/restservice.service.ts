@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { window } from 'rxjs-compat/operator/window';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -297,7 +298,7 @@ countEngagmentData(data): any {
   adminLogout(){
     localStorage.removeItem('adminUser');
     this.router.navigateByUrl('/');
-    
+    location.reload();
   }
   authGuard(){
     const admindata = JSON.parse(localStorage.getItem('adminUser'));
