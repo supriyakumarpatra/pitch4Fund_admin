@@ -958,7 +958,12 @@ h1, h2, h3, h4, h5, h6,  p, .card-header, table, td, th, body, .mat-tab-body-con
 }
 .bg-theme {
   background: #6816cc !important;
-
+} 
+.theme-color {
+  color:#8447c4;
+}
+.theme-color-2 {
+  color:#a136bc;
 }
 .theme-btn-red:focus{
   outline: none !important;
