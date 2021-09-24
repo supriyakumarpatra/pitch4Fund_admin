@@ -13,6 +13,14 @@ export class AddAdminUserComponent implements OnInit {
   edit=false;
   adminList: any;
   onShow = true;
+  limit = 20;
+  offset = 0;
+  filter = {
+    userId:1,
+    limit:this.limit,
+    offset:this.offset
+  };
+  count: number = 0;
   constructor( private fb: FormBuilder, private rest: RestserviceService, private notifier: NotifierService) { 
     this.rest.authGuard();
     this.adminForm = this.fb.group({
@@ -75,17 +83,27 @@ export class AddAdminUserComponent implements OnInit {
   }
 
   onAdminList(){
-    const params = {
-      limit:50,offset:0
-    }
-    this.rest.getAllAdmin(params).subscribe(
+    this.rest.getAllAdmin(this.filter).subscribe(
       (res:any)=>{
         if(res.success){
           console.log(res);
           this.adminList = res.response;
+          this.countAllData();
         }
       }
     )
+  }
+
+  countAllData(): void{
+    const cardParam = {userId: 1};
+    this.rest.countAllAdminData(cardParam).subscribe(
+        (res:any)=>{
+            if(res.success){
+                this.count = res.response?.totalData;
+                console.log(this.count)
+            }
+        }
+    );
   }
 
   onReset(adminDetails:NgForm){

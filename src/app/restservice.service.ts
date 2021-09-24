@@ -279,6 +279,9 @@ countEngagmentData(data): any {
   getAllAdmin(data: any): Observable<any> {
     return this.http.post(this.API_ROOT + 'addmin/getAlldata', data, httpOptions);
   }
+  countAllAdminData(data: any): Observable<any>{
+    return this.http.post(this.API_ROOT + 'addmin/countAllData', data, httpOptions);
+  }
 
   deleteAdmin(data: any): Observable<any> {
     return this.http.post(this.API_ROOT + 'addmin/deletedata', data, httpOptions);
