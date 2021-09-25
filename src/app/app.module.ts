@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import { DeleteDialogComponent } from './modules/shared/delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,6 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {NetworkInterceptor} from './network.interceptor';
 // import {MaterialFileUploadComponent} from './material-file-upload/material-file-upload.component';
 
 /**
@@ -99,6 +101,7 @@ const customNotifierOptions: NotifierOptions = {
     MatInputModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatProgressSpinnerModule
   ],
   exports:[MatDatepickerModule,
     MatNativeDateModule,
@@ -117,8 +120,14 @@ const customNotifierOptions: NotifierOptions = {
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    MatRadioModule,],
-  providers: [],
+    MatRadioModule,
+    MatProgressSpinnerModule
+  ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: NetworkInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   // entryComponents: [MappingShareComponent]
 })

@@ -1,2 +1,7 @@
 
 <router-outlet></router-outlet>
+<!-- <mat-spinner></mat-spinner> -->
+<mat-progress-spinner 
+mode="indeterminate"
+*ngIf="laoding$ | async"
+></mat-progress-spinner>
