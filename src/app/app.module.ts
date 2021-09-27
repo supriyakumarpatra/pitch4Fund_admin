@@ -24,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {NetworkInterceptor} from './network.interceptor';
+import {SharedModule} from './modules/shared/shared.module'
 // import {MaterialFileUploadComponent} from './material-file-upload/material-file-upload.component';
 
 /**
@@ -81,6 +82,7 @@ const customNotifierOptions: NotifierOptions = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SharedModule,
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
@@ -101,7 +103,8 @@ const customNotifierOptions: NotifierOptions = {
     MatInputModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    
   ],
   exports:[MatDatepickerModule,
     MatNativeDateModule,
@@ -121,7 +124,8 @@ const customNotifierOptions: NotifierOptions = {
     MatInputModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SharedModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
