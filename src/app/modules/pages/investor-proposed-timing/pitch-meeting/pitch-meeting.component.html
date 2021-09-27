@@ -79,8 +79,14 @@
                         </span>
                     </td>
                     <td>
-                      <button type="button"  class="btn btn-outline-success btn-sm" (click)="onChangeStatus('1',item.id)">Approve</button>
-                      <button type="button" class="btn btn-outline-danger btn-sm ml-2" (click)="onChangeStatus('2',item.id)">Reject</button>
+                      <button type="button"  
+                      class="btn btn-outline-success btn-sm" 
+                      *ngIf="item.isAdminApprove != '1'"
+                      (click)="onChangeStatus('1',item.id)">Approve</button>
+                      <button type="button" 
+                      *ngIf="item.isAdminApprove != '2'"
+                      class="btn btn-outline-danger btn-sm ml-2" 
+                      (click)="onChangeStatus('2',item.id)">Reject</button>
                     </td>
                   </tr>
                 </table>
