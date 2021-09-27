@@ -1,9 +1,28 @@
 
 <router-outlet></router-outlet>
 <!-- <mat-spinner></mat-spinner> -->
-<mat-progress-spinner 
+<!-- <mat-progress-spinner 
 mode="indeterminate"
 *ngIf="laoding$ | async"
-></mat-progress-spinner>
+></mat-progress-spinner> -->
 
+<div class="loader" style="
+        position: fixed;
+        z-index: 999;
+        height: auto;
+        width: auto;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(255,255,255,0.8);
+        text-align: center;" *ngIf="laoding$ | async">
 
+<span><mat-progress-spinner 
+    mode="indeterminate"
+    
+    ></mat-progress-spinner></span>
+        
+</div>
