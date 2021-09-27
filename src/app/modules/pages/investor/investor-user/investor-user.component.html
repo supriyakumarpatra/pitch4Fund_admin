@@ -75,8 +75,15 @@
                         <!-- <a (click)="onChangeStatus(1,item.id)" class="edit border border-warning d-inline p-1 pl-2 pr-2 text-warning rounded"   matTooltip="Approve">
                         <i class="fa fa-check" aria-hidden="true"></i>
                       </a> -->
-                      <button type="button" class="btn btn-outline-danger btn-sm" (click)="onChangeStatus(3,item.id)">Reject</button>
-                      <button type="button" (click)="onChangeStatus(1,item.id)" class="btn btn-outline-success btn-sm ml-3">Accept</button>
+                      <button type="button" 
+                      class="btn btn-outline-danger btn-sm" 
+                      *ngIf="item.status != '3'"
+                      (click)="onChangeStatus(3,item.id)">Reject</button>
+                      <button 
+                      type="button" 
+                      (click)="onChangeStatus(1,item.id)" 
+                      *ngIf="item.status != '1'"
+                      class="btn btn-outline-success btn-sm ml-3">Accept</button>
                     </td>
                   </tr>
                 </table>
