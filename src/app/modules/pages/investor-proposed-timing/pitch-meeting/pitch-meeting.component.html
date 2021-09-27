@@ -80,12 +80,12 @@
                     </td>
                     <td>
                       <button type="button"  
-                      class="btn btn-outline-success btn-sm" 
+                      class="btn btn-outline-success btn-sm ml-1 mr-1" 
                       *ngIf="item.isAdminApprove != '1'"
                       (click)="onChangeStatus('1',item.id)">Approve</button>
                       <button type="button" 
                       *ngIf="item.isAdminApprove != '2'"
-                      class="btn btn-outline-danger btn-sm ml-2" 
+                      class="btn btn-outline-danger btn-sm ml-1 mr-1" 
                       (click)="onChangeStatus('2',item.id)">Reject</button>
                     </td>
                   </tr>

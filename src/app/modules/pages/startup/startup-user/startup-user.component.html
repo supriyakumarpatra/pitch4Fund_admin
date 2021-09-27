@@ -83,7 +83,7 @@
                         <i class="fa fa-check" aria-hidden="true"></i></a> -->
 
                         <button type="button" 
-                        class="btn btn-outline-danger btn-sm" 
+                        class="btn btn-outline-danger btn-sm ml-1 mr-1" 
                         *ngIf="item.status !='3'" 
                         (click)="onChangeStatus(3,item.id)">
                           Reject
@@ -92,7 +92,7 @@
                         type="button" 
                         *ngIf="item.status !='1'" 
                         (click)="onChangeStatus(1,item.id)" 
-                        class="btn btn-outline-success btn-sm ml-3">Accept</button>
+                        class="btn btn-outline-success btn-sm ml-1 mr-1">Accept</button>
                     </td>
                   </tr>
                 </table>
