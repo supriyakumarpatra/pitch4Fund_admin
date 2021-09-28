@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import {DomSanitizer} from '@angular/platform-browser';
 import {NotifierService} from 'angular-notifier';
+import { UploadVideoDialogComponent } from 'src/app/modules/shared';
 import {RestserviceService} from 'src/app/restservice.service';
+import {Presentation} from 'src/app/models'
 
 @Component({
     selector: 'app-startup-user',
@@ -26,17 +29,19 @@ export class StartupUserComponent implements OnInit {
     userList = [];
     relatedDocument: any;
     pitchDeck: string;
-    isPresentationVideo: number|String;
+    isPresentationVideo: number;
     upVideo: boolean = false;
     pitchdecvideo: string = '';
     newVideo: string = '';
     startupId: number;
     count: number = 0;
     docPath = '';
+    presentationData: Presentation = {} as Presentation;
     constructor(
         private rest: RestserviceService,
         private notifier: NotifierService,
-        private dom: DomSanitizer) {
+        private dom: DomSanitizer,
+        private dialog: MatDialog) {
             this.docPath = this.rest.document_URL;
     }
 
@@ -122,13 +127,20 @@ export class StartupUserComponent implements OnInit {
         );
     }
 
-    onPresentationVideo(modal: any, startupId: number): void {
+    openPresentationDialog(){
+        const dialogRef = this.dialog.open(UploadVideoDialogComponent,{
+            width:'400px',
+            data:this.presentationData
+        });
+    }
+
+    onPresentationVideo( startupId: number): void {
         console.log(+startupId);
         const params = {'startupId': +startupId};
         this.rest.getStartupPresentationVideo(params).subscribe(
             (res: any) => {
                 if (res.success === true) {
-                    console.log(res.response);
+                    console.log(res.response)
                     this.pitchDeck = res.response[0].pitchdecdoc;
                     this.isPresentationVideo = res.response[0].isPresentationVideo;
                     this.pitchdecvideo = res.response[0].pitchdecvideo;
@@ -136,11 +148,12 @@ export class StartupUserComponent implements OnInit {
                     if (this.pitchdecvideo) {
                         this.presentationUrl = this.rest.document_URL + res.response[0].pitchdecvideo;
                     }
-
-                    // this.dom.bypassSecurityTrustResourceUrl(url);
-                    // this.presentationUrl = url;
+                    this.presentationData.docUrl = res.response[0].pitchdecdoc;
+                    this.presentationData.video = res.response[0].pitchdecvideo;
+                    this.presentationData.isPresentationVideo = res.response[0].isPresentationVideo;
+                    this.presentationData.startupId = startupId;
                     console.log(this.presentationUrl);
-                    modal.click();
+                    this.openPresentationDialog();
                 }
             }
         );
