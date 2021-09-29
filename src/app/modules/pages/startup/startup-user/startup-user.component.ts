@@ -20,10 +20,14 @@ export class StartupUserComponent implements OnInit {
     offset = 0;
     limit = 20;
     userStatus = new FormControl('');
+    startupName = ''; 
     filter = {
         offset: this.offset,
         limit: this.limit,
-        status: this.userStatus.value
+        status: this.userStatus.value,
+        search: {
+            name:this.startupName
+        }
     };
 
     userList = [];
@@ -57,6 +61,11 @@ export class StartupUserComponent implements OnInit {
         );
     }
 
+    onSearch(){
+        this.filter.search.name = this.startupName;
+        this.getStartupUser();
+    }
+
     countAllData(): void{
         const cardParam = {userId: 1};
         this.rest.countAllStartup(this.filter).subscribe(
@@ -70,11 +79,7 @@ export class StartupUserComponent implements OnInit {
       }
 
     getStartupUser(): any {
-        this.filter = {
-            offset: this.offset,
-            limit: this.limit,
-            status: this.userStatus.value
-        };
+        this.filter.status = this.userStatus.value;
         this.rest.getAllStartup(this.filter).subscribe(
             (res: any) => {
                 if (res.success === true) {
@@ -129,8 +134,16 @@ export class StartupUserComponent implements OnInit {
 
     openPresentationDialog(){
         const dialogRef = this.dialog.open(UploadVideoDialogComponent,{
-            width:'400px',
+            width:'520px',
             data:this.presentationData
+        });
+
+        dialogRef.afterClosed().subscribe((result)=>{
+            if(!result){
+                return false;
+            }
+            console.log(result);
+            this.onSubmitVideo()
         });
     }
 
@@ -141,6 +154,8 @@ export class StartupUserComponent implements OnInit {
             (res: any) => {
                 if (res.success === true) {
                     console.log(res.response)
+                    //Freash the Object
+                    this.presentationData = {} as Presentation;
                     this.pitchDeck = res.response[0].pitchdecdoc;
                     this.isPresentationVideo = res.response[0].isPresentationVideo;
                     this.pitchdecvideo = res.response[0].pitchdecvideo;
@@ -221,15 +236,15 @@ export class StartupUserComponent implements OnInit {
         );
     }
 
-    onSubmitVideo(close,uploadVideoForm) {
+    onSubmitVideo() {
         const params = {
-            'userId': this.startupId,
-            'videourl': this.pitchdecvideo,
-            'docurl': this.pitchDeck,
+            'userId': this.presentationData.startupId,
+            'videourl': this.presentationData.video,
+            'docurl': this.presentationData.docUrl,
             'isVideo': '1'
         };
-        if(this.newVideo){
-            params.videourl = this.newVideo;
+        if(this.presentationData.newVideo){
+            params.videourl = this.presentationData.newVideo;
         }
         console.log(params);
         this.rest.uploadVideo(params).subscribe(
@@ -238,8 +253,7 @@ export class StartupUserComponent implements OnInit {
                 this.upVideo = false;
                 this.newVideo = '';
                 this.adminSelectedVideoUrl = '';
-                close.click();
-                uploadVideoForm.reset();
+                
 
             }
         );

@@ -29,8 +29,8 @@
             </div>
             <div class="col-md-4">
               <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search">
-                <button type="submit" class="searchButton">
+                <input type="text" [(ngModel)]="investorName"  class="searchTerm" placeholder="Name">
+                <button type="button" (click)="onSearch()" class="searchButton">
                   <i class="fa fa-search"></i>
                </button>
              </div>

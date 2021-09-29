@@ -14,10 +14,14 @@ export class InvestorUserComponent implements OnInit {
   offset = 0;
   limit = 20;
   userStatus = new FormControl('');
+  investorName = '';
   filter = {
     offset: this.offset,
     limit: this.limit,
-    status : this.userStatus.value
+    status : this.userStatus.value,
+    search:{
+      name:this.investorName
+    }
   };
   
   userList = [];
@@ -25,6 +29,7 @@ export class InvestorUserComponent implements OnInit {
   investorStatus = ['reject','pending','approve']
   adminAppruvalList: string[] = [];
   companySertificateList: string[] = [];
+  
   constructor(private rest: RestserviceService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
@@ -40,11 +45,6 @@ export class InvestorUserComponent implements OnInit {
   }
 
   getInvestorUser(): any{
-    // this.filter = {
-    //   offset: this.offset,
-    //   limit: 5,
-    //   status : this.userStatus.value
-    // };
     console.log('filter',this.filter)
     this.rest.getAllInvestor(this.filter).subscribe(
       (res: any) => {
@@ -58,6 +58,14 @@ export class InvestorUserComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  onSearch(): void {
+    console.log(this.investorName);
+    this.filter.search.name = this.investorName;
+    this.getInvestorUser();
+    
+    
   }
 
   countAllData(): void{

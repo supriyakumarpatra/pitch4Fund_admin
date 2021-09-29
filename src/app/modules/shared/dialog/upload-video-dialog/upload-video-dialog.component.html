@@ -2,11 +2,13 @@
 <div mat-dialog-content>
   <div class="row">
     <div class="col-md-12">
-      <h3 class="theme-color-2 text-center">Startup don't have 30s video, need help from Pitch4Fund</h3>
-      <div class="video-container">
-        <video src=""  width="100%" height="263" controls></video>
+      <h3 class="theme-color-2 text-center" 
+      *ngIf="data.isPresentationVideo== '0' && !data.video"
+      >Startup don't have 30s video, need help from Pitch4Fund</h3>
+      <div class="video-container" *ngIf="data.video">
+        <video [src]="videoUrl"  width="100%" height="263" controls></video>
       </div>
-      <div class="video-container">
+      <div class="video-container" *ngIf="!data.video && data.isPresentationVideo == '1'">
         <h3 class="theme-color-2">No Video Found</h3>
       </div>
     </div>
@@ -14,9 +16,10 @@
   <div class="row mt-3">
     <div class="col-md-12"><h3 class="mb-0 theme-color">Pitchdeck Document :</h3></div>
     <div class="col-md-12">
-      <a href="javascript:void(0)" target="_blank">pitchDeck.pdf
+      <a href="javascript:void(0)" (click)="onSelectDoc(data.docUrl)" *ngIf="data.docUrl">
+        {{data.docUrl}}
       </a>
-      <h4 class="text-info" >
+      <h4 class="text-info" *ngIf="!data.docUrl">
         Startup doesn’t upload any Pitchdeck Document
       </h4>
     </div>
@@ -24,18 +27,20 @@
   <div class="row mt-3">
     <div class="col-md-7">
       <h3 class="mb-0 theme-color" >
-        Need to Change this video?
+        {{data.isPresentationVideo == '1'?'Need to Change this video?':'Upload video on request :'}}
       </h3>
-      <h3 class="mb-0 theme-color" >
-        Upload video on request :
-      </h3>
+      
     </div>
     <div class="col-md-5">
-      <button type="button" class="btn btn-info btn-sm mb-3"><i class="fa fa-file-video-o mr-1" aria-hidden="true"></i>Upload Video</button>
+      <input type="file" #uploadVideo name="video" (change)="onSelectVideo($event)" id="video" style="display:none">
+      <button type="button" class="btn btn-info btn-sm mb-3" (click)="uploadVideo.click()"><i class="fa fa-file-video-o mr-1" aria-hidden="true"></i>Upload Video</button>
+    </div>
+    <div class="video-container" *ngIf="data.newVideo" >
+      <video [src]="adminSelectedVideoUrl"  width="100%" height="263" controls></video>
     </div>
   </div>
 </div>
 <div mat-dialog-actions class="justify-content-end">
-  <button mat-raised-button color="primary" class="mr-2 ml-2" >Submit</button>
+  <button mat-raised-button color="primary" *ngIf="data.newVideo" class="mr-2 ml-2"  (click)="onSubmit()">Submit</button>
   <button mat-raised-button color="warn" class="mr-2 ml-2" [mat-dialog-close]="false" cdkFocusInitial>Close</button>
 </div>

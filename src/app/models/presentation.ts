@@ -1,6 +1,7 @@
 export interface Presentation {
     docUrl: string;
     video:string;
-    isPresentationVideo: number;
+    newVideo?:string;
+    isPresentationVideo: string;
     startupId:number
   }

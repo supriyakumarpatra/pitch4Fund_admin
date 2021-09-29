@@ -30,8 +30,8 @@
 
             <div class="col-md-4">
               <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search">
-                <button type="submit" class="searchButton">
+                <input type="text" class="searchTerm" [(ngModel)]="startupName" placeholder="Name">
+                <button type="submit" type="button" (click)="onSearch()" class="searchButton">
                   <i class="fa fa-search"></i>
                </button>
              </div>
@@ -360,7 +360,6 @@
           
           <div class="video-container" *ngIf="adminSelectedVideoUrl" >
             <video [src]="adminSelectedVideoUrl"  width="100%" height="263" controls></video>
-            
           </div>
         </div>
         <div class="modal-footer">
