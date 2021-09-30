@@ -6,7 +6,11 @@
       *ngIf="data.isPresentationVideo== '0' && !data.video"
       >Startup don't have 30s video, need help from Pitch4Fund</h3>
       <div class="video-container" *ngIf="data.video">
-        <video [src]="videoUrl"  width="100%" height="263" controls></video>
+        <div class="card">
+          <div class="card-body">
+            <video [src]="videoUrl"  width="100%" height="263" controls></video>
+          </div>
+        </div>
       </div>
       <div class="video-container" *ngIf="!data.video && data.isPresentationVideo == '1'">
         <h3 class="theme-color-2">No Video Found</h3>
@@ -35,8 +39,14 @@
       <input type="file" #uploadVideo name="video" (change)="onSelectVideo($event)" id="video" style="display:none">
       <button type="button" class="btn btn-info btn-sm mb-3" (click)="uploadVideo.click()"><i class="fa fa-file-video-o mr-1" aria-hidden="true"></i>Upload Video</button>
     </div>
-    <div class="video-container" *ngIf="data.newVideo" >
-      <video [src]="adminSelectedVideoUrl"  width="100%" height="263" controls></video>
+    <div class="col-md-12">
+      <div class="video-container" *ngIf="data.newVideo" >
+        <div class="card">
+          <div class="card-body">
+            <video [src]="adminSelectedVideoUrl"  width="100%" height="263" controls></video>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
