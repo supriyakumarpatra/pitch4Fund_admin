@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { RestserviceService } from 'src/app/restservice.service';
 import { MappingShareComponent } from '../../mapping-share/mapping-share.component';
 
 @Component({
@@ -9,7 +10,12 @@ import { MappingShareComponent } from '../../mapping-share/mapping-share.compone
 })
 export class MappingOfStartupToInvestorComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  filter = {
+    userId:1,
+    limit:20,
+    offset:0
+  }
+  constructor(public dialog: MatDialog, private rest: RestserviceService) {}
 
   openDialog() {
     this.dialog.open(MappingShareComponent,{
@@ -18,6 +24,16 @@ export class MappingOfStartupToInvestorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllData();
+  }
+
+  getAllData(){
+    console.log('ok');
+    this.rest.getAllDataStartupInvestorMap(this.filter).subscribe(
+      (res: any)=>{
+        console.log(res)
+      }
+    );
   }
 
   

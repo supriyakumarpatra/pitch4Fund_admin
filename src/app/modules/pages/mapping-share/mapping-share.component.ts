@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestserviceService } from 'src/app/restservice.service';
 
 @Component({
   selector: 'app-mapping-share',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MappingShareComponent implements OnInit {
 
+  todayDate: Date = new Date();
+  
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+
+  
 
 }

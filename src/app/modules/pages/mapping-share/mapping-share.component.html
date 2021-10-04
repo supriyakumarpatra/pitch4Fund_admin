@@ -4,7 +4,7 @@
             <div class="form-group">
                 <mat-form-field appearance="outline">
                     <mat-label>Start Date</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [min]="todayDate" [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -14,7 +14,7 @@
             <div class="form-group">
                 <mat-form-field appearance="outline">
                     <mat-label>End Date</mat-label>
-                    <input matInput [matDatepicker]="picker2">
+                    <input matInput [min]="todayDate" [matDatepicker]="picker2">
                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2></mat-datepicker>
                 </mat-form-field>

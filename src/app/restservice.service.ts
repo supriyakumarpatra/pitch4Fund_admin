@@ -321,5 +321,9 @@ countEngagmentData(data): any {
   countAllProposedTime(data): any {
     return this.http.post(this.API_ROOT + 'addmin/countAllProposedTime' , data , httpOptions);
   }
+
+  getAllDataStartupInvestorMap(data): any {
+    return this.http.post(this.API_ROOT + 'investorStartupMap/getAllData' , data , httpOptions);
+  }
 }
 
