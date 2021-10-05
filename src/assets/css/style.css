@@ -1596,3 +1596,6 @@ footer{
   border-color:#8447c4 !important;
 }
 
+.mat-radio-label{
+  margin-bottom: 0 !important;
+}
