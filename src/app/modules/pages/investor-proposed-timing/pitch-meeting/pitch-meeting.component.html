@@ -46,7 +46,7 @@
                     <th scope="col"> Investor </th>
                     <th scope="col"> Investor's Country </th>
                     <th scope="col" > Proposed Date & Time </th>
-                    <th scope="col" > Time Diffrece(Minutes) </th>
+                    <th scope="col" > Time Diffrece (Minutes) </th>
                     <th scope="col">Startup</th>
                     <th scope="col"> Startup's Country </th>
                     <th scope="col">Status</th>
@@ -60,13 +60,13 @@
                         <b class="theme-color-2">Name :</b> {{item.inveatorName}}  <br>
                     </td>
                     <td> {{item.investorCountry}} </td>
-                    <td class="text-left">
+                    <td class="">
                       {{item.meetingDateTime}}
                     </td>
-                    <td class="text-left" >{{showTimeDifferents(item)}}</td>
+                    <td class="" >{{showTimeDifferents(item)}}</td>
                     <td class="text-left">
-                        Startup Name : {{item.startupName}} <br>
-                        Product : {{item.ProductName}}  <br>
+                      <b class="theme-color-2">Startup Name :</b> {{item.startupName}} <br>
+                      <b class="theme-color-2">Product :</b> {{item.ProductName}}  <br>
                     </td>
                     <td>{{item.startupCountry}}</td>
                     <td>
