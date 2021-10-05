@@ -46,53 +46,52 @@
                     <th scope="col"> Investor </th>
                     <th scope="col"> Core Segment </th>
                     <th scope="col"> Map Startup </th>
-                    <th scope="col">Share</th>
+                    <!-- <th scope="col">Share</th> -->
                     <th scope="col"> Share Status</th>
                     <!-- <th scope="col"> Feedback </th> -->
                   </tr>
-                  <!-- <tr *ngIf="userList.length == 0">
-                    <td [attr.colspan]="5">No Data Found</td>
-                  </tr> -->
-                  <tr class="text-center">
-                    <td>1</td>
+                  
+                  <tr class="text-center" *ngFor="let item of startupInvestorList; let i = index">
+                    <td>{{i+1}}</td>
                     <td class="text-left">
-                      <b class="theme-color-2">Company :</b> Investor Company <br>
-                      <b class="theme-color-2">Name :</b> Investor
+                      <b class="theme-color-2">Company :</b> {{item.companyName}} <br>
+                      <b class="theme-color-2">Name :</b> {{item.name}}
                     </td>
                     <td class="text-left">
-                        1. ABC <br>
-                        2. DEF
+                        <ul>
+                          <li *ngFor="let indrusty of item?.indrustyListName">{{indrusty?.name}}</li>
+                          
+                        </ul>
                     </td>
                     
                     <td>
-                        <div>
-                            <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter2" class="edit d-inline text-primary rounded"  matTooltip="View Share Report">
-                                Primary
-                            </a>
-                        </div> <br>
-                        <div>
-                            <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter1" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Add Map Startup">
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                            </a>
-                            <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter2" class="edit d-inline text-primary rounded"  matTooltip="View Share Report">
-                            Primary-2 </a>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="javascript:;" (click)="openDialog()" class="edit border border-success d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-success rounded"  matTooltip="Share">
-                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <!-- <span class="badge badge-warning">Pending</span> -->
-                        <!-- <span class="badge badge-danger">Expired</span> -->
-                        <span class="badge badge-success">Active</span>
+                        <ul>
+                          <li *ngFor="let startup of item?.mapStartup">
+                            <a href="javascript:;" 
+                            (click)="openStartupDialog(item.investorId,startup)"
+                            class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Add Map Startup" *ngIf="startup.canUpdate == '1'">
+                              <i class="fa fa-plus" aria-hidden="true"></i>
+                          </a>
+                          <a href="javascript:;"  class="edit d-inline text-primary rounded"  matTooltip="View Share Report">
+                          {{startup.alisename}} </a>
+                          </li>
+                          <li *ngIf="item.countCanUpdate == '0'">
+                            <a href="javascript:;" (click)="openStartupDialog(item.investorId)" class="edit border border-primary d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-primary rounded"  matTooltip="Add Map Startup" >
+                              <i class="fa fa-plus" aria-hidden="true"></i>
+                          </a>
+                          </li>
+                        </ul>
                     </td>
                     <!-- <td>
-                        <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter3"  class="edit border border-warning d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-warning rounded"  matTooltip="View Feedback">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        <a href="javascript:;" (click)="openShareDialog()" class="edit border border-success d-inline p-1 pl-2 pr-2 mr-2 ml-2 text-success rounded"  matTooltip="Share">
+                            <i class="fa fa-share-square-o" aria-hidden="true"></i>
                         </a>
                     </td> -->
+                    <td>
+                        <span class="badge badge-success" *ngIf="item.status > '0'">Active</span>
+                        <span class="badge badge-danger" *ngIf="item.status == '0'">Inactive</span>
+                    </td>
+                    
                   </tr>
                   
                 </table>

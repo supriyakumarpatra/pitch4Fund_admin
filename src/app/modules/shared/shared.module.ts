@@ -16,6 +16,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner/pub
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { SelectStartupComponent } from './dialog/select-startup/select-startup.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -40,9 +44,13 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule
     ],
     declarations: [
         UploadVideoDialogComponent,
+        SelectStartupComponent,
         
     ],
     exports: [

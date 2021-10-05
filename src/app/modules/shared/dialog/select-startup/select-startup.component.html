@@ -1,0 +1,80 @@
+<h2 mat-dialog-title style="color: #8447c4;">Map Startup</h2>
+  <div mat-dialog-content>
+    <div class="form-group">
+        <select class="form-control pr-5 cursor-pointer" id="exampleFormControlSelect1" (change)="onSearch($event)">
+          <option selected disabled value="">Area of interest</option>
+          <option  *ngFor="let it of indrustyList" [value]="it.id">{{it.name}}</option>
+          
+        </select>
+    </div>
+    <div class="row">
+        <div class="col-lg-6" *ngFor="let item of startUpList">
+            <div class="card stup p-3">
+                <mat-checkbox class="example-margin" [checked]="selectedStartup.includes(item.id)" [value]="item.id"   (change)="onSelectedStartup($event)">{{item.name}}</mat-checkbox>
+                <p class="mb-0" style="line-height: 1.7;">lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="form-group mb-0">
+        <label>Engagement Tag</label>
+        <input type="text" class="form-control" [(ngModel)]="mapStartupData.alisename">
+        <mat-error *ngIf="errorMsg">{{errorMsg}}</mat-error>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+          <div class="form-group">
+              <mat-form-field appearance="outline">
+                  <mat-label>Start Date</mat-label>
+                  <input matInput type="text" [(ngModel)]="mapStartupData.startDate" [min]="todayDate" [matDatepicker]="picker">
+                  <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
+      </div>
+      <div class="col-lg-6">
+          <div class="form-group">
+              <mat-form-field appearance="outline">
+                  <mat-label>End Date</mat-label>
+                  <input matInput type="text" [(ngModel)]="mapStartupData.endDate" [min]="todayDate" [matDatepicker]="picker2">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+          </div>
+      </div>
+      <div class="col-lg-12 mb-2 d-flex align-items-center">
+          <h3 class="mb-0 mr-3">Stop on Feedback :</h3>
+          <div class="form-group mb-0">
+              <mat-radio-group aria-label="Select an option" [(ngModel)]="mapStartupData.feedback">
+                  <mat-radio-button class="mr-3" value="1">Yes</mat-radio-button>
+                  <mat-radio-button value="2">No</mat-radio-button>
+              </mat-radio-group>
+          </div>
+      </div>
+      <div class="col-lg-12 mb-2 d-flex align-items-center">
+          <h3 class="mb-0 mr-3">Evaluate Later :</h3>
+          <div class="form-group mb-0">
+              <mat-radio-group aria-label="Select an option" [(ngModel)]="mapStartupData.evluateLater">
+                  <mat-radio-button class="mr-3" value="1">Show All Time</mat-radio-button>
+                  <mat-radio-button value="2">Notify</mat-radio-button>
+              </mat-radio-group>
+          </div>
+      </div>
+      <div class="col-lg-12 mb-2 d-flex align-items-center">
+          <h3 class="mb-0 mr-3">Notify Frequency :</h3>
+          <div class="form-group mb-0">
+              <mat-radio-group aria-label="Select an option" [(ngModel)]="mapStartupData.notifyFrequency">
+                  <mat-radio-button class="mr-3" value="1">When Open</mat-radio-button>
+                  <mat-radio-button value="2">After A Day</mat-radio-button>
+              </mat-radio-group>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div mat-dialog-actions class="justify-content-end">
+    <button mat-raised-button color="primary" class="mr-2 ml-2"  (click)="onAdd()">{{buttonTitle}}</button>
+    <button mat-raised-button color="warn" class="mr-2 ml-2" [mat-dialog-close]="false">Cancel</button>
+  </div>
+
+  
+  
