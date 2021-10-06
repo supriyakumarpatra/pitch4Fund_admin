@@ -338,5 +338,9 @@ countEngagmentData(data): any {
     return this.http.post(this.API_ROOT + 'investorStartupMap/updateMapStartupData' , data , httpOptions);
   }
 
+  getMapStartUpReport(data): Observable<any> {
+    return this.http.post(this.API_ROOT + 'investorStartupMap/getMapStartupReport' , data , httpOptions);
+  }
+
 }
 

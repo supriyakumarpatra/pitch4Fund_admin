@@ -74,6 +74,18 @@ export class MappingOfStartupToInvestorComponent implements OnInit {
     );
   }
 
+  getStartupReport(id,investorId){
+    const params ={
+      investorId:investorId,
+      id:id
+    };
+    this.rest.getMapStartUpReport(params).subscribe(
+      (res: any)=>{
+        console.log(res.response);
+      }
+    );
+  }
+
   
 
   
