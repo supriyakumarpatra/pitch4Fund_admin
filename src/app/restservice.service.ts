@@ -342,5 +342,9 @@ countEngagmentData(data): any {
     return this.http.post(this.API_ROOT + 'investorStartupMap/getMapStartupReport' , data , httpOptions);
   }
 
+  countAllData(data): Observable<any> {
+    return this.http.post(this.API_ROOT + 'investorStartupMap/countAllData' , data , httpOptions);
+  }
+
 }
 
