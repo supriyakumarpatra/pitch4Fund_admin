@@ -24,7 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {NetworkInterceptor} from './network.interceptor';
-import {SharedModule} from './modules/shared/shared.module'
+import {SharedModule} from './modules/shared/shared.module';
 // import {MaterialFileUploadComponent} from './material-file-upload/material-file-upload.component';
 
 /**

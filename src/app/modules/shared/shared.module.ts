@@ -20,6 +20,7 @@ import { SelectStartupComponent } from './dialog/select-startup/select-startup.c
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ShareReportComponent } from './share-report/share-report.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     declarations: [
         UploadVideoDialogComponent,
         SelectStartupComponent,
+        ShareReportComponent,
         
     ],
     exports: [
