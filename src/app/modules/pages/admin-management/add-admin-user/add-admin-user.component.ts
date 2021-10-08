@@ -17,12 +17,15 @@ export class AddAdminUserComponent implements OnInit {
   onShow = true;
   limit = 20;
   offset = 0;
+  searchTerm = ''
   filter = {
     userId:1,
     limit:this.limit,
-    offset:this.offset
+    offset:this.offset,
+    searchTerm: this.searchTerm
   };
   count: number = 0;
+  
   constructor( private fb: FormBuilder, private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { 
     this.rest.authGuard();
     this.adminForm = this.fb.group({
@@ -115,7 +118,7 @@ export class AddAdminUserComponent implements OnInit {
   }
 
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1, searchTerm: this.searchTerm};
     this.rest.countAllAdminData(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -180,6 +183,10 @@ export class AddAdminUserComponent implements OnInit {
     );
   }
 
+  onSearch(){
+    this.filter.searchTerm = this.searchTerm;
+    this.onAdminList();
+  }
 
 
 

@@ -13,6 +13,8 @@ export class PitchMeetingComponent implements OnInit {
   offset = 0;
   limit = 20;
   count: number = 0;
+  investorSearch = '';
+  startupSearch = '';
   constructor(private rest: RestserviceService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class PitchMeetingComponent implements OnInit {
 
   getAllProposedTime():void{
 
-    const params = {userId:1,offset:this.offset,limit:this.limit}
+    const params = {userId:1,offset:this.offset,limit:this.limit,investorSearch:this.investorSearch,startupSearch:this.startupSearch}
     this.rest.getAllProposedTime(params).subscribe(
       (res: any)=>{
         console.log(res);
@@ -82,7 +84,7 @@ export class PitchMeetingComponent implements OnInit {
   }
 
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1,investorSearch:this.investorSearch,startupSearch:this.startupSearch};
     this.rest.countAllProposedTime(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -154,6 +156,10 @@ export class PitchMeetingComponent implements OnInit {
     // // console.log(startupUTCTime)
     // // return startupUTCTime;
     return (Number(investorTimeZone)-Number(startupTimeZone));
+  }
+
+  onSearch(){
+    this.getAllProposedTime();
   }
 
 }

@@ -17,25 +17,23 @@
         <div class="card mb-3 mt-3">
           <div class="card-header"><div class="row align-items-center">
             <div class="col-md-5">  <h2 class="mb-0 text-dark">Pitch Meeting List</h2></div>
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
               <div class="search">
-                <input type="text" class="form-control" placeholder="Search">
-                <!-- <button type="submit" class="searchButton">
-                  <i class="fa fa-search"></i>
-               </button> -->
+                <input type="text" class="form-control" [(ngModel)]="investorSearch" placeholder="Investor Name">
+                
              </div>
             </div>
             <div class="col-md-3">
               <div class="search">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" [(ngModel)]="startupSearch" placeholder="Startup Name">
                 
              </div>
             </div>
             <div class="col-md-1">
-              <button type="submit" class="searchButton">
+              <button type="submit" class="searchButton" (click)="onSearch()">
                 <i class="fa fa-search"></i>
               </button>
-            </div>
+            </div> -->
             <!-- <div class="col-md-3">
                 <div class="form-group sd mb-0">
                     <select class="form-control mb-0 pr-5 cursor-pointer" id="exampleFormControlSelect1"  [formControl]="userStatus">
