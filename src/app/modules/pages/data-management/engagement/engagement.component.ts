@@ -22,6 +22,7 @@ export class EngagementComponent implements OnInit {
     offset = 0;
     count: number = 0;
     limit = 20;
+    searchTerm = '';
 
     constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
@@ -35,6 +36,7 @@ export class EngagementComponent implements OnInit {
     userId: 1,
     offset: this.offset,
     limit: this.limit,
+    searchTerm: this.searchTerm
     //type : "all"
         };
     this.rest.getEngagementList(cardParam).subscribe((res) => {
@@ -71,7 +73,7 @@ export class EngagementComponent implements OnInit {
   }
 
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1, searchTerm: this.searchTerm};
     this.rest.countEngagmentData(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -90,7 +92,8 @@ export class EngagementComponent implements OnInit {
     const data = {
         userId: 1,
         limit: this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
     console.log('ffffffffff', data);
     this.rest.getEngagementList(data).subscribe((res) => {
@@ -132,7 +135,8 @@ export class EngagementComponent implements OnInit {
         const data = {
         userId : 1,
         limit : this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
         console.log('ffffffffff', data);
         this.rest.getEngagementList(data).subscribe((res) => {
@@ -217,6 +221,10 @@ export class EngagementComponent implements OnInit {
                  this.getCard();
             }
         });
+    }
+
+    onSearch(){
+        this.getCard();
     }
 
 }

@@ -133,14 +133,14 @@
         <div class="modal-body">
             <div class="table-responsive">
                 <div class="agency-list">
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-borderless" *ngIf="startupReport">
                     <thead>
                     <tr class="text-center">
                       <th scope="col">Sl. No.</th>
                       <th scope="col"> Promoted Startup </th>
                       <th scope="col"> Start Date </th>
                       <th scope="col"> End Date </th>
-                      <th scope="col">Feedback</th>
+                      <th scope="col" *ngIf="startupReport.feedback == '1'">Feedback</th>
                       
                     </tr>
                   </thead>
@@ -159,7 +159,7 @@
                         <td class="  ">
                           {{dateFormat(startupReport.endDate)}}
                         </td>
-                        <td class="  ">
+                        <td class="  " *ngIf="startupReport.feedback == '1'">
                             {{feedback(item.feedback)}}
                         </td>
                         

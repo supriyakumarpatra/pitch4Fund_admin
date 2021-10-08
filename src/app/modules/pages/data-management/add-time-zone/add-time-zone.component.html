@@ -88,8 +88,8 @@
             <div class="col-md-5">TimeZone List</div>
             <div class="col-md-7">
               <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search">
-                <button type="submit" class="searchButton">
+                <input type="text" class="searchTerm" [(ngModel)]="timeZoneName" placeholder="Time Zone Name">
+                <button type="submit" class="searchButton" (click)="onSearch()">
                   <i class="fa fa-search"></i>
                </button>
              </div>

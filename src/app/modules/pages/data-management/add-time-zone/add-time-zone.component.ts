@@ -35,6 +35,7 @@ export class AddTimeZoneComponent implements OnInit {
     count: number = 0;
     limit = 20;
     timezoneOffsetValueError: string;
+    timeZoneName = '';
   constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -47,6 +48,7 @@ export class AddTimeZoneComponent implements OnInit {
     userId: 1,
     offset: this.offset,
     limit: this.limit,
+    timeZoneName: this.timeZoneName
     //type : "all"
         };
     this.rest.getTimeZoneList(cardParam).subscribe((res) => {
@@ -83,7 +85,7 @@ export class AddTimeZoneComponent implements OnInit {
   }
 
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1,timeZoneName:this.timeZoneName};
     this.rest.countTimeZoneData(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -103,7 +105,8 @@ export class AddTimeZoneComponent implements OnInit {
     const data = {
         userId: 1,
         limit: this.limit,
-        offset : this.offset
+        offset : this.offset,
+        timeZoneName: this.timeZoneName
     };
     console.log('ffffffffff', data);
     this.rest.getTimeZoneList(data).subscribe((res) => {
@@ -145,7 +148,8 @@ export class AddTimeZoneComponent implements OnInit {
         const data = {
         userId : 1,
         limit : this.limit,
-        offset : this.offset
+        offset : this.offset,
+        timeZoneName: this.timeZoneName
     };
         console.log('ffffffffff', data);
         this.rest.getTimeZoneList(data).subscribe((res) => {
@@ -253,6 +257,10 @@ export class AddTimeZoneComponent implements OnInit {
                 
             }
         });
+    }
+
+    onSearch(){
+        this.getCard();
     }
     // searchCard(): any {
     //   if (this.cardSearch.length !== 0) {

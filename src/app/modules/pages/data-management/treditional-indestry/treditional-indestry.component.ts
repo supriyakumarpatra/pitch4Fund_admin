@@ -36,6 +36,7 @@ export class TreditionalIndestryComponent implements OnInit {
     offset = 0;
     limit = 20;
     count: number = 0;
+    searchTerm = '';
   constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -64,6 +65,7 @@ export class TreditionalIndestryComponent implements OnInit {
     userId: 1,
     offset: this.offset,
      limit: this.limit,
+     searchTerm: this.searchTerm
     //type : "all"
         };
     this.rest.getTreditionalIndustryList(cardParam).subscribe((res) => {
@@ -83,7 +85,7 @@ export class TreditionalIndestryComponent implements OnInit {
     });
   }
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1, searchTerm: this.searchTerm};
     this.rest.countTreditionalIndustryData(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -94,7 +96,7 @@ export class TreditionalIndestryComponent implements OnInit {
     );
   }
 
-       NextCardDetails(){
+NextCardDetails(){
         if((this.offset+this.limit) > this.count || (this.offset+this.limit) == this.count){
             return;
         }
@@ -103,7 +105,8 @@ export class TreditionalIndestryComponent implements OnInit {
     const data = {
         userId: 1,
         limit: this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
     console.log('ffffffffff', data);
     this.rest.getTreditionalIndustryList(data).subscribe((res) => {
@@ -145,7 +148,8 @@ export class TreditionalIndestryComponent implements OnInit {
         const data = {
         userId : 1,
         limit : this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
         console.log('ffffffffff', data);
         this.rest.getTreditionalIndustryList(data).subscribe((res) => {
@@ -232,6 +236,32 @@ export class TreditionalIndestryComponent implements OnInit {
                 
             }
         });
+    }
+
+    onSearch(){
+        const cardParam = {
+            
+            userId: 1,
+            offset: this.offset,
+             limit: this.limit,
+             searchTerm: this.searchTerm
+            //type : "all"
+                };
+            this.rest.getTreditionalIndustryList(cardParam).subscribe((res) => {
+                this.responseObj = res;
+                if (this.responseObj.success === true) {
+                    for (let i = 0 ; i < this.responseObj.response.length; i++) {
+                        if (this.responseObj.response[i].isEnable === '1') {
+                            this.responseObj.response[i].isEnable = true;
+                        } else {
+                            this.responseObj.response[i].isEnable = false;
+                        }
+                    }
+                    this.cardList  = this.responseObj.response;
+                    this.cardListDump = this.responseObj.response;
+                    this.countAllData();
+                }
+            }); 
     }
     // searchCard(): any {
     //   if (this.cardSearch.length !== 0) {

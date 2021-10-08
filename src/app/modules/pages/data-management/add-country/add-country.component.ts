@@ -32,11 +32,12 @@ export class AddCountryComponent implements OnInit {
     offset = 0;
     k:number =0;
     count: number = 0;
+    searchTerm = '';
   constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.getCard();
-      this.countAllData();
+      
   }
 
   openDeleteDialog(id:number) {
@@ -61,6 +62,7 @@ export class AddCountryComponent implements OnInit {
     userId: 1,
     offset: this.offset,
     limit: this.limit,
+    searchTerm: this.searchTerm
     //type : "all"
         };
     this.rest.getCountryList(cardParam).subscribe((res) => {
@@ -75,12 +77,13 @@ export class AddCountryComponent implements OnInit {
             }
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
+            this.countAllData();
         }
     });
   }
 
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1, searchTerm: this.searchTerm};
     this.rest.countCountryData(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -100,7 +103,8 @@ export class AddCountryComponent implements OnInit {
     const data = {
         userId: 1,
         limit: this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
     
     console.log('ffffffffff', data);
@@ -121,6 +125,7 @@ export class AddCountryComponent implements OnInit {
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
             console.log(this.cardListDump);
+            this.countAllData();
             // if (this.cardListDump.length == 50){
                 
             //     this.offset += 50;
@@ -145,7 +150,8 @@ export class AddCountryComponent implements OnInit {
         const data = {
         userId : 1,
         limit : this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
         console.log('ffffffffff', data);
         this.rest.getCountryList(data).subscribe((res) => {
@@ -169,6 +175,7 @@ export class AddCountryComponent implements OnInit {
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
             console.log(this.cardListDump);
+            this.countAllData();
 
         }
     });
@@ -235,6 +242,33 @@ export class AddCountryComponent implements OnInit {
             }
         });
     }
+
+    onSearch(){
+        const cardParam = {
+            
+            userId: 1,
+            offset: this.offset,
+            limit: this.limit,
+            searchTerm: this.searchTerm
+            //type : "all"
+                };
+            this.rest.getCountryList(cardParam).subscribe((res) => {
+                this.responseObj = res;
+                if (this.responseObj.success === true) {
+                    for (let i = 0 ; i < this.responseObj.response.length; i++) {
+                        if (this.responseObj.response[i].isEnable === '1') {
+                            this.responseObj.response[i].isEnable = true;
+                        } else {
+                            this.responseObj.response[i].isEnable = false;
+                        }
+                    }
+                    this.cardList  = this.responseObj.response;
+                    this.cardListDump = this.responseObj.response;
+                    this.countAllData();
+                }
+            });
+    }
+
     // searchCard(): any {
     //   if (this.cardSearch.length !== 0) {
     //       if (this.cardList.length !== 0) {

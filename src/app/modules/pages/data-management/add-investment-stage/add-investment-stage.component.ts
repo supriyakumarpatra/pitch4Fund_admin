@@ -30,11 +30,12 @@ export class AddInvestmentStageComponent implements OnInit {
     offset = 0;
     count: number = 0;
     limit = 20;
+    searchTerm = '';
   constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.getCard();
-      this.countAllData();
+      
   }
 
   getCard(): any {
@@ -43,11 +44,13 @@ export class AddInvestmentStageComponent implements OnInit {
     userId: 1,
     offset: this.offset,
      limit: this.limit,
+     searchTerm: this.searchTerm
     //type : "all"
         };
     this.rest.getInvestmentStageList(cardParam).subscribe((res) => {
         this.responseObj = res;
         if (this.responseObj.success === true) {
+            
             for (let i = 0 ; i < this.responseObj.response.length; i++) {
                 if (this.responseObj.response[i].isEnable === '1') {
                     this.responseObj.response[i].isEnable = true;
@@ -57,12 +60,13 @@ export class AddInvestmentStageComponent implements OnInit {
             }
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
+            this.countAllData();
         }
     });
   }
 
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1, searchTerm: this.searchTerm};
     this.rest.countInvestmentStageData(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -98,7 +102,8 @@ export class AddInvestmentStageComponent implements OnInit {
         const data = {
             userId: 1,
             limit: this.limit,
-            offset : this.offset
+            offset : this.offset,
+            searchTerm: this.searchTerm
         };
         console.log('ffffffffff', data);
         this.rest.getInvestmentStageList(data).subscribe((res) => {
@@ -117,6 +122,7 @@ export class AddInvestmentStageComponent implements OnInit {
                 this.cardList  = this.responseObj.response;
                 this.cardListDump = this.responseObj.response;
                 console.log(this.cardListDump);
+                this.countAllData();
                 // if (this.cardListDump.length == 5){
                 //     this.offset += 5;
 
@@ -138,7 +144,8 @@ export class AddInvestmentStageComponent implements OnInit {
         const data = {
         userId : 1,
         limit : this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
         };
         console.log('ffffffffff', data);
         this.rest.getInvestmentStageList(data).subscribe((res) => {
@@ -160,6 +167,7 @@ export class AddInvestmentStageComponent implements OnInit {
             this.cardList  = this.responseObj.response;
             this.cardListDump = this.responseObj.response;
             console.log(this.cardListDump);
+            this.countAllData();
 
         }
     });
@@ -225,6 +233,30 @@ export class AddInvestmentStageComponent implements OnInit {
                 
             }
         });
+    }
+
+    onSearch(){
+        const cardParam = {
+        userId: 1,
+        offset: this.offset,
+        limit: this.limit,
+        searchTerm: this.searchTerm
+        };
+            this.rest.getInvestmentStageList(cardParam).subscribe((res) => {
+                this.responseObj = res;
+                if (this.responseObj.success === true) {
+                    for (let i = 0 ; i < this.responseObj.response.length; i++) {
+                        if (this.responseObj.response[i].isEnable === '1') {
+                            this.responseObj.response[i].isEnable = true;
+                        } else {
+                            this.responseObj.response[i].isEnable = false;
+                        }
+                    }
+                    this.cardList  = this.responseObj.response;
+                    this.cardListDump = this.responseObj.response;
+                    this.countAllData();
+                }
+            });
     }
     // searchCard(): any {
     //   if (this.cardSearch.length !== 0) {

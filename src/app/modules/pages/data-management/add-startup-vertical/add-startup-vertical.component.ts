@@ -32,6 +32,7 @@ export class AddStartupVerticalComponent implements OnInit {
     offset = 0;
     count: number = 0;
     limit = 20;
+    searchTerm = '';
   constructor(private rest: RestserviceService, private notifier: NotifierService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -43,7 +44,8 @@ export class AddStartupVerticalComponent implements OnInit {
             
     userId: 1,
     offset: this.offset,
-    limit: this.limit
+    limit: this.limit,
+    searchTerm: this.searchTerm
     //type : "all"
         };
     this.rest.getStartupVerticalList(cardParam).subscribe((res) => {
@@ -64,7 +66,7 @@ export class AddStartupVerticalComponent implements OnInit {
   }
 
   countAllData(): void{
-    const cardParam = {userId: 1};
+    const cardParam = {userId: 1, searchTerm: this.searchTerm};
     this.rest.countStartupVerticalData(cardParam).subscribe(
         (res:any)=>{
             if(res.success){
@@ -101,7 +103,8 @@ export class AddStartupVerticalComponent implements OnInit {
     const data = {
         userId: 1,
         limit: this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
     console.log('ffffffffff', data);
     this.rest.getStartupVerticalList(data).subscribe((res) => {
@@ -143,7 +146,8 @@ export class AddStartupVerticalComponent implements OnInit {
         const data = {
         userId : 1,
         limit : this.limit,
-        offset : this.offset
+        offset : this.offset,
+        searchTerm: this.searchTerm
     };
         console.log('ffffffffff', data);
         this.rest.getStartupVerticalList(data).subscribe((res) => {
@@ -231,43 +235,32 @@ export class AddStartupVerticalComponent implements OnInit {
             }
         });
     }
-    // searchCard(): any {
-    //   if (this.cardSearch.length !== 0) {
-    //       if (this.cardList.length !== 0) {
-    //           const finalArray = [];
-    //           for (let i = 0 ; i < this.cardList.length ; i++) {
-    //               if (this.cardList[i].details.indexOf(this.cardSearch) !== -1) {
-    //                   finalArray.push(this.cardList[i]);
-    //               }
-    //           }
-    //           this.cardList = finalArray;
-    //       }
-    //   } else {
-    //       this.cardList = this.cardListDump;
-    //   }
-    // }
 
-    // uploadCSV(): void {
-    //     const csvupl = document.getElementById('csvupl') as HTMLInputElement;
-    //     const loader = document.getElementById('loader');
-    //     csvupl.click();
-    //     csvupl.onchange = () => {
-    //         loader.style.display = 'inline-block';
-    //         const files = csvupl.files;
-    //         if (files.length > 0) {
-    //             const fd = new FormData();
-    //             const userId = '1';
-    //             fd.append('userId', userId );
-    //             fd.append('file', files[0]);
-    //             this.rest.uploadCardCSV(fd).subscribe((res: any) => {
-    //                 loader.style.display='none';
-    //                 if (res.success) {
-    //                     this.getCard();
-    //                     this.notifier.notify('success' , 'File upload successfully');
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
+    onSearch(){
+        const cardParam = {
+            
+            userId: 1,
+            offset: this.offset,
+            limit: this.limit,
+            searchTerm: this.searchTerm
+            //type : "all"
+                };
+            this.rest.getStartupVerticalList(cardParam).subscribe((res) => {
+                this.responseObj = res;
+                if (this.responseObj.success === true) {
+                    for (let i = 0 ; i < this.responseObj.response.length; i++) {
+                        if (this.responseObj.response[i].isEnable === '1') {
+                            this.responseObj.response[i].isEnable = true;
+                        } else {
+                            this.responseObj.response[i].isEnable = false;
+                        }
+                    }
+                    this.cardList  = this.responseObj.response;
+                    this.cardListDump = this.responseObj.response;
+                    this.countAllData();
+                }
+            });
+    }
+    
 
 }
